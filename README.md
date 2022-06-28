@@ -1,6 +1,6 @@
 # Mini-App-Projects
 
-The repository for store the mobile application projects. The objective is for only practicing to build an mobile applications whether iOS and Android. In he future, It would probably contains more about mobile, desktop, watchOS, or even tvOS applications.
+The repository for store the mobile application projects. The objective is for only practicing to build the mobile applications both iOS and Android. In the future, It would probably contains more about mobile, desktop, watchOS, or even tvOS applications.
 
 Currently, I'm using Swift language to develop an iOS application on iphone mobile. I hope would learn another tools and languages such as React-Native, Flutter, Kotlin to develop brand new mobile applications.
 
