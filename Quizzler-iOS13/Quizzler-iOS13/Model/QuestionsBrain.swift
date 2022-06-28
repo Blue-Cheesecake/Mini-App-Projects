@@ -59,6 +59,10 @@ struct QuestionsBrain {
         self.curr_q_index += 1
     }
     
+	public mutating func resetCurrIndex() {
+		self.curr_q_index = 0
+	}
+	
     public func isAnswerCorrect(of _answer: String) throws -> Bool  {
         // validate answer
         if !["True", "False"].contains(_answer) {

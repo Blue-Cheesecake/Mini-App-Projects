@@ -99,6 +99,9 @@
                                                 <buttonConfiguration key="configuration" style="filled" title="Re-Attempt">
                                                     <fontDescription key="titleFontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="35"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="pressedReAttempt:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zh1-ha-kWF"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>

@@ -66,6 +66,14 @@ class ViewController: UIViewController {
         }
     }
     
+	private func unableButton(with_condition isValid: Bool, _ buttons: UIButton...) {
+		if isValid {
+			for eachButt in buttons {
+				eachButt.isEnabled = true
+			}
+		}
+	}
+	
     private func updateScore(with newScore: Int) {
         self.score = newScore
         
@@ -75,15 +83,13 @@ class ViewController: UIViewController {
     
     private func changeButtonBgColor(with color: UIColor, of button: UIButton, for delay_sec: Double) {
         button.backgroundColor = color
-//        DispatchQueue.main.asyncAfter(deadline: .now() + delay_sec, execute: {
-//            button.backgroundColor = UIColor.clear
-//        })
+
         Timer.scheduledTimer(withTimeInterval: delay_sec, repeats: false, block: {_ in
             button.backgroundColor = UIColor.clear
         })
     }
     
-    
+
     @IBAction func pressedAnswerButton(_ sender: UIButton) {
         do {
             if try self.questionBrain.isAnswerCorrect(of: sender.currentTitle!) {
@@ -109,9 +115,25 @@ class ViewController: UIViewController {
             try self.displayQuestion(with: self.questionBrain.getCurrentQuestion(), to: self.questionLabel, as_long_as: !questionBrain.isRanOutOfQuestion())
             
         } catch {
-            print(error.localizedDescription)
+            print("pressedAnswerButton: \(error.localizedDescription)")
         }
     }
-    
+	
+	@IBAction func pressedReAttempt(_ sender: UIButton) {
+		do {
+			print("Resetting...")
+			self.updateScore(with: 0)
+			self.updateProgressbar(with: 0.0, of: self.progressBar)
+			self.hideView(of: self.scoreAndReButtView)
+			self.questionBrain.resetCurrIndex()
+			try self.displayQuestion(with: self.questionBrain.getCurrentQuestion(), to: self.questionLabel, as_long_as: !self.questionBrain.isRanOutOfQuestion())
+			print(!self.questionBrain.isRanOutOfQuestion())
+			self.unableButton(with_condition: !self.questionBrain.isRanOutOfQuestion(), self.trueButton, self.falseButton)
+			print("Resetting Done!")
+		} catch {
+			print("pressedReAttempt \(error.localizedDescription)")
+		}
+	}
+	
 }
 
