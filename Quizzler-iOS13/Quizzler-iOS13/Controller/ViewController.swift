@@ -58,7 +58,7 @@ class ViewController: UIViewController {
 //        DispatchQueue.main.asyncAfter(deadline: .now() + delay_sec, execute: {
 //            button.backgroundColor = UIColor.clear
 //        })
-        Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false, block: {_ in
+        Timer.scheduledTimer(withTimeInterval: delay_sec, repeats: false, block: {_ in
             button.backgroundColor = UIColor.clear
         })
     }
@@ -68,6 +68,9 @@ class ViewController: UIViewController {
         do {
             if try self.questionBrain.isAnswerCorrect(of: sender.currentTitle!) {
                 self.score += 1
+                self.changeButtonBgColor(with: UIColor.green, of: sender.currentTitle! == "True" ? self.trueButton : self.falseButton, for: 0.2)
+            } else {
+                self.changeButtonBgColor(with: UIColor.red, of: sender.currentTitle! == "True" ? self.trueButton : self.falseButton, for: 0.2)
             }
             
             // move to the next question number
@@ -77,8 +80,12 @@ class ViewController: UIViewController {
             
             print(questionBrain.isRanOutOfQuestion())
             
+            self.disableButton(with_condition: self.questionBrain.isRanOutOfQuestion(), self.trueButton, self.falseButton)
+            
             try self.displayQuestion(with: self.questionBrain.getCurrentQuestion(), to: self.questionLabel, as_long_as: !questionBrain.isRanOutOfQuestion())
+            
         } catch {
+            print("Something went wrong")
             print(error.localizedDescription)
         }
     }

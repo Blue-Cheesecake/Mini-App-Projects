@@ -65,6 +65,11 @@ struct QuestionsBrain {
             throw QuestionError.invalidAnswer
         }
         
+        // index should not be out of bound
+        if self.isRanOutOfQuestion() {
+            throw QuestionError.outOfQuestions
+        }
+        
         return _answer == self.questions_array[curr_q_index].answer
     }
     
