@@ -15,6 +15,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var trueButton: UIButton!
     @IBOutlet weak var falseButton: UIButton!
+    @IBOutlet weak var scoreAndReButtView: UIView!
+    @IBOutlet weak var reAttemptButton: UIButton!
+    @IBOutlet weak var scoreLabel: UILabel!
     
     var questionBrain: QuestionsBrain = QuestionsBrain()
     var score: Int = 0
@@ -24,7 +27,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        // assume that our questions array is not empty
+        // Get the first question & Set the progress bar status to be 0
         do {
             try self.questionLabel.text = questionBrain.getCurrentQuestion()
             self.progressBar.progress = 0.0
@@ -32,6 +35,16 @@ class ViewController: UIViewController {
             print(error.localizedDescription)
         }
         
+        self.hideView(of: self.scoreAndReButtView)
+        
+    }
+    
+    private func hideView(of view: UIView) {
+        view.isHidden = true
+    }
+    
+    private func showView(of view: UIView) {
+        view.isHidden = false
     }
     
     private func updateProgressbar(with newProgress: Float, of progressBar: UIProgressView) {
@@ -53,6 +66,13 @@ class ViewController: UIViewController {
         }
     }
     
+    private func updateScore(with newScore: Int) {
+        self.score = newScore
+        
+        // Update UI
+        self.scoreLabel.text = "Your score: \(self.score)"
+    }
+    
     private func changeButtonBgColor(with color: UIColor, of button: UIButton, for delay_sec: Double) {
         button.backgroundColor = color
 //        DispatchQueue.main.asyncAfter(deadline: .now() + delay_sec, execute: {
@@ -67,7 +87,7 @@ class ViewController: UIViewController {
     @IBAction func pressedAnswerButton(_ sender: UIButton) {
         do {
             if try self.questionBrain.isAnswerCorrect(of: sender.currentTitle!) {
-                self.score += 1
+                updateScore(with: self.score + 1)
                 self.changeButtonBgColor(with: UIColor.green, of: sender.currentTitle! == "True" ? self.trueButton : self.falseButton, for: 0.2)
             } else {
                 self.changeButtonBgColor(with: UIColor.red, of: sender.currentTitle! == "True" ? self.trueButton : self.falseButton, for: 0.2)
@@ -82,10 +102,13 @@ class ViewController: UIViewController {
             
             self.disableButton(with_condition: self.questionBrain.isRanOutOfQuestion(), self.trueButton, self.falseButton)
             
+            if questionBrain.isRanOutOfQuestion() {
+                showView(of: self.scoreAndReButtView)
+            }
+            
             try self.displayQuestion(with: self.questionBrain.getCurrentQuestion(), to: self.questionLabel, as_long_as: !questionBrain.isRanOutOfQuestion())
             
         } catch {
-            print("Something went wrong")
             print(error.localizedDescription)
         }
     }
