@@ -19,10 +19,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 		
 		// set to the first story
+		updateStoryView()
+    }
+	
+	private func updateStoryView() {
 		changeLabel(to: storyBrain.getCurrTitle(), of: storyLabel)
 		changeButtonTitle(to: storyBrain.getCurrChoice1Text(), of: choice1Button)
 		changeButtonTitle(to: storyBrain.getCurrChoice2Text(), of: choice2Button)
-    }
+	}
 	
 	private func changeLabel(to newLabel: String, of labelObj: UILabel) {
 		labelObj.text = newLabel
@@ -52,14 +56,11 @@ class ViewController: UIViewController {
 		let choiceText: String = sender.currentTitle!
 		storyBrain.goToNextStory(with_choice: choiceText)
 		
-		
-		
-		changeLabel(to: storyBrain.getCurrTitle(), of: storyLabel)
-		changeButtonTitle(to: storyBrain.getCurrChoice1Text(), of: choice1Button)
-		changeButtonTitle(to: storyBrain.getCurrChoice2Text(), of: choice2Button)
+		updateStoryView()
 		
 		if storyBrain.reachEndOfStory {
 			disableButton(choice1Button, choice2Button)
+			print("Disabled")
 			return
 		}
 	}
