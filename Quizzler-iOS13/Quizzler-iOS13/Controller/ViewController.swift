@@ -18,8 +18,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var scoreAndReButtView: UIView!
     @IBOutlet weak var reAttemptButton: UIButton!
     @IBOutlet weak var scoreLabel: UILabel!
-    
-    var questionBrain: QuestionsBrain = QuestionsBrain()
+	@IBOutlet weak var resultLabel: UILabel!
+	
+	var questionBrain: QuestionsBrain = QuestionsBrain()
     var score: Int = 0
     
     
@@ -35,7 +36,9 @@ class ViewController: UIViewController {
             print(error.localizedDescription)
         }
         
+		// Hinding
         self.hideView(of: self.scoreAndReButtView)
+		self.hideView(of: self.resultLabel)
         
     }
     
@@ -74,6 +77,17 @@ class ViewController: UIViewController {
 		}
 	}
 	
+	private func updateResult(with_score score: Int) {
+		let middle: Int = questionBrain.getTotalQuestions() / 2
+		if score > middle {
+			self.resultLabel.text = "Pass"
+			self.resultLabel.textColor = UIColor.green
+		} else {
+			self.resultLabel.text = "Failed"
+			self.resultLabel.textColor = UIColor.red
+		}
+	}
+	
     private func updateScore(with newScore: Int) {
         self.score = newScore
         
@@ -104,12 +118,15 @@ class ViewController: UIViewController {
             
             self.updateProgressbar(with: (Float(self.questionBrain.getCurrentQuestionIndex()) / Float(self.questionBrain.getTotalQuestions())), of: self.progressBar)
             
-            print(questionBrain.isRanOutOfQuestion())
-            
+	
             self.disableButton(with_condition: self.questionBrain.isRanOutOfQuestion(), self.trueButton, self.falseButton)
             
+			// Show the result
             if questionBrain.isRanOutOfQuestion() {
+				updateResult(with_score: self.score)
                 showView(of: self.scoreAndReButtView)
+				showView(of: self.resultLabel)
+				return
             }
             
             try self.displayQuestion(with: self.questionBrain.getCurrentQuestion(), to: self.questionLabel, as_long_as: !questionBrain.isRanOutOfQuestion())
