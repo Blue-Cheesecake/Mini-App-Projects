@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var storyLabel: UILabel!
     @IBOutlet weak var choice1Button: UIButton!
     @IBOutlet weak var choice2Button: UIButton!
-	let storyBrain = StoryBrain()
+	var storyBrain = StoryBrain()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,13 +45,23 @@ class ViewController: UIViewController {
 	}
 	
 	@IBAction func answerIsPressed(_ sender: UIButton) {
-		if storyBrain.isRantOutOfStory() {
-			disableButton(choice1Button, choice2Button)
+		if storyBrain.reachEndOfStory {
 			return
 		}
 		
+		let choiceText: String = sender.currentTitle!
+		storyBrain.goToNextStory(with_choice: choiceText)
 		
 		
+		
+		changeLabel(to: storyBrain.getCurrTitle(), of: storyLabel)
+		changeButtonTitle(to: storyBrain.getCurrChoice1Text(), of: choice1Button)
+		changeButtonTitle(to: storyBrain.getCurrChoice2Text(), of: choice2Button)
+		
+		if storyBrain.reachEndOfStory {
+			disableButton(choice1Button, choice2Button)
+			return
+		}
 	}
 	
 }

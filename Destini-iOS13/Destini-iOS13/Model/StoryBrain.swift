@@ -48,10 +48,12 @@ struct StoryBrain {
 	
 	private var curr_index: Int
 	private var curr_story: Story
+	public var reachEndOfStory: Bool
 	
 	init() {
 		self.curr_index = 0
 		self.curr_story = self.storyArray[self.curr_index]
+		self.reachEndOfStory = false
 	}
 	
 	/**
@@ -73,18 +75,21 @@ struct StoryBrain {
 		return self.curr_story.choice2
 	}
 	
-	public func isRantOutOfStory() -> Bool {
-		return self.curr_index < 0 || self.curr_index >= self.storyArray.count
-	}
-	
 	/**
 	 Move to the next story object based in given choice.
 	 */
 	public mutating func goToNextStory(with_choice selectedChoice: String) {
+		
 		if selectedChoice == self.getCurrChoice1Text() {
 			self.changeIndex(to: self.curr_story.choice1Destination - 1)
 		} else {
 			self.changeIndex(to: self.curr_story.choice2Destination - 1)
+		}
+		
+		// The end of story question will always be 0, so 0 - 1 from above will be equals to -1
+		if self.curr_index == -1 {
+			self.reachEndOfStory = true
+			return
 		}
 		self.curr_story = self.storyArray[self.curr_index]
 	}
