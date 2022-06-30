@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="qli-eq-8wt" userLabel="Card">
-                                <rect key="frame" x="25" y="44" width="364" height="657"/>
+                                <rect key="frame" x="25" y="44" width="364" height="706"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Drawers" translatesAutoresizingMaskIntoConstraints="NO" id="nFH-e1-45K">
                                         <rect key="frame" x="0.0" y="0.0" width="364" height="250"/>
@@ -44,23 +44,74 @@
                                         <color key="textColor" red="0.42352938649999999" green="0.44705885649999999" blue="0.49019610879999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="53" translatesAutoresizingMaskIntoConstraints="NO" id="4jt-HD-FZ3" userLabel="Profile">
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="63" translatesAutoresizingMaskIntoConstraints="NO" id="4px-s4-QAD" userLabel="Share Stack">
                                         <rect key="frame" x="0.0" y="612" width="364" height="45"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63e-GS-8hp">
+                                                <rect key="frame" x="0.0" y="12.5" width="42.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" systemColor="systemBackgroundColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Facebook-icon" translatesAutoresizingMaskIntoConstraints="NO" id="vB7-B4-8PI">
+                                                <rect key="frame" x="105.5" y="19.5" width="6.5" height="6.5"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Twitter-icon" translatesAutoresizingMaskIntoConstraints="NO" id="tLY-1x-Avz">
+                                                <rect key="frame" x="175" y="20" width="6.5" height="5.5"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pinterest-icon" translatesAutoresizingMaskIntoConstraints="NO" id="bIC-pp-tck">
+                                                <rect key="frame" x="244.5" y="19.5" width="6.5" height="6.5"/>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H7n-Ao-QuM">
+                                                <rect key="frame" x="314" y="0.0" width="50" height="45"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KI8-i6-jb1" userLabel="Share_2">
+                                                        <rect key="frame" x="13" y="13" width="24" height="35"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain"/>
+                                                        <connections>
+                                                            <action selector="pressedShareButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jkW-IA-JWR"/>
+                                                        </connections>
+                                                    </button>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Share-icon" translatesAutoresizingMaskIntoConstraints="NO" id="4ta-sA-Oyy">
+                                                        <rect key="frame" x="13" y="13" width="24" height="35"/>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.92941176889999999" green="0.94901961089999998" blue="0.97254908080000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstItem="KI8-i6-jb1" firstAttribute="leading" secondItem="4ta-sA-Oyy" secondAttribute="leading" id="4Ed-Xz-4DL"/>
+                                                    <constraint firstAttribute="bottom" secondItem="4ta-sA-Oyy" secondAttribute="bottom" constant="-3" id="BWp-Yc-dFm"/>
+                                                    <constraint firstItem="4ta-sA-Oyy" firstAttribute="bottom" secondItem="KI8-i6-jb1" secondAttribute="bottom" id="FEv-pQ-P9x"/>
+                                                    <constraint firstItem="KI8-i6-jb1" firstAttribute="trailing" secondItem="4ta-sA-Oyy" secondAttribute="trailing" id="LQd-Wh-DYL"/>
+                                                    <constraint firstItem="4ta-sA-Oyy" firstAttribute="top" secondItem="KI8-i6-jb1" secondAttribute="top" id="XaZ-ud-XvV"/>
+                                                    <constraint firstItem="4ta-sA-Oyy" firstAttribute="top" secondItem="H7n-Ao-QuM" secondAttribute="top" constant="13" id="Ygi-FS-QWe"/>
+                                                    <constraint firstItem="4ta-sA-Oyy" firstAttribute="centerX" secondItem="H7n-Ao-QuM" secondAttribute="centerX" id="Yxe-gv-hEH"/>
+                                                    <constraint firstItem="KI8-i6-jb1" firstAttribute="leading" secondItem="H7n-Ao-QuM" secondAttribute="leading" constant="13" id="npO-Gf-CqM"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.43389832969999997" green="0.5055696368" blue="0.59922057390000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="oF5-4u-M87"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="53" translatesAutoresizingMaskIntoConstraints="NO" id="4jt-HD-FZ3" userLabel="Profile Stack">
+                                        <rect key="frame" x="0.0" y="661" width="364" height="45"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Avartar" translatesAutoresizingMaskIntoConstraints="NO" id="AQg-lQ-s1U">
                                                 <rect key="frame" x="0.0" y="0.0" width="58" height="45"/>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Gle-QG-xFF">
-                                                <rect key="frame" x="111" y="0.0" width="139" height="45"/>
+                                                <rect key="frame" x="111" y="0.0" width="150" height="45"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Michelle Appleton" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCo-ZS-6Jy" userLabel="Name">
-                                                        <rect key="frame" x="1.5" y="0.0" width="136.5" height="20.5"/>
+                                                        <rect key="frame" x="7" y="0.0" width="136.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="28 Jun 2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qM9-05-Fbu" userLabel="Date">
-                                                        <rect key="frame" x="21" y="28.5" width="97" height="16.5"/>
+                                                        <rect key="frame" x="26.5" y="28.5" width="97" height="16.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.47058826679999999" green="0.4941176176" blue="0.52549022440000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
@@ -68,15 +119,18 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BAX-y0-fbb">
-                                                <rect key="frame" x="303" y="0.0" width="61" height="45"/>
+                                                <rect key="frame" x="314" y="0.0" width="50" height="45"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YdS-DH-MBz">
-                                                        <rect key="frame" x="13" y="13" width="35" height="35"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YdS-DH-MBz" userLabel="Share_1">
+                                                        <rect key="frame" x="13" y="13" width="24" height="35"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain"/>
+                                                        <connections>
+                                                            <action selector="pressedShareButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7L5-mo-KDc"/>
+                                                        </connections>
                                                     </button>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Share-icon" translatesAutoresizingMaskIntoConstraints="NO" id="xwb-Kx-RWa">
-                                                        <rect key="frame" x="13" y="13" width="35" height="35"/>
+                                                        <rect key="frame" x="13" y="13" width="24" height="35"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.92941176889999999" green="0.94901961089999998" blue="0.97254908080000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -94,6 +148,7 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="5R4-Lh-qjh"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="TkZ-qu-cNb"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -117,6 +172,10 @@
                             <constraint firstItem="qli-eq-8wt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="25" id="uWP-hw-c8E"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="profileStack" destination="4jt-HD-FZ3" id="fRo-25-8UM"/>
+                        <outlet property="shareStack" destination="4px-s4-QAD" id="EVN-o9-o9t"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -126,7 +185,10 @@
     <resources>
         <image name="Avartar" width="58" height="58"/>
         <image name="Drawers" width="220" height="176"/>
+        <image name="Facebook-icon" width="6.5" height="6.5"/>
+        <image name="Pinterest-icon" width="6.5" height="6.5"/>
         <image name="Share-icon" width="5" height="4"/>
+        <image name="Twitter-icon" width="6.5" height="5.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
