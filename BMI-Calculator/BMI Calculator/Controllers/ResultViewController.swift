@@ -13,13 +13,16 @@ class ResultViewController: UIViewController {
 	@IBOutlet weak var bmiLabel: UILabel!
 	@IBOutlet weak var suggestionText: UILabel!
 	var bmiValue: Float = 0
-	
+	var calUtils = CalculatorBrain.self
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		bmiLabel.text = String(format: "%.1f", bmiValue)
-		
+		bmiLabel.text = calUtils.getBMIFormat(bmiValue)
+	}
+	
+	
+	@IBAction func reCalculatePressed(_ sender: UIButton) {
+		self.dismiss(animated: true)
 	}
 	
 	

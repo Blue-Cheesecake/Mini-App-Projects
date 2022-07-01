@@ -14,29 +14,29 @@ class ViewController: UIViewController {
 	@IBOutlet weak var heightSlider: UISlider!
 	@IBOutlet weak var weightLabel: UILabel!
 	@IBOutlet weak var weightSlider: UISlider!
-	var bmi: Float = 0
+	var calUtils = CalculatorBrain.self
+	var bmiVal: Float = 0
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-		heightLabel.text = String(heightSlider.maximumValue / 2.0) + "m"
+		heightLabel.text = calUtils.getHeightFormat(heightSlider.maximumValue / 2.0)
 		heightSlider.value = heightSlider.maximumValue / 2.0
-		weightLabel.text = String(Int(weightSlider.maximumValue) / 2) + "Kg"
-		weightSlider.value = weightSlider.maximumValue / 2
+		weightLabel.text = calUtils.getWeightFormat(weightSlider.maximumValue / 2.0)
+		weightSlider.value = weightSlider.maximumValue / 2.0
     }
 
 	@IBAction func heightSliderChanged(_ sender: UISlider) {
-		let roundedValue: Float = roundf(sender.value * 100) / 100.0
-		heightLabel.text = String(roundedValue) + "m"
+		heightLabel.text = calUtils.getHeightFormat(sender.value)
 	}
 	
 	@IBAction func weightSliderChanged(_ sender: UISlider) {
-		weightLabel.text = String(Int(sender.value)) + "Kg"
+		weightLabel.text = calUtils.getWeightFormat(sender.value)
 	}
 	@IBAction func calculatePressed(_ sender: UIButton) {
 		let heightVal: Float = heightSlider.value
 		let weightVal: Float = weightSlider.value
-		bmi = weightVal / powf(heightVal, 2)
+		bmiVal = calUtils.getBMI(h: heightVal, w: weightVal)
 		
 		self.performSegue(withIdentifier: "goToResult", sender: self)
 	}
@@ -50,7 +50,7 @@ class ViewController: UIViewController {
 			// Since The segue.destination is UIViewController
 			// We need to cast it down to specific controller
 			let resultVC: ResultViewController = segue.destination as! ResultViewController
-			resultVC.bmiValue = bmi
+			resultVC.bmiValue = bmiVal
 		}
 	}
 }
