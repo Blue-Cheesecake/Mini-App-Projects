@@ -14,6 +14,7 @@ class ViewController: UIViewController {
 	@IBOutlet weak var heightSlider: UISlider!
 	@IBOutlet weak var weightLabel: UILabel!
 	@IBOutlet weak var weightSlider: UISlider!
+	var bmi: Float = 0
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +36,22 @@ class ViewController: UIViewController {
 	@IBAction func calculatePressed(_ sender: UIButton) {
 		let heightVal: Float = heightSlider.value
 		let weightVal: Float = weightSlider.value
-		print(weightVal / powf(heightVal, 2))
+		bmi = weightVal / powf(heightVal, 2)
 		
-		
+		self.performSegue(withIdentifier: "goToResult", sender: self)
+	}
+	
+	/**
+	 The function that will perform before if we trigger segue.
+	 */
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		// IF there are many segue, there will be many of identifier. Split it down to another case
+		if segue.identifier == "goToResult" {
+			// Since The segue.destination is UIViewController
+			// We need to cast it down to specific controller
+			let resultVC: ResultViewController = segue.destination as! ResultViewController
+			resultVC.bmiValue = bmi
+		}
 	}
 }
 
