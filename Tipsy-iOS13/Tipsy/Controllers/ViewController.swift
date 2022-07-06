@@ -58,8 +58,9 @@ class ViewController: UIViewController {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "goResultViewSegue" {
 			// Passing variabla to result view controller
-			let resultVC: UIViewController = segue.destination as! ResultViewController
+			let resultVC: ResultViewController = segue.destination as! ResultViewController
 			//
+			resultVC.billObject = Bill(total: Float(totalInput.text!), tipPercentage: currentTip!, split: Int(splitNumber.text!))
 			
 		}
 	}
@@ -80,6 +81,12 @@ class ViewController: UIViewController {
 			print("Failed: The last character is dot")
 			return
 		}
+		if currentTip == nil {
+			print("Pls, select tips")
+			return
+		}
+		
+		
 		print("Total \(totalInput.text!)")
 		
 		// Send to another view by sugin segue.

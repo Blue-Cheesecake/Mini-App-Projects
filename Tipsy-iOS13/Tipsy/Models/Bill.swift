@@ -25,4 +25,8 @@ struct Bill {
 	func getTipOfEachFormattedString() -> String {
 		return String(format: "%.2f", getTipOfEach())
 	}
+	
+	func getDescription() -> String {
+		return "Split between \(split ?? 2) people, with \(tipPercentage ?? 0)% tip."
+	}
 }
