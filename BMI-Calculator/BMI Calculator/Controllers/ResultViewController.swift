@@ -12,12 +12,15 @@ class ResultViewController: UIViewController {
 	
 	@IBOutlet weak var bmiLabel: UILabel!
 	@IBOutlet weak var suggestionText: UILabel!
+	@IBOutlet var allView: UIView!
 	var bmiValue: Float = 0
 	var calUtils = CalculatorBrain.self
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		bmiLabel.text = calUtils.getBMIFormat(bmiValue)
+		suggestionText.text = calUtils.getAdviceBasedOn(bmiValue)
+		allView.backgroundColor = calUtils.getColorBasedOn(bmiValue)
 	}
 	
 	
