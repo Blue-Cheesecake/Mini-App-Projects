@@ -15,13 +15,41 @@ class ViewController: UIViewController {
 	@IBOutlet var zeroTipButton: UIButton!
 	@IBOutlet var tenTipButton: UIButton!
 	@IBOutlet var twentyButton: UIButton!
+	var currentTip: Int?
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 		Utilities.deSelectButtons(zeroTipButton, tenTipButton, twentyButton)
+		currentTip = nil
     }
 
+	@IBAction func selectedTip(_ sender: UIButton) {
+		// change the selected property to true of sender object
+		// if it's already selected, change it to deselect
+		// otherwise, deslect others and select one
+		
+		if sender.isSelected {
+			Utilities.deSelectButtons(zeroTipButton, tenTipButton, twentyButton)
+			currentTip = nil
+			return
+		}
+		
+		Utilities.deSelectButtons(zeroTipButton, tenTipButton, twentyButton)
+		if sender.currentTitle! == "0%" {
+			Utilities.selectButtons(zeroTipButton)
+			currentTip = 0
+		}
+		if sender.currentTitle! == "10%" {
+			Utilities.selectButtons(tenTipButton)
+			currentTip = 10
+		}
+		if sender.currentTitle! == "20%" {
+			Utilities.selectButtons(twentyButton)
+			currentTip = 20
+		}
+	}
+	
 	@IBAction func pressedSplitStepper(_ sender: UIStepper) {
 		Utilities.changeTextLabel(with: String(Int(sender.value)), of: splitNumber)
 	}
