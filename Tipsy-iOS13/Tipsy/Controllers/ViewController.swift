@@ -70,8 +70,10 @@ class ViewController: UIViewController {
 			print("Failed: The last character is dot")
 			return
 		}
-		
 		print("Total \(totalInput.text!)")
+		
+		// Send to another view by sugin segue.
+		self.performSegue(withIdentifier: "goResultViewSegue", sender: self)
 	}
 }
 
