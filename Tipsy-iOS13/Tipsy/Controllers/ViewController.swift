@@ -54,6 +54,16 @@ class ViewController: UIViewController {
 		Utilities.changeTextLabel(with: String(Int(sender.value)), of: splitNumber)
 	}
 	
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "goResultViewSegue" {
+			// Passing variabla to result view controller
+			let resultVC: UIViewController = segue.destination as! ResultViewController
+			//
+			
+		}
+	}
+	
 	@IBAction func isCalculatePressed(_ sender: UIButton) {
 		// Base cases
 		if totalInput.text!.isEmpty {
