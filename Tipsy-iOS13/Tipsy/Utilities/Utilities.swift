@@ -34,4 +34,16 @@ struct Utilities {
 		return str[end] == "."
 	}
 	
+	public static func deSelectButtons(_ buttons: UIButton...) {
+		for button in buttons {
+			button.isSelected = false
+		}
+	}
+	
+	public static func selectButtons(_ buttons: UIButton...) {
+		for button in buttons {
+			button.isSelected = true
+		}
+	}
+	
 }

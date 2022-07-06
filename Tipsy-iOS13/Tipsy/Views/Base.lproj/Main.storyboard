@@ -191,7 +191,10 @@
                     </view>
                     <connections>
                         <outlet property="splitNumber" destination="bSy-Yc-886" id="Osr-NF-GLT"/>
+                        <outlet property="tenTipButton" destination="7y6-Kf-yF0" id="YjF-9U-iXN"/>
                         <outlet property="totalInput" destination="wcN-ka-Q4F" id="Lct-07-RxU"/>
+                        <outlet property="twentyButton" destination="UtR-dU-EKt" id="gKx-Bo-FXU"/>
+                        <outlet property="zeroTipButton" destination="XzR-0E-Xf7" id="zWs-yZ-cWg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

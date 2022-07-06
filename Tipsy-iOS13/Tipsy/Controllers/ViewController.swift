@@ -11,12 +11,15 @@ import UIKit
 class ViewController: UIViewController {
 
 	@IBOutlet var totalInput: UITextField!
-	
 	@IBOutlet var splitNumber: UILabel!
+	@IBOutlet var zeroTipButton: UIButton!
+	@IBOutlet var tenTipButton: UIButton!
+	@IBOutlet var twentyButton: UIButton!
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+		Utilities.deSelectButtons(zeroTipButton, tenTipButton, twentyButton)
     }
 
 	@IBAction func pressedSplitStepper(_ sender: UIStepper) {
