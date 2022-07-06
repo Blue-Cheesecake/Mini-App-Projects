@@ -36,7 +36,7 @@ class ViewController: UIViewController {
 	@IBAction func calculatePressed(_ sender: UIButton) {
 		let heightVal: Float = heightSlider.value
 		let weightVal: Float = weightSlider.value
-		bmiVal = calUtils.getBMI(h: heightVal, w: weightVal)
+		bmiVal = calUtils.getBMIValue(h: heightVal, w: weightVal)
 		
 		self.performSegue(withIdentifier: "goToResult", sender: self)
 	}
