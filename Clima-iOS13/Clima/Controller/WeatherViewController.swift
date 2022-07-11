@@ -17,11 +17,12 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
 	
 	private var weatherModel: WeatherModel?
 	
-	let weatherManager = WeatherManager()
+	var weatherManager = WeatherManager()
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+		weatherManager.weatherDelegate = self
 		searchTextField.delegate = self
 		
     }
@@ -48,11 +49,8 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
 	}
 	
 	func textFieldDidEndEditing(_ textField: UITextField) {
-		
 		if let city = textField.text {
-			let uri = weatherManager.fetchWeatherURI(city)
-			weatherManager.performRequest(uriString: uri)
-			print(uri)
+			weatherManager.fetchWeatherURI(city)
 		}
 		
 		searchTextField.text = ""
@@ -60,7 +58,27 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
 	}
 	
 	func updateWeatherModel(with newModel: WeatherModel) {
-		weatherModel = newModel
+		self.weatherModel = newModel
+		print(weatherModel!.cityName)
+	}
+	
+	private func updateUILabel(label: UILabel, text: String) {
+		DispatchQueue.main.async {
+			label.text = text
+		}
+	}
+	
+	private func updateUIImage(img: UIImageView, path: String) {
+		DispatchQueue.main.async {
+			img.image = UIImage(systemName: path)
+		}
+	}
+	
+	func updateUIWeather(city: String, temp: String, systemIcon: String) {
+		updateUILabel(label: self.cityLabel, text: city)
+		updateUILabel(label: self.temperatureLabel, text: temp)
+		updateUIImage(img: self.conditionImageView, path: systemIcon)
+		
 	}
 	
 }

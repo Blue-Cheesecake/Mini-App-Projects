@@ -9,16 +9,21 @@
 import Foundation
 import UIKit
 
+protocol WeatherDelegateProtocols {
+	func didUpdateWeather()
+	func didFailUpdateWeather()
+}
+
 struct WeatherManager {
 	
 	let currentWeatherURI: String = "https://api.openweathermap.org/data/2.5/weather?appid=f8d5f9a319ba9da609d4694a9bc4b36b&units=metric"
 	
 	var weatherDelegate: WeatherViewController?
 	
-	public func fetchWeatherURI(_ city: String) -> String {
+	public func fetchWeatherURI(_ city: String) {
 		let city: String = city.lowercased()
 		let fullURI: String = "\(currentWeatherURI)&q=\(city)"
-		return fullURI
+		performRequest(uriString: fullURI)
 	}
 	
 	public func performRequest(uriString: String) {
@@ -39,6 +44,7 @@ struct WeatherManager {
 					if let weatherModel = parseJSON(with: safeData) {
 						// set model of delegate
 						weatherDelegate?.updateWeatherModel(with: weatherModel)
+						weatherDelegate?.updateUIWeather(city: weatherModel.cityName, temp: weatherModel.temperatureStringFormat, systemIcon: weatherModel.icon)
 						print("Model updated")
 					}
 				}
