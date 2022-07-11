@@ -15,6 +15,8 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var cityLabel: UILabel!
 	@IBOutlet var searchTextField: UITextField!
 	
+	private var weatherModel: WeatherModel?
+	
 	let weatherManager = WeatherManager()
 	
 	override func viewDidLoad() {
@@ -25,7 +27,7 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
     }
 
 	@IBAction func searchPressed(_ sender: UIButton) {
-		searchTextField.text = ""
+		// searchTextField.text = ""
 		searchTextField.placeholder = "Search"
 	}
 	
@@ -40,7 +42,7 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
 	}
 	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-		print(searchTextField.text!)
+		// print(searchTextField.text!)
 		searchTextField.endEditing(true)
 		return true
 	}
@@ -55,6 +57,10 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
 		
 		searchTextField.text = ""
 		searchTextField.placeholder = "Search"
+	}
+	
+	func updateWeatherModel(with newModel: WeatherModel) {
+		weatherModel = newModel
 	}
 	
 }

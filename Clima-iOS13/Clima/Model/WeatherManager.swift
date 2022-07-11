@@ -7,10 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
 struct WeatherManager {
 	
 	let currentWeatherURI: String = "https://api.openweathermap.org/data/2.5/weather?appid=f8d5f9a319ba9da609d4694a9bc4b36b&units=metric"
+	
+	var weatherDelegate: WeatherViewController?
 	
 	public func fetchWeatherURI(_ city: String) -> String {
 		let city: String = city.lowercased()
@@ -32,13 +35,12 @@ struct WeatherManager {
 					print(err)
 					return
 				}
-				
 				if let safeData = result {
-					
-					let weatherJSON = parseJSON(with: safeData)
-					print("Decoded")
-					print(weatherJSON!.name)
-					print(weatherJSON!.weather[0].description)
+					if let weatherModel = parseJSON(with: safeData) {
+						// set model of delegate
+						weatherDelegate?.updateWeatherModel(with: weatherModel)
+						print("Model updated")
+					}
 				}
 			}
 			
@@ -48,11 +50,12 @@ struct WeatherManager {
 		
 	}
 	
-	private func parseJSON(with weatherData: Data) -> WeatherData? {
+	private func parseJSON(with weatherData: Data) -> WeatherModel? {
 		let decoder = JSONDecoder()
 		do {
 			let weatherJSON = try decoder.decode(WeatherData.self, from: weatherData)
-			return weatherJSON
+			let weatherModel = WeatherModel(cityName: weatherJSON.name, weatherDescription: weatherJSON.weather[0].main, temperature: weatherJSON.main.temp)
+			return weatherModel
 		} catch {
 			print(Error.self)
 		}
