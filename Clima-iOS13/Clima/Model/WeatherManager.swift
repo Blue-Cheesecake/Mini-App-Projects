@@ -27,7 +27,20 @@ struct WeatherManager {
 			let session = URLSession(configuration: .default)
 			
 			// Give a task
-			let task = session.dataTask(with: url, completionHandler: sesstionCompleterHandler(data:res:err:))
+			let task = session.dataTask(with: url) { result, res, err in
+				if let err = err {
+					print(err)
+					return
+				}
+				
+				if let safeData = result {
+					
+					let weatherJSON = parseJSON(with: safeData)
+					print("Decoded")
+					print(weatherJSON!.name)
+					print(weatherJSON!.weather[0].description)
+				}
+			}
 			
 			// Start a task
 			task.resume()
@@ -35,17 +48,15 @@ struct WeatherManager {
 		
 	}
 	
-	private func sesstionCompleterHandler(data: Data?, res: URLResponse?, err: Error?) {
-		if let err = err {
-			print(err)
-			return
+	private func parseJSON(with weatherData: Data) -> WeatherData? {
+		let decoder = JSONDecoder()
+		do {
+			let weatherJSON = try decoder.decode(WeatherData.self, from: weatherData)
+			return weatherJSON
+		} catch {
+			print(Error.self)
 		}
-		
-		if let safeData = data {
-			let dataString = String(data: safeData, encoding: .utf8)
-			print(dataString!)
-		}
-		
+		return nil
 	}
-	
+		
 }
