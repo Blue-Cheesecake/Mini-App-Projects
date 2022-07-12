@@ -8,8 +8,8 @@
 
 import UIKit
 
-class WeatherViewController: UIViewController, UITextFieldDelegate {
-
+class WeatherViewController: UIViewController, UITextFieldDelegate, WeatherDelegateProtocols {
+	
     @IBOutlet weak var conditionImageView: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
@@ -56,12 +56,7 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
 		searchTextField.text = ""
 		searchTextField.placeholder = "Search"
 	}
-	
-	func updateWeatherModel(with newModel: WeatherModel) {
-		self.weatherModel = newModel
-		print(weatherModel!.cityName)
-	}
-	
+		
 	private func updateUILabel(label: UILabel, text: String) {
 		DispatchQueue.main.async {
 			label.text = text
@@ -79,6 +74,15 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
 		updateUILabel(label: self.temperatureLabel, text: temp)
 		updateUIImage(img: self.conditionImageView, path: systemIcon)
 		
+	}
+	
+	func didUpdateWeather(with newModel: WeatherModel) {
+		self.weatherModel = newModel
+		updateUIWeather(city: weatherModel!.cityName, temp: weatherModel!.temperatureStringFormat, systemIcon: weatherModel!.icon)
+	}
+	
+	func didFailUpdateWeather(err: Error) {
+		print(err.self)
 	}
 	
 }
