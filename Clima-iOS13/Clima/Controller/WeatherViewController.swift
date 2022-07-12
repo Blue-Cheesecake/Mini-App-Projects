@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WeatherViewController: UIViewController, UITextFieldDelegate, WeatherDelegateProtocols {
+class WeatherViewController: UIViewController {
 	
     @IBOutlet weak var conditionImageView: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
@@ -26,7 +26,13 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, WeatherDeleg
 		searchTextField.delegate = self
 		
     }
+			
+}
 
+//MARK: - Weather UITextFieldDelegate
+
+extension WeatherViewController: UITextFieldDelegate {
+	
 	@IBAction func searchPressed(_ sender: UIButton) {
 		// searchTextField.text = ""
 		searchTextField.placeholder = "Search"
@@ -43,7 +49,7 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, WeatherDeleg
 	}
 	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-		// print(searchTextField.text!)
+			// print(searchTextField.text!)
 		searchTextField.endEditing(true)
 		return true
 	}
@@ -56,7 +62,13 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, WeatherDeleg
 		searchTextField.text = ""
 		searchTextField.placeholder = "Search"
 	}
-		
+	
+}
+
+// MARK: - WeatherDelegateProtocols
+
+extension WeatherViewController: WeatherDelegateProtocols {
+	
 	private func updateUILabel(label: UILabel, text: String) {
 		DispatchQueue.main.async {
 			label.text = text
@@ -86,4 +98,3 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, WeatherDeleg
 	}
 	
 }
-
