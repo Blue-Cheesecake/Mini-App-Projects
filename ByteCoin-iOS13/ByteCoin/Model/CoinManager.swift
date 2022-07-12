@@ -22,11 +22,11 @@ struct CoinManager {
 
 	var delegate: CoinDelegate?
 	
-	func parseJSON(with coinData: Data) -> CoinModel? {
+	private func parseJSON(with coinData: Data) -> CoinModel? {
 		let jsonDecoder = JSONDecoder()
 		do {
 			let coinJson = try jsonDecoder.decode(CoinJSON.self, from: coinData)
-			print("Successfully Parse JSON")
+			// print("Successfully Parse JSON")
 			let coinModel = CoinModel(currency: coinJson.asset_id_quote, price: coinJson.rate)
 			return coinModel
 		} catch {
@@ -45,7 +45,7 @@ struct CoinManager {
 		performRequest(url: fullURL)
 	}
 	
-	public func performRequest(url: String) {
+	private func performRequest(url: String) {
 		
 		if let URL = URL(string: url) {
 			

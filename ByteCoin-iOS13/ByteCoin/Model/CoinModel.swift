@@ -11,4 +11,11 @@ import Foundation
 struct CoinModel {
 	let currency: String
 	let price: Double
+	var priceStringFormated: String {
+		// Get only two decimal place
+		var roundedPrice = price * 100
+		roundedPrice = roundedPrice.rounded()
+		roundedPrice /= 100
+		return "\(roundedPrice)"
+	}
 }
