@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct DefinitionModel {
-	var definitionLabel: UILabel!
-	var partOfSpeechLabel: UILabel!
+struct DictionaryModel {
+	var definitionText: String
+	var partOfSpeech: String
 }

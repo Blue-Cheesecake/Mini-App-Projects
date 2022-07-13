@@ -16,8 +16,13 @@ class ResultViewController: UIViewController {
 	
 	@IBOutlet var collections_def: [UILabel]!
 	@IBOutlet var collections_partOfSpeech: [UILabel]!
-	@IBOutlet var collections_defHeading: [UILabel]!
-	@IBOutlet var collections_partOfSpeechHeading: [UILabel]!
+	@IBOutlet var collections_defHead: [UILabel]!
+	@IBOutlet var collections_partOfSpeechHead: [UILabel]!
+	
+	/*
+	 The Main view controller should assign this variable in order to appear in result view
+	 */
+	var passedDefModel: [DictionaryModel]?
 	
 	/**
 	 A number of total definitions should be atleast 1 and atmost 3
@@ -27,6 +32,25 @@ class ResultViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		if let passedDefModel = passedDefModel {
+			
+			print(passedDefModel)
+			
+			for i in 0 ..< totalDefinition {
+				DispatchQueue.main.async {
+					self.collections_def[i].text = passedDefModel[i].definitionText
+					self.collections_partOfSpeech[i].text = passedDefModel[i].partOfSpeech
+					
+					// Enable Displaying
+					self.collections_def[i].isHidden = false
+					self.collections_partOfSpeech[i].isHidden = false
+					self.collections_defHead[i].isHidden = false
+					self.collections_partOfSpeechHead[i].isHidden = false
+				}
+			}
+			
+		}
 	}
 	
 }

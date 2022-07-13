@@ -16,7 +16,9 @@
 		A87D61BE287DEE77008AC3DE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A87D61BD287DEE77008AC3DE /* README.md */; };
 		A87D61C3287E8BD2008AC3DE /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87D61C2287E8BD2008AC3DE /* ResultViewController.swift */; };
 		A87D61C5287E8BEA008AC3DE /* NotFoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87D61C4287E8BEA008AC3DE /* NotFoundViewController.swift */; };
-		A87D61C7287EA786008AC3DE /* DefinitionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87D61C6287EA786008AC3DE /* DefinitionModel.swift */; };
+		A87D61C7287EA786008AC3DE /* DictionaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87D61C6287EA786008AC3DE /* DictionaryModel.swift */; };
+		A87D61C9287EF91E008AC3DE /* DictionaryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87D61C8287EF91E008AC3DE /* DictionaryManager.swift */; };
+		A87D61CB287EF971008AC3DE /* DictionaryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87D61CA287EF971008AC3DE /* DictionaryData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +33,9 @@
 		A87D61BD287DEE77008AC3DE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A87D61C2287E8BD2008AC3DE /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		A87D61C4287E8BEA008AC3DE /* NotFoundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotFoundViewController.swift; sourceTree = "<group>"; };
-		A87D61C6287EA786008AC3DE /* DefinitionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinitionModel.swift; sourceTree = "<group>"; };
+		A87D61C6287EA786008AC3DE /* DictionaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryModel.swift; sourceTree = "<group>"; };
+		A87D61C8287EF91E008AC3DE /* DictionaryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryManager.swift; sourceTree = "<group>"; };
+		A87D61CA287EF971008AC3DE /* DictionaryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +84,9 @@
 		A87D61BF287DEFBA008AC3DE /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A87D61C6287EA786008AC3DE /* DefinitionModel.swift */,
+				A87D61C6287EA786008AC3DE /* DictionaryModel.swift */,
+				A87D61C8287EF91E008AC3DE /* DictionaryManager.swift */,
+				A87D61CA287EF971008AC3DE /* DictionaryData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -175,12 +181,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A87D61C7287EA786008AC3DE /* DefinitionModel.swift in Sources */,
+				A87D61C7287EA786008AC3DE /* DictionaryModel.swift in Sources */,
 				A87D61AE287DEE24008AC3DE /* HomeViewController.swift in Sources */,
 				A87D61AA287DEE24008AC3DE /* AppDelegate.swift in Sources */,
 				A87D61AC287DEE24008AC3DE /* SceneDelegate.swift in Sources */,
 				A87D61C3287E8BD2008AC3DE /* ResultViewController.swift in Sources */,
+				A87D61C9287EF91E008AC3DE /* DictionaryManager.swift in Sources */,
 				A87D61C5287E8BEA008AC3DE /* NotFoundViewController.swift in Sources */,
+				A87D61CB287EF971008AC3DE /* DictionaryData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

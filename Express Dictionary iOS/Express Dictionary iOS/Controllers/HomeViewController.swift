@@ -10,14 +10,20 @@ import UIKit
 class HomeViewController: UIViewController {
 
 	@IBOutlet var searchTextField: UITextField!
+	var dictionaryManager = DictionaryManager()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		dictionaryManager.delegate = self
+		
 		// Do any additional setup after loading the view.
 		searchTextField.delegate = self
 		searchTextField.placeholder = "Search go here..."
 		searchTextField.text = ""
 	}
+	
+	var finalDictionaryModels: [DictionaryModel]?
 
 	@IBAction func pressedGoButton(_ sender: UIButton) {
 		if !searchTextField.hasText {
@@ -28,10 +34,7 @@ class HomeViewController: UIViewController {
 		searchTextField.endEditing(true)
 		
 		// A code for fetching Data from API
-		// <#code#>
-		
-		// If found definition, go to result
-		performSegue(withIdentifier: "goToFoundResultView", sender: self)
+		dictionaryManager.fetchDataMeaning(word: searchTextField.text!)
 		
 		//performSegue(withIdentifier: "goToNotFoundView", sender: self)
 	}
@@ -40,7 +43,12 @@ class HomeViewController: UIViewController {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "goToFoundResultView" {
 			let resultVC = segue.destination as! ResultViewController
-			// <#code#>
+			
+			if let finalDictionaryModels = finalDictionaryModels {
+				resultVC.passedDefModel = finalDictionaryModels
+				resultVC.totalDefinition = finalDictionaryModels.count
+			}
+			
 			
 			
 		} else if segue.identifier == "goToNotFoundView" {
@@ -94,3 +102,27 @@ extension HomeViewController: UITextFieldDelegate {
 	
 }
 
+extension HomeViewController: DictionaryManagerDelegate {
+	
+	func didGetDictCollection(_ newCollection: [DictionaryModel]) {
+		self.finalDictionaryModels = newCollection
+		// print(self.finalDictionaryModels!)
+		
+		// If found definition, go to result
+		DispatchQueue.main.async {
+			self.performSegue(withIdentifier: "goToFoundResultView", sender: self)
+		}
+	}
+	
+	func didFailUpdateDicUpdate(_ err: Error?) {
+		if let err = err {
+			print(err)
+			print("Failed to update")
+			return
+		}
+		print("Why code is go here? Since error that pass in here should not be nil")
+		
+	}
+	
+	
+}
