@@ -19,6 +19,7 @@
 		A87D61C7287EA786008AC3DE /* DictionaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87D61C6287EA786008AC3DE /* DictionaryModel.swift */; };
 		A87D61C9287EF91E008AC3DE /* DictionaryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87D61C8287EF91E008AC3DE /* DictionaryManager.swift */; };
 		A87D61CB287EF971008AC3DE /* DictionaryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87D61CA287EF971008AC3DE /* DictionaryData.swift */; };
+		A87D61CF287F1BA9008AC3DE /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87D61CE287F1BA9008AC3DE /* Errors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		A87D61C6287EA786008AC3DE /* DictionaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryModel.swift; sourceTree = "<group>"; };
 		A87D61C8287EF91E008AC3DE /* DictionaryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryManager.swift; sourceTree = "<group>"; };
 		A87D61CA287EF971008AC3DE /* DictionaryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryData.swift; sourceTree = "<group>"; };
+		A87D61CE287F1BA9008AC3DE /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				A87D61C6287EA786008AC3DE /* DictionaryModel.swift */,
 				A87D61C8287EF91E008AC3DE /* DictionaryManager.swift */,
 				A87D61CA287EF971008AC3DE /* DictionaryData.swift */,
+				A87D61CE287F1BA9008AC3DE /* Errors.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				A87D61C3287E8BD2008AC3DE /* ResultViewController.swift in Sources */,
 				A87D61C9287EF91E008AC3DE /* DictionaryManager.swift in Sources */,
 				A87D61C5287E8BEA008AC3DE /* NotFoundViewController.swift in Sources */,
+				A87D61CF287F1BA9008AC3DE /* Errors.swift in Sources */,
 				A87D61CB287EF971008AC3DE /* DictionaryData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

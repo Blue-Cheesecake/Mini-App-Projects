@@ -71,6 +71,8 @@ struct DictionaryManager {
 				if let safeData = parseJson(result) {
 					// print("Safe Data: \(safeData)")
 					delegate?.didGetDictCollection(safeData)
+				} else {
+					delegate?.didFailUpdateDicUpdate(DictionaryManagerErrors.SearchNotFound)
 				}
 				
 			}

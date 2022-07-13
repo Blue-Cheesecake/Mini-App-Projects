@@ -118,6 +118,10 @@ extension HomeViewController: DictionaryManagerDelegate {
 		if let err = err {
 			print(err)
 			print("Failed to update")
+			print("Sending to not found View")
+			DispatchQueue.main.async {
+				self.performSegue(withIdentifier: "goToNotFoundView", sender: self)
+			}
 			return
 		}
 		print("Why code is go here? Since error that pass in here should not be nil")
