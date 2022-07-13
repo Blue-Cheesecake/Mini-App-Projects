@@ -14,6 +14,8 @@
 		A87D61B3287DEE26008AC3DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A87D61B2287DEE26008AC3DE /* Assets.xcassets */; };
 		A87D61B6287DEE26008AC3DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A87D61B4287DEE26008AC3DE /* LaunchScreen.storyboard */; };
 		A87D61BE287DEE77008AC3DE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A87D61BD287DEE77008AC3DE /* README.md */; };
+		A87D61C3287E8BD2008AC3DE /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87D61C2287E8BD2008AC3DE /* ResultViewController.swift */; };
+		A87D61C5287E8BEA008AC3DE /* NotFoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87D61C4287E8BEA008AC3DE /* NotFoundViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		A87D61B5287DEE26008AC3DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A87D61B7287DEE26008AC3DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A87D61BD287DEE77008AC3DE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A87D61C2287E8BD2008AC3DE /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		A87D61C4287E8BEA008AC3DE /* NotFoundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotFoundViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				A87D61AD287DEE24008AC3DE /* HomeViewController.swift */,
+				A87D61C2287E8BD2008AC3DE /* ResultViewController.swift */,
+				A87D61C4287E8BEA008AC3DE /* NotFoundViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -169,6 +175,8 @@
 				A87D61AE287DEE24008AC3DE /* HomeViewController.swift in Sources */,
 				A87D61AA287DEE24008AC3DE /* AppDelegate.swift in Sources */,
 				A87D61AC287DEE24008AC3DE /* SceneDelegate.swift in Sources */,
+				A87D61C3287E8BD2008AC3DE /* ResultViewController.swift in Sources */,
+				A87D61C5287E8BEA008AC3DE /* NotFoundViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
