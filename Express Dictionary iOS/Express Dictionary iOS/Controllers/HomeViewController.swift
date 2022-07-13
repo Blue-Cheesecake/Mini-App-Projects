@@ -16,8 +16,6 @@ class HomeViewController: UIViewController {
 		super.viewDidLoad()
 		
 		dictionaryManager.delegate = self
-		
-		// Do any additional setup after loading the view.
 		searchTextField.delegate = self
 		searchTextField.placeholder = "Search go here..."
 		searchTextField.text = ""
@@ -36,26 +34,17 @@ class HomeViewController: UIViewController {
 		// A code for fetching Data from API
 		dictionaryManager.fetchDataMeaning(word: searchTextField.text!)
 		
-		//performSegue(withIdentifier: "goToNotFoundView", sender: self)
 	}
 	
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "goToFoundResultView" {
 			let resultVC = segue.destination as! ResultViewController
-			
 			if let finalDictionaryModels = finalDictionaryModels {
 				resultVC.passedDefModel = finalDictionaryModels
 				resultVC.totalDefinition = finalDictionaryModels.count
 			}
-			
-			
-			
-		} else if segue.identifier == "goToNotFoundView" {
-			let notFoundVC = segue.destination as! NotFoundViewController
-			// <#code#>
-			
-			
+
 		}
 	}
 	
@@ -92,14 +81,9 @@ extension HomeViewController: UITextFieldDelegate {
 		// textField.text = ""
 		// print(textField.text!)
 		textField.placeholder = "Search go here..."
-		
-		// Codes for performing fetching Data API
-		// <#code#>
-		// performSegue(withIdentifier: "goToFoundResultView", sender: self)
-		// performSegue(withIdentifier: "goToNotFoundView", sender: self)
+		// A code for fetching Data from API
+		dictionaryManager.fetchDataMeaning(word: searchTextField.text!)
 	}
-	
-	
 }
 
 extension HomeViewController: DictionaryManagerDelegate {

@@ -34,9 +34,6 @@ class ResultViewController: UIViewController {
 		super.viewDidLoad()
 		
 		if let passedDefModel = passedDefModel {
-			
-			print(passedDefModel)
-			
 			for i in 0 ..< totalDefinition {
 				DispatchQueue.main.async {
 					self.collections_def[i].text = passedDefModel[i].definitionText
