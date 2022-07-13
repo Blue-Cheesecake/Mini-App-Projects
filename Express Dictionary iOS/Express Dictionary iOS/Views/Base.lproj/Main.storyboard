@@ -118,7 +118,7 @@
                                         <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lorem ipsum difi lo fefefefefeeef" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QH0-gO-Fut">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lorem ipsum difi lo fefefefefeeef" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QH0-gO-Fut" userLabel="defText1">
                                         <rect key="frame" x="0.0" y="34.5" width="309" height="117"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="117" id="Dbe-cD-WPn"/>
@@ -137,7 +137,7 @@
                                                 <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lorem" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wRh-2U-IgV">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lorem" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wRh-2U-IgV" userLabel="partText1">
                                                 <rect key="frame" x="177.5" y="0.0" width="58" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="20"/>
                                                 <color key="textColor" red="0.01176470588" green="0.66274509800000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -156,7 +156,7 @@
                                         <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lorem ipsum difi lo fefefefefeeef" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnG-Jc-LFU">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lorem ipsum difi lo fefefefefeeef" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnG-Jc-LFU" userLabel="defText2">
                                         <rect key="frame" x="0.0" y="34.5" width="309" height="117"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="309" id="RB8-x3-NvB"/>
@@ -175,7 +175,7 @@
                                                 <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lorem" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVa-bS-u5K">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lorem" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVa-bS-u5K" userLabel="partText2">
                                                 <rect key="frame" x="177.5" y="0.0" width="58" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="20"/>
                                                 <color key="textColor" red="0.01176470588" green="0.66274509800000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -194,7 +194,7 @@
                                         <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lorem ipsum difi lo fefefefefeeef" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LL9-Ft-Hqu">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lorem ipsum difi lo fefefefefeeef" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LL9-Ft-Hqu" userLabel="defText3">
                                         <rect key="frame" x="0.0" y="34.5" width="309" height="117"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="117" id="R2G-j0-jda"/>
@@ -213,7 +213,7 @@
                                                 <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lorem" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Sh-4H-qT0">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lorem" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Sh-4H-qT0" userLabel="partText3">
                                                 <rect key="frame" x="177.5" y="0.0" width="58" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="20"/>
                                                 <color key="textColor" red="0.01176470588" green="0.66274509800000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -235,6 +235,14 @@
                             <constraint firstItem="EMv-j8-VYb" firstAttribute="leading" secondItem="nCs-0M-pnh" secondAttribute="leading" constant="33" id="dki-8C-s6h"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outletCollection property="collections_def" destination="QH0-gO-Fut" collectionClass="NSMutableArray" id="3yw-xc-zgn"/>
+                        <outletCollection property="collections_def" destination="pnG-Jc-LFU" collectionClass="NSMutableArray" id="Rdx-Pg-1ye"/>
+                        <outletCollection property="collections_def" destination="LL9-Ft-Hqu" collectionClass="NSMutableArray" id="uZK-kc-vbl"/>
+                        <outletCollection property="collections_partOfSpeech" destination="wRh-2U-IgV" collectionClass="NSMutableArray" id="YEM-px-RnN"/>
+                        <outletCollection property="collections_partOfSpeech" destination="QVa-bS-u5K" collectionClass="NSMutableArray" id="Va5-ph-axe"/>
+                        <outletCollection property="collections_partOfSpeech" destination="9Sh-4H-qT0" collectionClass="NSMutableArray" id="XjP-Ve-HlX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="85z-sL-eyq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

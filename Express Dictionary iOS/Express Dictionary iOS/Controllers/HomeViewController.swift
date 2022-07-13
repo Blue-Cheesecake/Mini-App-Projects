@@ -27,10 +27,28 @@ class HomeViewController: UIViewController {
 		print("Butt: \(searchTextField.text!)")
 		searchTextField.endEditing(true)
 		
+		// A code for fetching Data from API
+		// <#code#>
+		
 		// If found definition, go to result
-		// performSegue(withIdentifier: "goToFoundResultView", sender: self)
+		performSegue(withIdentifier: "goToFoundResultView", sender: self)
 		
 		//performSegue(withIdentifier: "goToNotFoundView", sender: self)
+	}
+	
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "goToFoundResultView" {
+			let resultVC = segue.destination as! ResultViewController
+			// <#code#>
+			
+			
+		} else if segue.identifier == "goToNotFoundView" {
+			let notFoundVC = segue.destination as! NotFoundViewController
+			// <#code#>
+			
+			
+		}
 	}
 	
 }
@@ -66,6 +84,11 @@ extension HomeViewController: UITextFieldDelegate {
 		// textField.text = ""
 		// print(textField.text!)
 		textField.placeholder = "Search go here..."
+		
+		// Codes for performing fetching Data API
+		// <#code#>
+		// performSegue(withIdentifier: "goToFoundResultView", sender: self)
+		// performSegue(withIdentifier: "goToNotFoundView", sender: self)
 	}
 	
 	
