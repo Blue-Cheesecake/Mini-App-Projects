@@ -26,7 +26,7 @@ class LoginViewController: UIViewController {
 				
 				if let safeAuthResult = authResult {
 					print(safeAuthResult)
-					strongSelf.performSegue(withIdentifier: "LogInToChatView", sender: strongSelf)
+					strongSelf.performSegue(withIdentifier: K.loginSegue, sender: strongSelf)
 				}
 			}
 		}
