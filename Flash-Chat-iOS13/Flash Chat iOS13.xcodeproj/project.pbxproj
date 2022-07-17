@@ -21,6 +21,7 @@
 		A89C169C28814E4700D95F5B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A89C169B28814E4700D95F5B /* GoogleService-Info.plist */; };
 		A89C169F28814F6600D95F5B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A89C169E28814F6600D95F5B /* FirebaseAuth */; };
 		A89C16A128814F6600D95F5B /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A89C16A028814F6600D95F5B /* FirebaseFirestore */; };
+		A8AE89E728843A0F0033F2BF /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AE89E628843A0F0033F2BF /* Message.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		0B62819D235F0F4D00E35CAF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A86687442882A3CD00EF3413 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A89C169B28814E4700D95F5B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A8AE89E628843A0F0033F2BF /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +77,7 @@
 			children = (
 				0B628176235DEE8100E35CAF /* AppDelegate.swift */,
 				0B628178235DEE8100E35CAF /* SceneDelegate.swift */,
-				0B628194235DF03A00E35CAF /* Models */,
+				A8AE89E5288439F90033F2BF /* Models */,
 				0B628193235DF03400E35CAF /* Views */,
 				0B628192235DF02000E35CAF /* Controllers */,
 				0B62817F235DEE8400E35CAF /* Assets.xcassets */,
@@ -106,9 +108,10 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		0B628194235DF03A00E35CAF /* Models */ = {
+		A8AE89E5288439F90033F2BF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A8AE89E628843A0F0033F2BF /* Message.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 				0B628179235DEE8100E35CAF /* SceneDelegate.swift in Sources */,
 				0B62818F235DF01000E35CAF /* LoginViewController.swift in Sources */,
 				A86687452882A3CD00EF3413 /* Constants.swift in Sources */,
+				A8AE89E728843A0F0033F2BF /* Message.swift in Sources */,
 				0B628191235DF01B00E35CAF /* ChatViewController.swift in Sources */,
 				0B62818D235DF00B00E35CAF /* RegisterViewController.swift in Sources */,
 			);
