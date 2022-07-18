@@ -25,6 +25,8 @@ class ChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
+		messageTextfield.delegate = self
+		
 		// tableView.delegate = self
 		tableView.dataSource = self
 		title = K.appName
@@ -39,7 +41,9 @@ class ChatViewController: UIViewController {
 	 Read the data and append to array.
 	 */
 	func loadMessage() {
-		db.collection(K.FStore.collectionName).getDocuments { querySnapshot, err in
+		db.collection(K.FStore.collectionName)
+			.order(by: K.FStore.dateField)
+			.getDocuments { querySnapshot, err in
 			if err != nil {
 				print("Error getting documents \(err!.localizedDescription)")
 				return
@@ -74,6 +78,7 @@ class ChatViewController: UIViewController {
 			db.collection(K.FStore.collectionName).addDocument(data: [
 				K.FStore.senderField: email,
 				K.FStore.bodyField: messageText,
+				K.FStore.dateField: Date().timeIntervalSince1970
 			]) { (err) in
 				if let err = err {
 					print("Error adding document: \(err)")
@@ -82,6 +87,7 @@ class ChatViewController: UIViewController {
 				}
 			}
 			
+			// Add new massage to array for displaying
 			let newMessage = Message(sender: email, body: messageText)
 			self.messages.append(newMessage)
 			self.tableView.reloadData()
@@ -130,3 +136,13 @@ extension ChatViewController: UITableViewDataSource {
 //	}
 //
 //}
+
+// MARK: - UITextField Delegate for messageText
+extension ChatViewController: UITextFieldDelegate {
+	
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		textField.endEditing(true)
+		return true
+	}
+	
+}
