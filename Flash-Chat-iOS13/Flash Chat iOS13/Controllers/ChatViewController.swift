@@ -31,7 +31,40 @@ class ChatViewController: UIViewController {
 		navigationItem.hidesBackButton = true
 		
 		tableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
+		loadMessage()
     }
+	
+	/**
+	 Loading The messages that exist in database to array Messages for displaying when user logged in.
+	 Read the data and append to array.
+	 */
+	func loadMessage() {
+		db.collection(K.FStore.collectionName).getDocuments { querySnapshot, err in
+			if err != nil {
+				print("Error getting documents \(err!.localizedDescription)")
+				return
+			}
+			
+			for document in querySnapshot!.documents {
+				let sender = document.data()[K.FStore.senderField] as? String
+				let body = document.data()[K.FStore.bodyField] as? String
+				
+				if sender == nil || body == nil {
+					print("Some of sender or body is nil")
+					return
+				}
+				
+				let message = Message(sender: sender!, body: body!)
+				self.messages.append(message)
+				
+				// Table view can reload to redisplay again
+				DispatchQueue.main.async {
+					self.tableView.reloadData()
+				}
+			}
+			
+		}
+	}
     
     @IBAction func sendPressed(_ sender: UIButton) {
 		// There must be text and user must have signed in first
@@ -48,6 +81,10 @@ class ChatViewController: UIViewController {
 					print("Successfullly added data to firestore")
 				}
 			}
+			
+			let newMessage = Message(sender: email, body: messageText)
+			self.messages.append(newMessage)
+			self.tableView.reloadData()
 		}
 		messageTextfield.text = ""
     }
