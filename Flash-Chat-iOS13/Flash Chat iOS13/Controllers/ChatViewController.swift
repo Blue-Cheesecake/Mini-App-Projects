@@ -15,6 +15,7 @@ class ChatViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageTextfield: UITextField!
 	let db = Firestore.firestore()
+	@IBOutlet var sendButton: UIButton!
 	
 	var messages: [Message] = [
 		Message(sender: "hello@hotmail.com", body: "Hello!"),
@@ -142,7 +143,12 @@ extension ChatViewController: UITextFieldDelegate {
 	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		textField.endEditing(true)
+		self.sendPressed(self.sendButton)
 		return true
 	}
 	
+	func textFieldDidEndEditing(_ textField: UITextField) {
+		textField.endEditing(true)
+	}
+		
 }

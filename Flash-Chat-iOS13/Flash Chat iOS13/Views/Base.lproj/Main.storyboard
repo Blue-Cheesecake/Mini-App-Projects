@@ -352,6 +352,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="messageTextfield" destination="UWj-GQ-Vph" id="INS-Xk-EA9"/>
+                        <outlet property="sendButton" destination="pym-e9-R2r" id="JHR-Fg-bCQ"/>
                         <outlet property="tableView" destination="S6L-hg-cne" id="dTJ-K9-WAe"/>
                     </connections>
                 </viewController>
