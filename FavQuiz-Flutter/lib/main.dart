@@ -4,11 +4,38 @@ void main() {
   runApp(const MainApp());
 }
 
-class MainApp extends StatelessWidget {
+class MainApp extends StatefulWidget {
   const MainApp({Key? key}) : super(key: key);
 
   @override
+  State<MainApp> createState() => _MainAppState();
+}
+
+class _MainAppState extends State<MainApp> {
+
+  var questions = [
+    "What's is my Favorite Color?",
+    "What's is my Favorite Food?",
+    "What's is my Favorite Game?"
+  ];
+
+  var questionIndex = 0;
+
+  void pressedAnswerButt() {
+    if (questionIndex == questions.length) {
+      return;
+    }
+    setState(() {
+      questionIndex += 1;
+      print("Go!");
+      print(questionIndex);
+    });
+
+  }
+
+  @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -16,24 +43,18 @@ class MainApp extends StatelessWidget {
           title: const Text("Favorite Quiz"),
           centerTitle: false,
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text("Head Text"),
-            Row(
-              children: const [
-                Text("Hello World!"),
-                Text("This is a Test App"),
-              ],
-            ),
-            ElevatedButton(onPressed: () {}, child: const Text("Answer 1"))
-          ],
+        body: Center(
+          child: Column(
+            children: [
+              Text(questions[questionIndex]),
+              ElevatedButton(onPressed: pressedAnswerButt, child: const Text("Answer 1")),
+              ElevatedButton(onPressed: pressedAnswerButt, child: const Text("Answer 2")),
+            ],
+          ),
         ),
       ),
     );
   }
-
-
 }
 
 
