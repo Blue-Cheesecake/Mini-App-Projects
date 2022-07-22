@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import './QuizManager.dart';
 import './answer.dart';
 import './question.dart';
 
@@ -15,25 +16,28 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-  static const questions = [
-    "What's is my Favorite Color?",
-    "What's is my Favorite Food?",
-    "What's is my Favorite Game?"
-  ];
-
-  var _questionIndex = 0;
+  final _quizManager = QuizManager();
 
   void pressedAnswerButt() {
-    if (_questionIndex == questions.length) {
-      return;
+    if (_quizManager.canNextQuestion()) {
+      setState(() {
+        _quizManager.next();
+      });
     }
-    setState(() {
-      _questionIndex += 1;
-    });
   }
 
   @override
   Widget build(BuildContext context) {
+    Iterable<Widget> answerWidgets = _quizManager
+        .getChoices()
+        .map((e) => Answer(answerText: e, pressedAnswer: pressedAnswerButt));
+
+    // add Question
+    List<Widget> widgets = [
+      Question(questionText: _quizManager.getCurrentQuestionText()),
+    ];
+    widgets.addAll(answerWidgets);
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -43,11 +47,7 @@ class _MainAppState extends State<MainApp> {
         ),
         body: Center(
           child: Column(
-            children: [
-              Question(questionText: questions[_questionIndex]),
-              Answer(answerText: "Answer1", pressedAnswer: pressedAnswerButt),
-              Answer(answerText: "Answer2", pressedAnswer: pressedAnswerButt)
-            ],
+            children: widgets,
           ),
         ),
       ),

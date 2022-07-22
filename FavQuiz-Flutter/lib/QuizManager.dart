@@ -18,12 +18,14 @@ class QuizManager {
   var _currIndex = 0;
 
   bool canNextQuestion() {
-    _currIndex += 1;
-    if (_currIndex == _quizs.length) {
-      _currIndex -= 1;
+    if (_currIndex + 1 == _quizs.length) {
       return false;
     }
     return true;
+  }
+
+  void next() {
+    _currIndex += 1;
   }
 
   String getCurrentQuestionText() {
