@@ -1,8 +1,9 @@
+import 'package:favquizflutter/quiz.dart';
+import 'package:favquizflutter/result.dart';
 import 'package:flutter/material.dart';
 
 import './QuizManager.dart';
 import './answer.dart';
-import './question.dart';
 
 void main() {
   runApp(const MainApp());
@@ -17,17 +18,25 @@ class MainApp extends StatefulWidget {
 
 class _MainAppState extends State<MainApp> {
   final _quizManager = QuizManager();
+  late Widget showedWidget;
 
   void pressedAnswerButt() {
-    if (_quizManager.canNextQuestion()) {
-      setState(() {
-        _quizManager.next();
-      });
-    }
+    setState(() {
+      _quizManager.next();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    if (_quizManager.isIndexOutOFBound()) {
+      showedWidget = const Result();
+    } else {
+      showedWidget = Quiz(
+          questionText: _quizManager.getCurrentQuestionText(),
+          answers: _quizManager.getChoices().map(
+              (e) => Answer(answerText: e, pressedAnswer: pressedAnswerButt)));
+    }
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -43,15 +52,7 @@ class _MainAppState extends State<MainApp> {
             },
             icon: const Icon(Icons.arrow_back),
             label: const Text("Back")),
-        body: Center(
-          child: Column(
-            children: [
-              Question(questionText: _quizManager.getCurrentQuestionText()),
-              ..._quizManager.getChoices().map((e) =>
-                  Answer(answerText: e, pressedAnswer: pressedAnswerButt)),
-            ],
-          ),
-        ),
+        body: Center(child: showedWidget),
       ),
     );
   }

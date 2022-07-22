@@ -24,6 +24,14 @@ class QuizManager {
     return true;
   }
 
+  bool isInLastQuestion() {
+    return _currIndex == _quizs.length - 1;
+  }
+
+  bool isIndexOutOFBound() {
+    return _currIndex >= _quizs.length;
+  }
+
   void next() {
     _currIndex += 1;
   }
