@@ -32,6 +32,8 @@ class _MainAppState extends State<MainApp> {
     if (_quizManager.isIndexOutOFBound()) {
       showedWidget = Result(
         score: _quizManager.getTotalScore(),
+        quizManager: _quizManager,
+        delegate: this,
       );
     } else {
       showedWidget = Quiz(
