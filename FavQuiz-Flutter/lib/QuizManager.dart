@@ -28,6 +28,10 @@ class QuizManager {
     _currIndex += 1;
   }
 
+  void goToFirstQuestion() {
+    _currIndex = 0;
+  }
+
   String getCurrentQuestionText() {
     return _quizs[_currIndex].questionText;
   }

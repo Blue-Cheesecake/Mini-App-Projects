@@ -45,6 +45,14 @@ class _MainAppState extends State<MainApp> {
           title: const Text("Favorite Quiz"),
           centerTitle: false,
         ),
+        floatingActionButton: ElevatedButton.icon(
+            onPressed: () {
+              setState(() {
+                _quizManager.goToFirstQuestion();
+              });
+            },
+            icon: const Icon(Icons.arrow_back),
+            label: const Text("Back")),
         body: Center(
           child: Column(
             children: widgets,
