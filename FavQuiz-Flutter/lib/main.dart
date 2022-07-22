@@ -28,16 +28,6 @@ class _MainAppState extends State<MainApp> {
 
   @override
   Widget build(BuildContext context) {
-    Iterable<Widget> answerWidgets = _quizManager
-        .getChoices()
-        .map((e) => Answer(answerText: e, pressedAnswer: pressedAnswerButt));
-
-    // add Question
-    List<Widget> widgets = [
-      Question(questionText: _quizManager.getCurrentQuestionText()),
-    ];
-    widgets.addAll(answerWidgets);
-
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -55,7 +45,11 @@ class _MainAppState extends State<MainApp> {
             label: const Text("Back")),
         body: Center(
           child: Column(
-            children: widgets,
+            children: [
+              Question(questionText: _quizManager.getCurrentQuestionText()),
+              ..._quizManager.getChoices().map((e) =>
+                  Answer(answerText: e, pressedAnswer: pressedAnswerButt)),
+            ],
           ),
         ),
       ),

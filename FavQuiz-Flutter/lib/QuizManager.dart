@@ -1,16 +1,16 @@
 import 'package:favquizflutter/QuestionModel.dart';
 
 class QuizManager {
-  final _quizs = [
-    const QuestionModel(
+  final _quizs = const [
+    QuestionModel(
         questionText: "What's my Fav Color?",
         expectedAnswer: "Blue",
         choices: ["Red", "Green", "Blue"]),
-    const QuestionModel(
+    QuestionModel(
         questionText: "What's my Fav Animal",
         expectedAnswer: "Rabbit",
         choices: ["Rabbit", "Lion", "Shark"]),
-    const QuestionModel(
+    QuestionModel(
         questionText: "What's my First Name",
         expectedAnswer: "Cheese",
         choices: ["Cupcake", "Cheese", "Cake"])
