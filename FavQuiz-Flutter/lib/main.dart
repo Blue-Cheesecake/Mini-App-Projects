@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import './Question.dart';
+
+import './question.dart';
 
 void main() {
   runApp(const MainApp());
@@ -13,7 +14,6 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-
   static const questions = [
     "What's is my Favorite Color?",
     "What's is my Favorite Food?",
@@ -29,12 +29,10 @@ class _MainAppState extends State<MainApp> {
     setState(() {
       _questionIndex += 1;
     });
-
   }
 
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -46,8 +44,10 @@ class _MainAppState extends State<MainApp> {
           child: Column(
             children: [
               Question(questionText: questions[_questionIndex]),
-              ElevatedButton(onPressed: pressedAnswerButt, child: const Text("Answer 1")),
-              ElevatedButton(onPressed: pressedAnswerButt, child: const Text("Answer 2")),
+              ElevatedButton(
+                  onPressed: pressedAnswerButt, child: const Text("Answer 1")),
+              ElevatedButton(
+                  onPressed: pressedAnswerButt, child: const Text("Answer 2")),
             ],
           ),
         ),
@@ -55,6 +55,3 @@ class _MainAppState extends State<MainApp> {
     );
   }
 }
-
-
-
