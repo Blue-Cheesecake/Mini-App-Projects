@@ -20,7 +20,8 @@ class _MainAppState extends State<MainApp> {
   final _quizManager = QuizManager();
   late Widget showedWidget;
 
-  void pressedAnswerButt() {
+  void pressedAnswerButt(String sentText) {
+    _quizManager.isCorrectAnswer(sentText);
     setState(() {
       _quizManager.next();
     });
@@ -29,12 +30,17 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     if (_quizManager.isIndexOutOFBound()) {
-      showedWidget = const Result();
+      showedWidget = Result(
+        score: _quizManager.getTotalScore(),
+      );
     } else {
       showedWidget = Quiz(
           questionText: _quizManager.getCurrentQuestionText(),
-          answers: _quizManager.getChoices().map(
-              (e) => Answer(answerText: e, pressedAnswer: pressedAnswerButt)));
+          answers: _quizManager.getChoices().map((e) => Answer(
+              answerText: e,
+              pressedAnswer: () {
+                pressedAnswerButt(e);
+              })));
     }
 
     return MaterialApp(

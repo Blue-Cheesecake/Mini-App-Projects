@@ -16,6 +16,7 @@ class QuizManager {
         choices: ["Cupcake", "Cheese", "Cake"])
   ];
   var _currIndex = 0;
+  var _score = 0;
 
   bool canNextQuestion() {
     if (_currIndex + 1 == _quizs.length) {
@@ -36,8 +37,19 @@ class QuizManager {
     _currIndex += 1;
   }
 
+  int getTotalScore() => _score;
+
   void goToFirstQuestion() {
     _currIndex = 0;
+    _score = 0;
+  }
+
+  bool isCorrectAnswer(String suspect) {
+    if (suspect == getExpectedAnswer()) {
+      _score += 1;
+      return true;
+    }
+    return false;
   }
 
   String getCurrentQuestionText() {
