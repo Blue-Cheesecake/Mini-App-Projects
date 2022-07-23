@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import './transaction.dart';
+import 'models/transaction.dart';
+import 'widgets/transactions_list.dart';
 
 void main() => runApp(const Main());
 
@@ -29,6 +30,9 @@ class _HomepageState extends State<Homepage> {
     Transaction("3", "Puma Ones", 109, DateTime.now()),
   ];
 
+  final titleController = TextEditingController();
+  final priceController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,39 +48,42 @@ class _HomepageState extends State<Homepage> {
                 child: const Text("Chart")),
           ),
           Column(
-            children: transactions.map((e) {
-              return Card(
-                child: Row(
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.all(15),
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.purple, width: 2)),
-                      child: Text(
-                        e.price.toString(),
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.purple),
-                      ),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          e.title,
-                          style: const TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                        Text(e.getDateStr(),
-                            style: const TextStyle(
-                                fontSize: 14, color: Colors.grey)),
-                      ],
-                    )
-                  ],
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Card(
+                elevation: 10,
+                child: Container(
+                  padding: const EdgeInsets.all(5),
+                  width: double.infinity,
+                  child: TextField(
+                    controller: titleController,
+                    decoration: const InputDecoration(label: Text("Title")),
+                  ),
                 ),
-              );
-            }).toList(),
-          )
+              ),
+              Card(
+                elevation: 10,
+                child: Container(
+                  padding: const EdgeInsets.all(5),
+                  width: double.infinity,
+                  child: TextField(
+                    controller: priceController,
+                    decoration: const InputDecoration(label: Text("Price")),
+                  ),
+                ),
+              ),
+              TextButton(
+                  onPressed: () {
+                    print(titleController.text);
+                    print(priceController.text);
+                  },
+                  child: const Text(
+                    "Add",
+                    style: TextStyle(fontSize: 18),
+                  ))
+            ],
+          ),
+          TransactionsList(),
         ],
       ),
     );
