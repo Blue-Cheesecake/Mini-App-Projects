@@ -36,7 +36,6 @@ class _HomepageState extends State<Homepage> {
         title: const Text("Expenses"),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Card(
             child: Container(
@@ -68,7 +67,7 @@ class _HomepageState extends State<Homepage> {
                           style: const TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),
-                        Text(e.date.toString(),
+                        Text(e.getDateStr(),
                             style: const TextStyle(
                                 fontSize: 14, color: Colors.grey)),
                       ],

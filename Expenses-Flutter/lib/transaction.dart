@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class Transaction {
   final String id;
   final String title;
@@ -5,4 +7,6 @@ class Transaction {
   final DateTime date;
 
   Transaction(this.id, this.title, this.price, this.date);
+
+  String getDateStr() => DateFormat().format(date);
 }
