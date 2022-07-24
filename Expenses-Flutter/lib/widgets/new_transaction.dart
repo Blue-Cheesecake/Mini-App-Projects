@@ -1,7 +1,15 @@
+import 'dart:math';
+
+import 'package:expensesflutter/models/transaction.dart';
+import 'package:expensesflutter/widgets/user_transactions.dart';
 import 'package:flutter/material.dart';
 
 class NewTransaction extends StatelessWidget {
-  NewTransaction({Key? key}) : super(key: key);
+  NewTransaction({Key? key, required this.listDelegate, required this.delegate})
+      : super(key: key);
+
+  final List<Transaction> listDelegate;
+  final State<UserTransactions> delegate;
 
   final titleController = TextEditingController();
   final priceController = TextEditingController();
@@ -37,6 +45,14 @@ class NewTransaction extends StatelessWidget {
             onPressed: () {
               print(titleController.text);
               print(priceController.text);
+              Transaction newTrans = Transaction(
+                  Random().nextInt(999999).toString(),
+                  titleController.text,
+                  double.parse(priceController.text),
+                  DateTime.now());
+              delegate.setState(() {
+                listDelegate.add(newTrans);
+              });
             },
             child: const Text(
               "Add",

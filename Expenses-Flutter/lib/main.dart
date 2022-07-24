@@ -28,16 +28,18 @@ class _HomepageState extends State<Homepage> {
       appBar: AppBar(
         title: const Text("Expenses"),
       ),
-      body: Column(
-        children: [
-          Card(
-            child: Container(
-                padding: const EdgeInsets.all(10),
-                width: double.infinity,
-                child: const Text("Chart")),
-          ),
-          UserTransactions(),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Card(
+              child: Container(
+                  padding: const EdgeInsets.all(10),
+                  width: double.infinity,
+                  child: const Text("Chart")),
+            ),
+            UserTransactions(),
+          ],
+        ),
       ),
     );
   }
