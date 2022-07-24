@@ -1,20 +1,16 @@
-import 'package:expensesflutter/managers/transactionsManager.dart';
+import 'package:expensesflutter/models/transaction.dart';
 import 'package:flutter/material.dart';
 
-class TransactionsList extends StatefulWidget {
-  const TransactionsList({Key? key}) : super(key: key);
+class TransactionsList extends StatelessWidget {
+  final List<Transaction> transactions;
 
-  @override
-  State<TransactionsList> createState() => _TransactionsListState();
-}
-
-class _TransactionsListState extends State<TransactionsList> {
-  TransactionManager transactionManager = TransactionManager();
+  const TransactionsList({Key? key, required this.transactions})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: transactionManager.getTransactions.map((e) {
+      children: transactions.map((e) {
         return Card(
           child: Row(
             children: [
