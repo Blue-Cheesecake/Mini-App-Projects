@@ -1,24 +1,30 @@
 import 'package:flutter/material.dart';
 
-class NewTransaction extends StatelessWidget {
-  NewTransaction({
+class NewTransaction extends StatefulWidget {
+  const NewTransaction({
     Key? key,
     required this.pressedAdd,
   }) : super(key: key);
 
   final void Function(String, String) pressedAdd;
 
+  @override
+  State<NewTransaction> createState() => _NewTransactionState();
+}
+
+class _NewTransactionState extends State<NewTransaction> {
   final titleController = TextEditingController();
+
   final priceController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        Card(
-          elevation: 10,
-          child: Container(
+    return Card(
+      elevation: 5,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Container(
             padding: const EdgeInsets.all(5),
             width: double.infinity,
             child: TextField(
@@ -27,10 +33,7 @@ class NewTransaction extends StatelessWidget {
               decoration: const InputDecoration(label: Text("Title")),
             ),
           ),
-        ),
-        Card(
-          elevation: 10,
-          child: Container(
+          Container(
             padding: const EdgeInsets.all(5),
             width: double.infinity,
             child: TextField(
@@ -39,16 +42,16 @@ class NewTransaction extends StatelessWidget {
               decoration: const InputDecoration(label: Text("Price")),
             ),
           ),
-        ),
-        TextButton(
-            onPressed: () {
-              pressedAdd(titleController.text, priceController.text);
-            },
-            child: const Text(
-              "Add",
-              style: TextStyle(fontSize: 18),
-            ))
-      ],
+          TextButton(
+              onPressed: () {
+                widget.pressedAdd(titleController.text, priceController.text);
+              },
+              child: const Text(
+                "Add",
+                style: TextStyle(fontSize: 18),
+              ))
+        ],
+      ),
     );
   }
 }
