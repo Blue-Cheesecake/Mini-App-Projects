@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:expensesflutter/models/transaction.dart';
 import 'package:expensesflutter/widgets/new_transaction.dart';
 import 'package:expensesflutter/widgets/transactions_list.dart';
@@ -18,13 +20,20 @@ class _UserTransactionsState extends State<UserTransactions> {
     Transaction("4", "Addidas", 211, DateTime.now())
   ];
 
+  void _addNewTransaction(String titleStr, String priceStr) {
+    Transaction newTrans = Transaction(Random().nextInt(999999).toString(),
+        titleStr, double.parse(priceStr), DateTime.now());
+    setState(() {
+      _transactions.add(newTrans);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         NewTransaction(
-          listDelegate: _transactions,
-          delegate: this,
+          pressedAdd: _addNewTransaction,
         ),
         TransactionsList(
           transactions: _transactions,

@@ -1,15 +1,12 @@
-import 'dart:math';
-
-import 'package:expensesflutter/models/transaction.dart';
-import 'package:expensesflutter/widgets/user_transactions.dart';
 import 'package:flutter/material.dart';
 
 class NewTransaction extends StatelessWidget {
-  NewTransaction({Key? key, required this.listDelegate, required this.delegate})
-      : super(key: key);
+  NewTransaction({
+    Key? key,
+    required this.pressedAdd,
+  }) : super(key: key);
 
-  final List<Transaction> listDelegate;
-  final State<UserTransactions> delegate;
+  final void Function(String, String) pressedAdd;
 
   final titleController = TextEditingController();
   final priceController = TextEditingController();
@@ -25,6 +22,7 @@ class NewTransaction extends StatelessWidget {
             padding: const EdgeInsets.all(5),
             width: double.infinity,
             child: TextField(
+              keyboardType: TextInputType.text,
               controller: titleController,
               decoration: const InputDecoration(label: Text("Title")),
             ),
@@ -36,6 +34,7 @@ class NewTransaction extends StatelessWidget {
             padding: const EdgeInsets.all(5),
             width: double.infinity,
             child: TextField(
+              keyboardType: TextInputType.number,
               controller: priceController,
               decoration: const InputDecoration(label: Text("Price")),
             ),
@@ -43,16 +42,7 @@ class NewTransaction extends StatelessWidget {
         ),
         TextButton(
             onPressed: () {
-              print(titleController.text);
-              print(priceController.text);
-              Transaction newTrans = Transaction(
-                  Random().nextInt(999999).toString(),
-                  titleController.text,
-                  double.parse(priceController.text),
-                  DateTime.now());
-              delegate.setState(() {
-                listDelegate.add(newTrans);
-              });
+              pressedAdd(titleController.text, priceController.text);
             },
             child: const Text(
               "Add",
