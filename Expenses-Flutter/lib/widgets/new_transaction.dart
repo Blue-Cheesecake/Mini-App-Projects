@@ -45,6 +45,7 @@ class _NewTransactionState extends State<NewTransaction> {
           TextButton(
               onPressed: () {
                 widget.pressedAdd(titleController.text, priceController.text);
+                Navigator.pop(context);
               },
               child: const Text(
                 "Add",

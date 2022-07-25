@@ -20,11 +20,13 @@ class TransactionsList extends StatelessWidget {
                 margin: const EdgeInsets.all(15),
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                    border: Border.all(color: Colors.purple, width: 2)),
+                    border: Border.all(
+                        color: Theme.of(context).primaryColor, width: 2)),
                 child: Text(
                   transactions[index].price.toString(),
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.purple),
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).primaryColor),
                 ),
               ),
               Column(
