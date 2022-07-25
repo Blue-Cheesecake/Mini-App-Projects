@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:expensesflutter/widgets/new_transaction.dart';
 import 'package:flutter/material.dart';
 
+import './widgets/chart.dart';
 import './widgets/transactions_list.dart';
 import 'models/transaction.dart';
 
@@ -15,8 +16,15 @@ class Main extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Personal Expenses",
-      theme: ThemeData(primarySwatch: Colors.purple, accentColor: Colors.amber),
-      home: Homepage(),
+      theme: ThemeData(
+        primaryColor: Colors.purple,
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.purple)
+            .copyWith(secondary: Colors.amber),
+        fontFamily: "Quicksand",
+        appBarTheme: const AppBarTheme(
+            titleTextStyle: TextStyle(fontFamily: "OpenSans", fontSize: 20)),
+      ),
+      home: const Homepage(),
     );
   }
 }
@@ -30,11 +38,17 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   final List<Transaction> _transactions = [
-    Transaction("1", "Nike Shoes 69", 39.99, DateTime.now()),
-    Transaction("2", "Puma cal", 23.00, DateTime.now()),
-    Transaction("3", "Puma Ones", 109, DateTime.now()),
-    Transaction("4", "Addidas", 211, DateTime.now())
+    // Transaction("1", "Nike Shoes 69", 39.99, DateTime.now()),
+    // Transaction("2", "Puma cal", 23.00, DateTime.now()),
+    // Transaction("3", "Puma Ones", 109, DateTime.now()),
+    // Transaction("4", "Addidas", 211, DateTime.now())
   ];
+
+  List<Transaction> get _recentTransactions {
+    return _transactions.where((t) {
+      return t.date.isAfter(DateTime.now().subtract(const Duration(days: 7)));
+    }).toList();
+  }
 
   void _addNewTransaction(String titleStr, String priceStr) {
     Transaction newTrans = Transaction(Random().nextInt(999999).toString(),
@@ -76,12 +90,7 @@ class _HomepageState extends State<Homepage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Card(
-              child: Container(
-                  padding: const EdgeInsets.all(10),
-                  width: double.infinity,
-                  child: const Text("Chart")),
-            ),
+            Chart(transactions: _recentTransactions),
             TransactionsList(transactions: _transactions),
           ],
         ),
