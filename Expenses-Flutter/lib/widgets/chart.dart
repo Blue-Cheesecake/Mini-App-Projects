@@ -1,4 +1,5 @@
 import 'package:expensesflutter/models/transaction.dart';
+import 'package:expensesflutter/widgets/bar_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -9,7 +10,7 @@ class Chart extends StatelessWidget {
   const Chart({Key? key, required this.transactions}) : super(key: key);
 
   List<Map<String, Object>> get groupedValues {
-    return List.generate(7, (index) {
+    List<Map<String, Object>> genList = List.generate(7, (index) {
       // we subtract the day by index since index represent each 7 days.
       final weekDay = DateTime.now().subtract(Duration(days: index));
       var total = 0.0;
@@ -28,19 +29,43 @@ class Chart extends StatelessWidget {
         "amount": total,
       };
     });
+
+    return genList;
+  }
+
+  double maxSpending() {
+    double s = 0.0;
+    for (var item in groupedValues) {
+      s += (item["amount"] as double);
+    }
+    return s;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: SizedBox(
-        width: double.infinity,
-        child: Row(
-          children: groupedValues.map((e) {
-            var day = e["day"].toString();
-            var amount = e["amount"].toString();
-            return Text("Day: $day, Amount: $amount");
-          }).toList(),
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: Card(
+        child: Container(
+          padding: const EdgeInsets.all(5),
+          width: double.infinity,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: groupedValues.map((e) {
+              var day = e["day"].toString();
+              var amount = e["amount"].toString();
+              return Flexible(
+                fit: FlexFit.loose,
+                child: BarChart(
+                  label: day,
+                  amount: double.parse(amount),
+                  spendingPctOfTotal: maxSpending() == 0
+                      ? 0
+                      : (e["amount"] as double) / maxSpending(),
+                ),
+              );
+            }).toList(),
+          ),
         ),
       ),
     );

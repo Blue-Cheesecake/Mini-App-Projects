@@ -21,6 +21,12 @@ class Main extends StatelessWidget {
         colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.purple)
             .copyWith(secondary: Colors.amber),
         fontFamily: "Quicksand",
+        textTheme: const TextTheme(
+            bodyText1: TextStyle(fontSize: 15),
+            bodyText2: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+                color: Colors.purple)),
         appBarTheme: const AppBarTheme(
             titleTextStyle: TextStyle(fontFamily: "OpenSans", fontSize: 20)),
       ),
@@ -50,11 +56,18 @@ class _HomepageState extends State<Homepage> {
     }).toList();
   }
 
-  void _addNewTransaction(String titleStr, String priceStr) {
+  void _addNewTransaction(
+      String titleStr, String priceStr, DateTime pickedDate) {
     Transaction newTrans = Transaction(Random().nextInt(999999).toString(),
-        titleStr, double.parse(priceStr), DateTime.now());
+        titleStr, double.parse(priceStr), pickedDate);
     setState(() {
       _transactions.add(newTrans);
+    });
+  }
+
+  void _removeTransaction(int index) {
+    setState(() {
+      _transactions.removeAt(index);
     });
   }
 
@@ -91,7 +104,10 @@ class _HomepageState extends State<Homepage> {
         child: Column(
           children: [
             Chart(transactions: _recentTransactions),
-            TransactionsList(transactions: _transactions),
+            TransactionsList(
+              transactions: _transactions,
+              pressedRemove: _removeTransaction,
+            ),
           ],
         ),
       ),
