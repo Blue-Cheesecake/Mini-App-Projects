@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:product_preview_card_flutter/constants/colors.dart';
 import 'package:product_preview_card_flutter/constants/contents.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   runApp(const Main());
 }
 
@@ -27,18 +33,20 @@ class Main extends StatelessWidget {
                 letterSpacing: 4),
             headline3: TextStyle(
                 fontFamily: "Fraunces",
-                fontSize: 45,
+                fontSize: 40,
                 color: C.darkCyan,
                 fontWeight: FontWeight.w700),
             headline4: const TextStyle(
-                fontSize: 18,
+                fontSize: 16,
                 fontWeight: FontWeight.w700,
                 decoration: TextDecoration.lineThrough),
             bodyText1: TextStyle(
                 height: 1.55,
                 fontSize: 15,
                 fontWeight: FontWeight.w700,
-                color: C.darkGrayishBlue)),
+                color: C.darkGrayishBlue),
+            button: TextStyle(
+                fontSize: 15, color: C.cream, fontWeight: FontWeight.bold)),
         primaryColor: C.darkCyan,
       ),
       home: const Homepage(),
@@ -61,8 +69,11 @@ class Homepage extends StatelessWidget {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
           elevation: 0,
-          child: SizedBox(
-            height: (MediaQuery.of(context).size.height - notchHeight) * 0.93,
+          child: Container(
+            constraints: BoxConstraints(
+                minHeight:
+                    (MediaQuery.of(context).size.height - notchHeight) * 0.84),
+            height: (MediaQuery.of(context).size.height - notchHeight) * 0.80,
             width: MediaQuery.of(context).size.width * 0.90,
             child: LayoutBuilder(
               builder: (context, constraints) {
@@ -70,14 +81,18 @@ class Homepage extends StatelessWidget {
                   children: [
                     SizedBox(
                         width: constraints.maxWidth,
-                        height: constraints.maxHeight * 0.3,
-                        child: FittedBox(
-                          fit: BoxFit.fill,
-                          child: Image.asset(
-                              "assets/images/image-product-mobile.jpg"),
+                        child: ClipRRect(
+                          borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                              topRight: Radius.circular(15)),
+                          child: FittedBox(
+                            fit: BoxFit.fill,
+                            child: Image.asset(
+                                "assets/images/image-product-mobile.jpg"),
+                          ),
                         )),
                     Container(
-                      padding: const EdgeInsets.all(20),
+                      padding: const EdgeInsets.all(23),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -86,21 +101,21 @@ class Homepage extends StatelessWidget {
                             style: Theme.of(context).textTheme.headline2,
                           ),
                           const SizedBox(
-                            height: 10,
+                            height: 20,
                           ),
                           Text(
                             Contents.largeHead,
                             style: Theme.of(context).textTheme.headline1,
                           ),
                           const SizedBox(
-                            height: 10,
+                            height: 20,
                           ),
                           Text(
                             Contents.bodyText,
                             style: Theme.of(context).textTheme.bodyText1,
                           ),
                           const SizedBox(
-                            height: 10,
+                            height: 20,
                           ),
                           Row(
                             children: [
@@ -117,17 +132,32 @@ class Homepage extends StatelessWidget {
                               )
                             ],
                           ),
+                          const SizedBox(
+                            height: 20,
+                          ),
                           ElevatedButton(
                               onPressed: () {},
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text("Add to Cart"),
-                                ],
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all(C.darkCyan),
+                              ),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 18),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: const [
+                                    Icon(Icons.shopping_cart),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text("Add to Cart"),
+                                  ],
+                                ),
                               ))
                         ],
                       ),
-                    )
+                    ),
                   ],
                 );
               },
