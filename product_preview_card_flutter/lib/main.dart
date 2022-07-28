@@ -25,6 +25,15 @@ class Main extends StatelessWidget {
                 fontWeight: FontWeight.w700,
                 color: C.darkGrayishBlue,
                 letterSpacing: 4),
+            headline3: TextStyle(
+                fontFamily: "Fraunces",
+                fontSize: 45,
+                color: C.darkCyan,
+                fontWeight: FontWeight.w700),
+            headline4: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+                decoration: TextDecoration.lineThrough),
             bodyText1: TextStyle(
                 height: 1.55,
                 fontSize: 15,
@@ -76,14 +85,46 @@ class Homepage extends StatelessWidget {
                             Contents.smallHead,
                             style: Theme.of(context).textTheme.headline2,
                           ),
+                          const SizedBox(
+                            height: 10,
+                          ),
                           Text(
                             Contents.largeHead,
                             style: Theme.of(context).textTheme.headline1,
                           ),
+                          const SizedBox(
+                            height: 10,
+                          ),
                           Text(
                             Contents.bodyText,
                             style: Theme.of(context).textTheme.bodyText1,
-                          )
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                Contents.discountPriceString,
+                                style: Theme.of(context).textTheme.headline3,
+                              ),
+                              const SizedBox(
+                                width: 20,
+                              ),
+                              Text(
+                                Contents.originalPriceString,
+                                style: Theme.of(context).textTheme.headline4,
+                              )
+                            ],
+                          ),
+                          ElevatedButton(
+                              onPressed: () {},
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text("Add to Cart"),
+                                ],
+                              ))
                         ],
                       ),
                     )
