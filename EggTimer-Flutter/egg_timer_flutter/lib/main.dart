@@ -44,6 +44,9 @@ class _HomepageState extends State<Homepage> {
 
   void _pressedEggTimer(double duration) {
     _currentStatus = 0;
+    setState(() {
+      _isDone = false;
+    });
     int start = duration.toInt();
     var eachStep = 1.0 / duration;
     const oneSec = Duration(seconds: 1);
@@ -55,18 +58,17 @@ class _HomepageState extends State<Homepage> {
             timer.cancel();
           });
         } else {
-          setState(() {
+          setState(() async {
             start--;
             _currentStatus += eachStep;
+            if (start == 0) {
+              // play sound
+              _isDone = true;
+            }
           });
         }
       },
     );
-
-    if (start == 0) {
-      // play sound
-
-    }
   }
 
   @override
@@ -81,7 +83,7 @@ class _HomepageState extends State<Homepage> {
     final mediaQuery = MediaQuery.of(context);
 
     return Scaffold(
-      backgroundColor: Colors.lightBlueAccent,
+      backgroundColor: const Color.fromRGBO(203, 242, 252, 1),
       body: SafeArea(
         child: Center(
           child: Container(
@@ -91,7 +93,7 @@ class _HomepageState extends State<Homepage> {
                 const Spacer(),
                 const Text(
                   "How do you like your eggs?",
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 25, color: Colors.grey),
                 ),
                 const Spacer(),
                 Row(
@@ -114,6 +116,16 @@ class _HomepageState extends State<Homepage> {
                     const Spacer(),
                   ],
                 ),
+                _isDone ? const Spacer() : const SizedBox.shrink(),
+                _isDone
+                    ? Text(
+                        "Done",
+                        style: TextStyle(
+                            fontSize: 70,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor),
+                      )
+                    : const SizedBox.shrink(),
                 const Spacer(),
                 LinearProgressIndicator(
                   color: Theme.of(context).primaryColor,
