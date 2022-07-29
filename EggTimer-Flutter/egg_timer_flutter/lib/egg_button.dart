@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class EggButton extends StatefulWidget {
-  final Image imageAsset;
+  final String imageAsset;
   final void Function(double) handler;
   final double duration;
 
@@ -23,6 +23,6 @@ class _EggButtonState extends State<EggButton> {
         onPressed: () {
           widget.handler(widget.duration);
         },
-        child: const Text("Egg "));
+        child: SizedBox(height: 120, child: Image.asset(widget.imageAsset)));
   }
 }

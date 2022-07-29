@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:egg_timer_flutter/egg_button.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const Main());
@@ -32,7 +33,7 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   late Timer _timer;
 
-  final Map<EggLevel, double> map = {
+  final Map<EggLevel, double> eggMap = {
     EggLevel.soft: 5.0,
     EggLevel.medium: 10.0,
     EggLevel.hard: 15.0,
@@ -61,6 +62,11 @@ class _HomepageState extends State<Homepage> {
         }
       },
     );
+
+    if (start == 0) {
+      // play sound
+
+    }
   }
 
   @override
@@ -75,6 +81,7 @@ class _HomepageState extends State<Homepage> {
     final mediaQuery = MediaQuery.of(context);
 
     return Scaffold(
+      backgroundColor: Colors.lightBlueAccent,
       body: SafeArea(
         child: Center(
           child: Container(
@@ -87,13 +94,29 @@ class _HomepageState extends State<Homepage> {
                   style: TextStyle(fontSize: 20),
                 ),
                 const Spacer(),
-                ElevatedButton(
-                    onPressed: () {
-                      _pressedEggTimer(5);
-                    },
-                    child: const Text("Start timer")),
+                Row(
+                  children: [
+                    const Spacer(),
+                    EggButton(
+                        imageAsset: "assets/images/soft_egg@3x.png",
+                        handler: _pressedEggTimer,
+                        duration: eggMap[EggLevel.soft]!),
+                    const Spacer(),
+                    EggButton(
+                        imageAsset: "assets/images/medium_egg@3x.png",
+                        handler: _pressedEggTimer,
+                        duration: eggMap[EggLevel.medium]!),
+                    const Spacer(),
+                    EggButton(
+                        imageAsset: "assets/images/hard_egg@3x.png",
+                        handler: _pressedEggTimer,
+                        duration: eggMap[EggLevel.hard]!),
+                    const Spacer(),
+                  ],
+                ),
                 const Spacer(),
                 LinearProgressIndicator(
+                  color: Theme.of(context).primaryColor,
                   value: _currentStatus,
                   semanticsLabel: "Progress bar",
                 ),
