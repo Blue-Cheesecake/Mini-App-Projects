@@ -14,17 +14,37 @@ class _HomepageState extends State<Homepage> {
 
   void _pressedAnswerButton(String sentAnswer) {
     if (_questionsVM.currentQuestionAnswer == sentAnswer) _score += 1;
-    _questionsVM.nextQuestion();
-    if (!_questionsVM.isOutOfQuestion) {
-      setState(() {});
-    } else {
-      // show score
-    }
+    setState(() {
+      _questionsVM.nextQuestion();
+    });
   }
 
   Widget _answerButton(String textAns) {
     return OutlinedButton(
         onPressed: () => _pressedAnswerButton(textAns), child: Text(textAns));
+  }
+
+  Widget _showResult() {
+    return Container(
+      decoration:
+          BoxDecoration(border: Border.all(color: Colors.blue, width: 1.5)),
+      child: Column(
+        children: [
+          Text("You score: $_score"),
+          ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  _questionsVM.reset();
+                });
+              },
+              child: const Text("Re-attempt")),
+        ],
+      ),
+    );
+  }
+
+  Widget _showQuestionText() {
+    return Text(_questionsVM.currentQuestionText);
   }
 
   @override
@@ -35,7 +55,9 @@ class _HomepageState extends State<Homepage> {
           child: Column(
             children: [
               const Spacer(),
-              Text(_questionsVM.currentQuestionText),
+              !_questionsVM.isOutOfQuestion
+                  ? _showQuestionText()
+                  : _showResult(),
               const Spacer(),
               _answerButton("True"),
               _answerButton("False"),

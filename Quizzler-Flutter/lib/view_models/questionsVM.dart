@@ -34,7 +34,7 @@ class QuestionsVM {
   String get currentQuestionText => _questions[_currIndex].text;
   String get currentQuestionAnswer => _questions[_currIndex].answer;
   bool get isOutOfQuestion => _currIndex >= _questions.length;
-  double get progressBarValue => (1.0 / _questions.length) * (_currIndex);
+  double get progressBarValue => (1.0 / _questions.length) * (_currIndex + 1);
 
   void nextQuestion() => _currIndex += 1;
 
