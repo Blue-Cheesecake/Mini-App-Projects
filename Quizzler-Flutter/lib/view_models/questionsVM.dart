@@ -30,17 +30,36 @@ class QuestionsVM {
   ];
 
   var _currIndex = 0;
+  var _score = 0;
 
   String get currentQuestionText => _questions[_currIndex].text;
   String get currentQuestionAnswer => _questions[_currIndex].answer;
   bool get isOutOfQuestion => _currIndex >= _questions.length;
+  int get score => _score;
   double get progressBarValue => (1.0 / _questions.length) * (_currIndex + 1);
 
   void nextQuestion() => _currIndex += 1;
   void previousQuestion() {
     if (_currIndex == 0) return;
+
+    if (_questions[_currIndex].answeredCorrect != null &&
+        _questions[_currIndex].answeredCorrect != false) {
+      _score -= 1;
+    }
     _currIndex -= 1;
   }
 
-  void reset() => _currIndex = 0;
+  void answer(String ans) {
+    if (currentQuestionAnswer == ans) {
+      _questions[_currIndex].answeredCorrect = true;
+      _score += 1;
+    } else {
+      _questions[_currIndex].answeredCorrect = false;
+    }
+  }
+
+  void reset() {
+    _currIndex = 0;
+    _score = 0;
+  }
 }

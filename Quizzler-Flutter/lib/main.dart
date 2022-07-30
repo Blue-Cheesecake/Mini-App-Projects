@@ -18,10 +18,6 @@ class Main extends StatelessWidget {
                 color: Color.fromRGBO(37, 44, 74, 1),
                 fontWeight: FontWeight.w500,
                 fontSize: 25),
-            titleMedium: TextStyle(
-              color: Colors.blueAccent,
-              fontSize: 18,
-            ),
             titleSmall: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w400,

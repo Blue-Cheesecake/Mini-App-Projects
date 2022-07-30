@@ -10,10 +10,9 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   final _questionsVM = QuestionsVM();
-  int _score = 0;
 
   void _pressedAnswerButton(String sentAnswer) {
-    if (_questionsVM.currentQuestionAnswer == sentAnswer) _score += 1;
+    _questionsVM.answer(sentAnswer);
     setState(() {
       _questionsVM.nextQuestion();
     });
@@ -26,22 +25,30 @@ class _HomepageState extends State<Homepage> {
           style: OutlinedButton.styleFrom(
             padding: const EdgeInsets.all(15),
           ),
-          onPressed: () => _pressedAnswerButton(textAns),
+          onPressed: _questionsVM.isOutOfQuestion
+              ? null
+              : () => _pressedAnswerButton(textAns),
           child: Text(
             textAns,
-            style: Theme.of(context).textTheme.titleMedium,
+            style: TextStyle(
+              color: _questionsVM.isOutOfQuestion
+                  ? Colors.grey
+                  : Colors.blueAccent,
+              fontSize: 18,
+            ),
           )),
     );
   }
 
   Widget _showResult() {
     return Card(
+      elevation: 5,
       child: Container(
         padding: const EdgeInsets.all(25),
         child: Column(
           children: [
             Text(
-              "You score: $_score",
+              "You score: ${_questionsVM.score}",
               style: Theme.of(context).textTheme.titleSmall,
             ),
             const SizedBox(
@@ -107,6 +114,14 @@ class _HomepageState extends State<Homepage> {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor:
+            _questionsVM.isOutOfQuestion ? Colors.grey : Colors.blueAccent,
+        onPressed: _questionsVM.isOutOfQuestion ? null : () {},
+        tooltip: "previous",
+        child: const Icon(Icons.arrow_back_ios_new),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
     );
   }
 }
