@@ -40,14 +40,26 @@ class _HomepageState extends State<Homepage> {
         padding: const EdgeInsets.all(25),
         child: Column(
           children: [
-            Text("You score: $_score"),
+            Text(
+              "You score: $_score",
+              style: Theme.of(context).textTheme.titleSmall,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
             ElevatedButton(
                 onPressed: () {
                   setState(() {
                     _questionsVM.reset();
                   });
                 },
-                child: const Text("Re-attempt")),
+                child: const Padding(
+                  padding: EdgeInsets.all(12.0),
+                  child: Text(
+                    "Re-attempt",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                )),
           ],
         ),
       ),

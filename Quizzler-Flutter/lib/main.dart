@@ -22,6 +22,10 @@ class Main extends StatelessWidget {
               color: Colors.blueAccent,
               fontSize: 18,
             ),
+            titleSmall: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w400,
+            ),
           )),
       home: const Homepage(),
     );
