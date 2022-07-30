@@ -13,11 +13,17 @@ class Main extends StatelessWidget {
           primaryColor: const Color.fromRGBO(37, 44, 74, 1),
           colorScheme: ColorScheme.fromSwatch()
               .copyWith(secondary: const Color.fromRGBO(37, 44, 74, 0.5)),
-          textTheme: TextTheme(
-            titleLarge: const TextStyle(),
-            titleMedium: const TextStyle(),
+          textTheme: const TextTheme(
+            titleLarge: TextStyle(
+                color: Color.fromRGBO(37, 44, 74, 1),
+                fontWeight: FontWeight.w500,
+                fontSize: 25),
+            titleMedium: TextStyle(
+              color: Colors.blueAccent,
+              fontSize: 18,
+            ),
           )),
-      home: Homepage(),
+      home: const Homepage(),
     );
   }
 }

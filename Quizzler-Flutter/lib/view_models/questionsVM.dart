@@ -37,6 +37,10 @@ class QuestionsVM {
   double get progressBarValue => (1.0 / _questions.length) * (_currIndex + 1);
 
   void nextQuestion() => _currIndex += 1;
+  void previousQuestion() {
+    if (_currIndex == 0) return;
+    _currIndex -= 1;
+  }
 
   void reset() => _currIndex = 0;
 }

@@ -20,31 +20,46 @@ class _HomepageState extends State<Homepage> {
   }
 
   Widget _answerButton(String textAns) {
-    return OutlinedButton(
-        onPressed: () => _pressedAnswerButton(textAns), child: Text(textAns));
+    return SizedBox(
+      width: double.infinity,
+      child: OutlinedButton(
+          style: OutlinedButton.styleFrom(
+            padding: const EdgeInsets.all(15),
+          ),
+          onPressed: () => _pressedAnswerButton(textAns),
+          child: Text(
+            textAns,
+            style: Theme.of(context).textTheme.titleMedium,
+          )),
+    );
   }
 
   Widget _showResult() {
-    return Container(
-      decoration:
-          BoxDecoration(border: Border.all(color: Colors.blue, width: 1.5)),
-      child: Column(
-        children: [
-          Text("You score: $_score"),
-          ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  _questionsVM.reset();
-                });
-              },
-              child: const Text("Re-attempt")),
-        ],
+    return Card(
+      child: Container(
+        padding: const EdgeInsets.all(25),
+        child: Column(
+          children: [
+            Text("You score: $_score"),
+            ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    _questionsVM.reset();
+                  });
+                },
+                child: const Text("Re-attempt")),
+          ],
+        ),
       ),
     );
   }
 
   Widget _showQuestionText() {
-    return Text(_questionsVM.currentQuestionText);
+    return Text(
+      _questionsVM.currentQuestionText,
+      textAlign: TextAlign.center,
+      style: Theme.of(context).textTheme.titleLarge,
+    );
   }
 
   @override
@@ -52,19 +67,31 @@ class _HomepageState extends State<Homepage> {
     return Scaffold(
       body: SafeArea(
         child: Center(
-          child: Column(
-            children: [
-              const Spacer(),
-              !_questionsVM.isOutOfQuestion
-                  ? _showQuestionText()
-                  : _showResult(),
-              const Spacer(),
-              _answerButton("True"),
-              _answerButton("False"),
-              LinearProgressIndicator(
-                value: _questionsVM.progressBarValue,
-              )
-            ],
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              children: [
+                const Spacer(),
+                !_questionsVM.isOutOfQuestion
+                    ? _showQuestionText()
+                    : _showResult(),
+                const Spacer(),
+                _answerButton("True"),
+                const SizedBox(
+                  height: 20,
+                ),
+                _answerButton("False"),
+                const SizedBox(
+                  height: 20,
+                ),
+                LinearProgressIndicator(
+                  value: _questionsVM.progressBarValue,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+              ],
+            ),
           ),
         ),
       ),
