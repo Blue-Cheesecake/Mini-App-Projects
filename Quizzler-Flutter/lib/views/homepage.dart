@@ -9,7 +9,23 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  final questionManager = QuestionManager();
+  final _questionsVM = QuestionsVM();
+  int _score = 0;
+
+  void _pressedAnswerButton(String sentAnswer) {
+    if (_questionsVM.currentQuestionAnswer == sentAnswer) _score += 1;
+    _questionsVM.nextQuestion();
+    if (!_questionsVM.isOutOfQuestion) {
+      setState(() {});
+    } else {
+      // show score
+    }
+  }
+
+  Widget _answerButton(String textAns) {
+    return OutlinedButton(
+        onPressed: () => _pressedAnswerButton(textAns), child: Text(textAns));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +34,14 @@ class _HomepageState extends State<Homepage> {
         child: Center(
           child: Column(
             children: [
-              Text(questionManager.currentQuestionText),
+              const Spacer(),
+              Text(_questionsVM.currentQuestionText),
+              const Spacer(),
+              _answerButton("True"),
+              _answerButton("False"),
+              LinearProgressIndicator(
+                value: _questionsVM.progressBarValue,
+              )
             ],
           ),
         ),

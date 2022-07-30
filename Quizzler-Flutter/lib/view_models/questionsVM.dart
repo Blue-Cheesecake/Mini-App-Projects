@@ -1,6 +1,6 @@
 import 'package:quizzler_flutter/models/question.dart';
 
-class QuestionManager {
+class QuestionsVM {
   final _questions = [
     Question("A slug's blood is green.", "True"),
     Question(
@@ -34,6 +34,7 @@ class QuestionManager {
   String get currentQuestionText => _questions[_currIndex].text;
   String get currentQuestionAnswer => _questions[_currIndex].answer;
   bool get isOutOfQuestion => _currIndex >= _questions.length;
+  double get progressBarValue => (1.0 / _questions.length) * (_currIndex);
 
   void nextQuestion() => _currIndex += 1;
 
