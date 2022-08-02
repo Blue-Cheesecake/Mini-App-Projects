@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meals_flutter/common/material_scaffold.dart';
 import 'package:meals_flutter/components/category_item.dart';
 import 'package:meals_flutter/view_models/categories_manager.dart';
 
@@ -12,8 +13,7 @@ class Categories extends StatefulWidget {
 class _CategoriesState extends State<Categories> {
   final categoriesManager = CategoriesManager();
 
-  @override
-  Widget build(BuildContext context) {
+  Widget _index(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GridView(
@@ -24,9 +24,14 @@ class _CategoriesState extends State<Categories> {
           crossAxisSpacing: 20,
         ),
         children: categoriesManager.categories.map((e) {
-          return CategoryItem(title: e.title, color: e.color);
+          return CategoryItem(id: e.id, title: e.title, color: e.color);
         }).toList(),
       ),
     );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialScaffold(widget: _index(context));
   }
 }

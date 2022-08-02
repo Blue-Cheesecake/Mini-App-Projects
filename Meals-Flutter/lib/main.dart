@@ -29,22 +29,7 @@ class Main extends StatelessWidget {
               fontFamily: "RobotoCondensed",
             )),
       ),
-      home: Scaffold(
-        backgroundColor: const Color.fromRGBO(239, 255, 253, 1),
-        appBar: AppBar(
-          centerTitle: false,
-          elevation: 5,
-          title: const Text(
-            "Meals",
-            style: TextStyle(
-                color: Colors.white,
-                fontFamily: "RobotoCondensed",
-                fontWeight: FontWeight.w700,
-                fontSize: 35),
-          ),
-        ),
-        body: Categories(),
-      ),
+      home: const Categories(),
     );
   }
 }
