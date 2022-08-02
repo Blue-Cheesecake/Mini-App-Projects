@@ -36,7 +36,7 @@ class Main extends StatelessWidget {
       routes: {
         RoutePaths.initial: (_) => const Categories(),
         RoutePaths.categoryMeal: (_) => CategoryView(),
-        RoutePaths.meal: (_) => MealDetail(),
+        RoutePaths.meal: (_) => const MealDetail(),
       },
     );
   }

@@ -23,17 +23,43 @@ class MealCard extends StatelessWidget {
           width: double.infinity,
           child: Column(
             children: [
-              ClipRRect(
+              Stack(children: [
+                ClipRRect(
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(15),
                       topRight: Radius.circular(15)),
-                  child: SizedBox(
-                      child: Image.network(
+                  child: Image.network(
                     meal.imageUrl,
                     width: double.infinity,
                     height: 175,
                     fit: BoxFit.cover,
-                  ))),
+                  ),
+                ),
+                Positioned(
+                  bottom: 10,
+                  right: 0,
+                  child: Container(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 5, horizontal: 8),
+                    width: 220,
+                    decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            bottomLeft: Radius.circular(10)),
+                        color: Color.fromRGBO(0, 0, 0, 0.5)),
+                    child: Text(
+                      meal.title,
+                      softWrap: true,
+                      overflow: TextOverflow.fade,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                )
+              ]),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 15),
                 child: Row(
