@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 class MaterialScaffold extends StatelessWidget {
-  const MaterialScaffold({Key? key, required this.widget}) : super(key: key);
+  const MaterialScaffold({Key? key, required this.widget, this.title})
+      : super(key: key);
 
   final Widget widget;
+  final String? title;
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +14,9 @@ class MaterialScaffold extends StatelessWidget {
       appBar: AppBar(
         centerTitle: false,
         elevation: 5,
-        title: const Text(
-          "Meals",
-          style: TextStyle(
+        title: Text(
+          title ?? "Meals",
+          style: const TextStyle(
               color: Colors.white,
               fontFamily: "RobotoCondensed",
               fontWeight: FontWeight.w700,
