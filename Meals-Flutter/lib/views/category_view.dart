@@ -23,7 +23,7 @@ class CategoryView extends StatelessWidget {
         shrinkWrap: true,
         itemCount: mealsList.length,
         itemBuilder: (context, index) => Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40),
+              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 13),
               child: MealCard(meal: mealsList[index]),
             ));
   }
