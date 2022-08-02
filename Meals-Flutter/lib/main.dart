@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:meals_flutter/constants/route_paths.dart';
 import 'package:meals_flutter/views/categories.dart';
 import 'package:meals_flutter/views/category_view.dart';
+import 'package:meals_flutter/views/meal_detail.dart';
 
 void main() {
   runApp(const Main());
@@ -34,7 +35,8 @@ class Main extends StatelessWidget {
       initialRoute: RoutePaths.initial,
       routes: {
         RoutePaths.initial: (_) => const Categories(),
-        RoutePaths.categoryMeal: (context) => const CategoryView(),
+        RoutePaths.categoryMeal: (_) => CategoryView(),
+        RoutePaths.meal: (_) => MealDetail(),
       },
     );
   }

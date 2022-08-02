@@ -1,27 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:meals_flutter/common/material_scaffold.dart';
+import 'package:meals_flutter/components/meal_card.dart';
+import 'package:meals_flutter/view_models/meals_manager.dart';
 
 class CategoryView extends StatelessWidget {
-  const CategoryView({
+  CategoryView({
     Key? key,
   }) : super(key: key);
 
-  // final String id;
-  // final String title;
+  final _mealsManager = MealsManager();
 
   Widget _index(BuildContext context) {
     final route =
         ModalRoute.of(context)?.settings.arguments as Map<String, Object>;
-    final title = route["title"] as String;
+    final id = route['id'] as String;
+    final mealsList = _mealsManager.meals.where((element) {
+      return element.categories.contains(id);
+    }).toList();
 
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(title),
-        ],
-      ),
-    );
+    return ListView.builder(
+        scrollDirection: Axis.vertical,
+        shrinkWrap: true,
+        itemCount: mealsList.length,
+        itemBuilder: (context, index) => Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40),
+              child: MealCard(meal: mealsList[index]),
+            ));
   }
 
   @override
