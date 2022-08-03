@@ -22,12 +22,19 @@ class Main extends StatelessWidget {
         fontFamily: "Raleway",
         textTheme: ThemeData.light().textTheme.copyWith(
             bodyText1: const TextStyle(
-              color: Color.fromRGBO(66, 194, 255, 0.8),
+              color: Colors.black,
+              fontSize: 16,
             ),
-            bodyText2: const TextStyle(color: Color.fromRGBO(133, 244, 255, 1)),
+            bodyText2: const TextStyle(color: Colors.blueGrey, fontSize: 17),
+            headline4: const TextStyle(
+              color: Colors.blueAccent,
+              fontSize: 28,
+              fontWeight: FontWeight.w700,
+              fontFamily: "RobotoCondensed",
+            ),
             headline3: const TextStyle(
               color: Color.fromRGBO(1, 1, 1, 1),
-              fontSize: 24,
+              fontSize: 25,
               fontWeight: FontWeight.w700,
               fontFamily: "RobotoCondensed",
             )),
