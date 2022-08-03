@@ -16,11 +16,12 @@ class MaterialScaffold extends StatelessWidget {
         elevation: 5,
         title: Text(
           title ?? "Meals",
+          overflow: TextOverflow.fade,
           style: const TextStyle(
               color: Colors.white,
               fontFamily: "RobotoCondensed",
               fontWeight: FontWeight.w700,
-              fontSize: 35),
+              fontSize: 28),
         ),
       ),
       body: widget,

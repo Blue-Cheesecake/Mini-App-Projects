@@ -7,7 +7,7 @@ class MealCard extends StatelessWidget {
 
   final Meal meal;
   void _pressedMealCard(BuildContext context) {
-    Navigator.of(context).pushNamed(RoutePaths.meal, arguments: {"meal": meal});
+    Navigator.of(context).pushNamed(RoutePaths.meal, arguments: meal);
   }
 
   @override
@@ -102,7 +102,23 @@ class MealCard extends StatelessWidget {
                           ),
                         ),
                       ],
-                    )
+                    ),
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.attach_money,
+                          color: Colors.blueGrey,
+                        ),
+                        Text(
+                          meal.affordabilityString,
+                          style: const TextStyle(
+                            fontFamily: "RobotoCondensed",
+                            color: Colors.blueGrey,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               )

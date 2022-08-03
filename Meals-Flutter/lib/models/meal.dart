@@ -30,4 +30,14 @@ class Meal {
       required this.isVegan,
       required this.isVegetarian,
       required this.isLactoseFree});
+
+  String get affordabilityString {
+    if (affordability == Affordability.affordable) {
+      return "Cheap";
+    }
+    if (affordability == Affordability.luxurious) {
+      return "Luxurious";
+    }
+    return "Pricey";
+  }
 }
