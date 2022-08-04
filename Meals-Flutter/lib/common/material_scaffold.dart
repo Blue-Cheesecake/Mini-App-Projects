@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meals_flutter/common/menuDrawer.dart';
 import 'package:meals_flutter/views/categories.dart';
 import 'package:meals_flutter/views/favorites.dart';
 
@@ -48,7 +49,15 @@ class _MaterialScaffoldState extends State<MaterialScaffold> {
               fontWeight: FontWeight.w700,
               fontSize: 28),
         ),
+        actions: [
+          widget.widget != null
+              ? IconButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  icon: const Icon(Icons.arrow_back_ios_new))
+              : const SizedBox(),
+        ],
       ),
+      drawer: const MenuDrawer(),
       bottomNavigationBar: widget.widget == null
           ? BottomNavigationBar(
               onTap: _selectedTab,

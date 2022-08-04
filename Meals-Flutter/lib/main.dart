@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meals_flutter/common/material_scaffold.dart';
 import 'package:meals_flutter/views/category_view.dart';
+import 'package:meals_flutter/views/filtersView.dart';
 import 'package:meals_flutter/views/meal_detail.dart';
 
 import 'constants/route_paths.dart';
@@ -40,12 +41,13 @@ class Main extends StatelessWidget {
               fontFamily: "RobotoCondensed",
             )),
       ),
-      home: const MaterialScaffold(),
-      // initialRoute: RoutePaths.initial,
+      // home: const MaterialScaffold(),
+      initialRoute: RoutePaths.initial,
       routes: {
-        // RoutePaths.initial: (_) => const Categories(),
+        RoutePaths.initial: (_) => const MaterialScaffold(),
         RoutePaths.categoryMeal: (_) => CategoryView(),
         RoutePaths.meal: (_) => const MealDetail(),
+        RoutePaths.filters: (_) => const FiltersView(),
         // RoutePaths.favorites: (_) => const Favorites(),
       },
     );
