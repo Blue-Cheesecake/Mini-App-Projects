@@ -84,7 +84,7 @@ class MealDetail extends StatelessWidget {
     // image
     // ingredients
     // steps
-    final equalHeight = MediaQuery.of(context).size.height * 0.22;
+    final equalHeight = MediaQuery.of(context).size.height * 0.24;
 
     return SingleChildScrollView(
       child: Column(

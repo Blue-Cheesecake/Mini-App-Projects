@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:meals_flutter/common/material_scaffold.dart';
 import 'package:meals_flutter/components/category_item.dart';
 import 'package:meals_flutter/view_models/categories_manager.dart';
 
@@ -32,6 +31,6 @@ class _CategoriesState extends State<Categories> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialScaffold(widget: _index(context));
+    return _index(context);
   }
 }

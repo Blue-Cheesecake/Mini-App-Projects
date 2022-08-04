@@ -1,11 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:meals_flutter/views/categories.dart';
+import 'package:meals_flutter/views/favorites.dart';
 
-class MaterialScaffold extends StatelessWidget {
-  const MaterialScaffold({Key? key, required this.widget, this.title})
-      : super(key: key);
+class MaterialScaffold extends StatefulWidget {
+  const MaterialScaffold({Key? key, this.widget, this.title}) : super(key: key);
 
-  final Widget widget;
+  final Widget? widget;
   final String? title;
+
+  @override
+  State<MaterialScaffold> createState() => _MaterialScaffoldState();
+}
+
+class _MaterialScaffoldState extends State<MaterialScaffold> {
+  final List<Map<String, Object>> _widgetsOnTabs = [
+    {
+      "title": "Meals",
+      "pages": const Categories(),
+    },
+    {
+      "title": "Favorites",
+      "pages": const Favorites(),
+    }
+  ];
+
+  var _selectedIndex = 0;
+
+  void _selectedTab(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +40,7 @@ class MaterialScaffold extends StatelessWidget {
         centerTitle: false,
         elevation: 5,
         title: Text(
-          title ?? "Meals",
+          widget.title ?? _widgetsOnTabs[_selectedIndex]["title"] as String,
           overflow: TextOverflow.fade,
           style: const TextStyle(
               color: Colors.white,
@@ -24,7 +49,22 @@ class MaterialScaffold extends StatelessWidget {
               fontSize: 28),
         ),
       ),
-      body: widget,
+      bottomNavigationBar: widget.widget == null
+          ? BottomNavigationBar(
+              onTap: _selectedTab,
+              currentIndex: _selectedIndex,
+              items: const [
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.category), label: "Category"),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.favorite), label: "Favorites")
+              ],
+            )
+          : const SizedBox.shrink(),
+      body: SafeArea(
+        child:
+            widget.widget ?? _widgetsOnTabs[_selectedIndex]["pages"] as Widget,
+      ),
     );
   }
 }
