@@ -10,8 +10,26 @@ void main() {
   runApp(const Main());
 }
 
-class Main extends StatelessWidget {
+class Main extends StatefulWidget {
   const Main({Key? key}) : super(key: key);
+
+  @override
+  State<Main> createState() => _MainState();
+}
+
+class _MainState extends State<Main> {
+  var _filters = {
+    "gluten": false,
+    "vegetarian": false,
+    "vegan": false,
+    "lactose": false,
+  };
+
+  void _setFilters(Map<String, bool> newFilters) {
+    setState(() {
+      _filters = newFilters;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +65,10 @@ class Main extends StatelessWidget {
         RoutePaths.initial: (_) => const MaterialScaffold(),
         RoutePaths.categoryMeal: (_) => CategoryView(),
         RoutePaths.meal: (_) => const MealDetail(),
-        RoutePaths.filters: (_) => const FiltersView(),
+        RoutePaths.filters: (_) => FiltersView(
+              setFilters: _setFilters,
+              filters: _filters,
+            ),
         // RoutePaths.favorites: (_) => const Favorites(),
       },
     );
