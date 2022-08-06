@@ -71,13 +71,15 @@ class MenuDrawer extends StatelessWidget {
             context,
             Icons.restaurant_menu,
             "Meals",
-            () => Navigator.of(context).pushNamed(RoutePaths.initial),
+            () =>
+                Navigator.of(context).pushReplacementNamed(RoutePaths.initial),
           ),
           _menuItem(
             context,
             Icons.settings,
             "Filter",
-            () => Navigator.of(context).pushNamed(RoutePaths.filters),
+            () =>
+                Navigator.of(context).pushReplacementNamed(RoutePaths.filters),
           )
         ],
       ),

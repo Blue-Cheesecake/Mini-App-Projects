@@ -4,10 +4,13 @@ import 'package:meals_flutter/views/categories.dart';
 import 'package:meals_flutter/views/favorites.dart';
 
 class MaterialScaffold extends StatefulWidget {
-  const MaterialScaffold({Key? key, this.widget, this.title}) : super(key: key);
+  const MaterialScaffold(
+      {Key? key, this.widget, this.title, this.requireBackButt})
+      : super(key: key);
 
   final Widget? widget;
   final String? title;
+  final bool? requireBackButt;
 
   @override
   State<MaterialScaffold> createState() => _MaterialScaffoldState();
@@ -50,7 +53,7 @@ class _MaterialScaffoldState extends State<MaterialScaffold> {
               fontSize: 28),
         ),
         actions: [
-          widget.widget != null
+          widget.widget != null && (widget.requireBackButt ?? true)
               ? IconButton(
                   onPressed: () => Navigator.of(context).pop(),
                   icon: const Icon(Icons.arrow_back_ios_new))

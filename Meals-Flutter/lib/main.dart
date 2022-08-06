@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:meals_flutter/common/material_scaffold.dart';
 import 'package:meals_flutter/views/category_view.dart';
 import 'package:meals_flutter/views/filtersView.dart';
 import 'package:meals_flutter/views/meal_detail.dart';
 
+import 'common/material_scaffold.dart';
 import 'constants/route_paths.dart';
 
 void main() {
