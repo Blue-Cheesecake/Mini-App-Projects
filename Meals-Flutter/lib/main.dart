@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meals_flutter/view_models/meals_manager.dart';
 import 'package:meals_flutter/views/category_view.dart';
 import 'package:meals_flutter/views/filtersView.dart';
 import 'package:meals_flutter/views/meal_detail.dart';
@@ -25,9 +26,18 @@ class _MainState extends State<Main> {
     "lactose": false,
   };
 
+  var _availableMeals = MealsManager().meals;
+
   void _setFilters(Map<String, bool> newFilters) {
     setState(() {
       _filters = newFilters;
+
+      _availableMeals = _availableMeals.where((element) {
+        return element.isGlutenFree == newFilters["gluten"]! &&
+            element.isVegetarian == newFilters["vegetarian"]! &&
+            element.isVegan == newFilters["vegan"]! &&
+            element.isLactoseFree == newFilters["lactose"]!;
+      }).toList();
     });
   }
 
@@ -63,7 +73,9 @@ class _MainState extends State<Main> {
       initialRoute: RoutePaths.initial,
       routes: {
         RoutePaths.initial: (_) => const MaterialScaffold(),
-        RoutePaths.categoryMeal: (_) => CategoryView(),
+        RoutePaths.categoryMeal: (_) => CategoryView(
+              availableMeals: _availableMeals,
+            ),
         RoutePaths.meal: (_) => const MealDetail(),
         RoutePaths.filters: (_) => FiltersView(
               setFilters: _setFilters,

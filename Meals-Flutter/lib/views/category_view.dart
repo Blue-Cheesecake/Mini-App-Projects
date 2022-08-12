@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:meals_flutter/common/material_scaffold.dart';
 import 'package:meals_flutter/components/meal_card.dart';
-import 'package:meals_flutter/view_models/meals_manager.dart';
+import 'package:meals_flutter/models/meal.dart';
 
 class CategoryView extends StatelessWidget {
-  CategoryView({
+  const CategoryView({
     Key? key,
+    required this.availableMeals,
   }) : super(key: key);
 
-  final _mealsManager = MealsManager();
+  final List<Meal> availableMeals;
 
   Widget _index(BuildContext context) {
     final route =
         ModalRoute.of(context)?.settings.arguments as Map<String, Object>;
     final id = route['id'] as String;
-    final mealsList = _mealsManager.meals.where((element) {
+    final mealsList = availableMeals.where((element) {
       return element.categories.contains(id);
     }).toList();
 
