@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tip_calculator/utils/constants.dart';
+import 'package:tip_calculator/views/home/components/input_field.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -11,26 +11,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  Widget _buildBillComponent(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text("Bill"),
-        TextField(
-          textAlign: TextAlign.end,
-          onSubmitted: (valueChanged) {},
-          controller: TextEditingController(text: "0.0"),
-          keyboardType: TextInputType.number,
-          decoration: InputDecoration(
-            prefixIcon: SvgPicture.asset(
-              "assets/images/icon-dollar.svg",
-              fit: BoxFit.scaleDown,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
+  final TextEditingController _billController = TextEditingController();
+  final TextEditingController _numPeople = TextEditingController();
 
   Widget _buildBillCard(BuildContext context) {
     return Card(
@@ -46,7 +28,25 @@ class _HomeState extends State<Home> {
         width: double.infinity,
         child: Column(
           children: [
-            _buildBillComponent(context),
+            InputField(
+              title: "Bill",
+              handleSubmitted: (changedVal) {},
+              prefixIcon: SvgPicture.asset(
+                "assets/images/icon-dollar.svg",
+                fit: BoxFit.scaleDown,
+              ),
+              controller: _billController,
+            ),
+            const SizedBox(height: 15),
+            InputField(
+              title: "Number of People",
+              handleSubmitted: (changedVal) {},
+              prefixIcon: SvgPicture.asset(
+                "assets/images/icon-person.svg",
+                fit: BoxFit.scaleDown,
+              ),
+              controller: _numPeople,
+            ),
           ],
         ),
       ),
