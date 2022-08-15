@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tip_calculator/utils/constants.dart';
 import 'package:tip_calculator/views/home/components/input_field.dart';
+import 'package:tip_calculator/views/home/components/tip_amount.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -13,6 +14,13 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final TextEditingController _billController = TextEditingController();
   final TextEditingController _numPeople = TextEditingController();
+
+  void _resetHandler() {
+    setState(() {
+      _billController.text = "";
+      _numPeople.text = "";
+    });
+  }
 
   Widget _buildBillCard(BuildContext context) {
     return Card(
@@ -46,6 +54,11 @@ class _HomeState extends State<Home> {
                 fit: BoxFit.scaleDown,
               ),
               controller: _numPeople,
+            ),
+            TipAmountCard(
+              tipAmount: 123.23,
+              total: 456.7,
+              resetHandler: _resetHandler,
             ),
           ],
         ),

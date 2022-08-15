@@ -5,7 +5,7 @@ import 'package:tip_calculator/views/home/home.dart';
 
 main() {
   BlocOverrides.runZoned(
-    () {
+        () {
       runApp(const App());
     },
     blocObserver: AppBlocObserver(),
@@ -21,6 +21,7 @@ class App extends StatelessWidget {
       child: MaterialApp(
         theme: ThemeData(
           fontFamily: "SpaceMono",
+
         ),
         home: const Home(),
       ),
