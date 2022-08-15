@@ -7,7 +7,6 @@ part 'bill_state.dart';
 class BillBloc extends Bloc<BillEvent, BillState> {
   BillBloc() : super(const BillState(0.0)) {
     on<ChangeBillValueEvent>((event, emit) {
-      // TODO: implement event handler
       print(event.newVal);
       emit(state.copyWith(event.newVal));
     });

@@ -27,8 +27,8 @@ class InputField extends StatelessWidget {
           style: Theme.of(context).textTheme.headline1,
         ),
         TextField(
+          onChanged: handleSubmitted,
           textAlign: TextAlign.end,
-          onSubmitted: handleSubmitted,
           controller: controller,
           keyboardType: Platform.isIOS
               ? const TextInputType.numberWithOptions(

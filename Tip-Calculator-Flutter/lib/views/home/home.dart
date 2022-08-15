@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tip_calculator/bloc/bill/bill_bloc.dart';
+import 'package:tip_calculator/bloc/num_of_people/num_of_people_bloc.dart';
+import 'package:tip_calculator/models/tips_calculator.dart';
 import 'package:tip_calculator/utils/constants.dart';
 import 'package:tip_calculator/views/home/components/input_field.dart';
 import 'package:tip_calculator/views/home/components/tip_amount.dart';
@@ -41,7 +43,6 @@ class _HomeState extends State<Home> {
             InputField(
               title: "Bill",
               handleSubmitted: (changedVal) {
-                print("New Val: $changedVal");
                 context
                     .read<BillBloc>()
                     .add(ChangeBillValueEvent(double.parse(changedVal)));
@@ -55,19 +56,33 @@ class _HomeState extends State<Home> {
             const SizedBox(height: 15),
             InputField(
               title: "Number of People",
-              handleSubmitted: (changedVal) {},
+              handleSubmitted: (changedVal) {
+                context
+                    .read<NumOfPeopleBloc>()
+                    .add(ChangeNumPeopleEvent(int.parse(changedVal)));
+              },
               prefixIcon: SvgPicture.asset(
                 "assets/images/icon-person.svg",
                 fit: BoxFit.scaleDown,
               ),
               controller: _numPeople,
             ),
-            BlocBuilder<BillBloc, BillState>(
-              builder: (context, state) {
-                return TipAmountCard(
-                  tipAmount: state.billValue,
-                  total: 456.7,
-                  resetHandler: _resetHandler,
+            BlocBuilder<NumOfPeopleBloc, NumOfPeopleState>(
+              builder: (context, state1) {
+                return BlocBuilder<BillBloc, BillState>(
+                  builder: (context, state2) {
+                    final tipsCalculator = TipsCalculator(
+                      state2.billValue,
+                      15,
+                      state1.numOfPeople,
+                    );
+
+                    return TipAmountCard(
+                      tipAmount: tipsCalculator.tipAmount,
+                      total: tipsCalculator.total,
+                      resetHandler: _resetHandler,
+                    );
+                  },
                 );
               },
             ),

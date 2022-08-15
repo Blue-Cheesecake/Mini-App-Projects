@@ -1,10 +1,12 @@
 part of 'num_of_people_bloc.dart';
 
-abstract class NumOfPeopleState extends Equatable {
-  const NumOfPeopleState();
-}
+class NumOfPeopleState extends Equatable {
+  final int numOfPeople;
 
-class NumOfPeopleInitial extends NumOfPeopleState {
+  const NumOfPeopleState(this.numOfPeople);
+
+  NumOfPeopleState copyWith(int newVal) => NumOfPeopleState(newVal);
+
   @override
-  List<Object> get props => [];
+  List<Object> get props => [numOfPeople];
 }

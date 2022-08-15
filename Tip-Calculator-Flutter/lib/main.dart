@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tip_calculator/bloc/app_bloc_observer.dart';
 import 'package:tip_calculator/bloc/bill/bill_bloc.dart';
+import 'package:tip_calculator/bloc/num_of_people/num_of_people_bloc.dart';
 import 'package:tip_calculator/utils/constants.dart';
 import 'package:tip_calculator/views/home/home.dart';
 
 main() {
   BlocOverrides.runZoned(
-        () {
+    () {
       runApp(const App());
     },
     blocObserver: AppBlocObserver(),
@@ -21,9 +22,10 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final billBloc = BlocProvider(create: (context) => BillBloc());
+    final numPeopleBloc = BlocProvider(create: (context) => NumOfPeopleBloc());
 
     return MultiBlocProvider(
-      providers: [billBloc],
+      providers: [billBloc, numPeopleBloc],
       child: GestureDetector(
         child: MaterialApp(
           theme: ThemeData(
