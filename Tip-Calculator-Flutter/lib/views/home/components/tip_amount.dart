@@ -15,17 +15,24 @@ class TipAmountCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      // color: ThemeColor.veryDarkCyan,
       child: SizedBox(
         width: double.infinity,
         child: Column(
           children: [
             ListTile(
-              title: const Text("Tip Amount"),
+              title: Text(
+                "Tip Amount",
+                style: Theme.of(context).textTheme.headline2,
+              ),
               subtitle: const Text("/ person"),
               trailing: Text("\$$tipAmount"),
             ),
             ListTile(
-              title: const Text("Total"),
+              title: Text(
+                "Total",
+                style: Theme.of(context).textTheme.headline2,
+              ),
               subtitle: const Text("/ person"),
               trailing: Text("\$$total"),
             ),

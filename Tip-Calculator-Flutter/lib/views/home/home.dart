@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:tip_calculator/bloc/bill/bill_bloc.dart';
 import 'package:tip_calculator/utils/constants.dart';
 import 'package:tip_calculator/views/home/components/input_field.dart';
 import 'package:tip_calculator/views/home/components/tip_amount.dart';
@@ -38,7 +40,12 @@ class _HomeState extends State<Home> {
           children: [
             InputField(
               title: "Bill",
-              handleSubmitted: (changedVal) {},
+              handleSubmitted: (changedVal) {
+                print("New Val: $changedVal");
+                context
+                    .read<BillBloc>()
+                    .add(ChangeBillValueEvent(double.parse(changedVal)));
+              },
               prefixIcon: SvgPicture.asset(
                 "assets/images/icon-dollar.svg",
                 fit: BoxFit.scaleDown,
@@ -55,10 +62,14 @@ class _HomeState extends State<Home> {
               ),
               controller: _numPeople,
             ),
-            TipAmountCard(
-              tipAmount: 123.23,
-              total: 456.7,
-              resetHandler: _resetHandler,
+            BlocBuilder<BillBloc, BillState>(
+              builder: (context, state) {
+                return TipAmountCard(
+                  tipAmount: state.billValue,
+                  total: 456.7,
+                  resetHandler: _resetHandler,
+                );
+              },
             ),
           ],
         ),

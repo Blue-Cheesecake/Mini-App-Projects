@@ -8,7 +8,7 @@ class ThemeColor {
   static final strongCyan =
       const HSLColor.fromAHSL(1, 172, 0.67, 0.45).toColor();
   static final veryDarkCyan =
-      const HSLColor.fromAHSL(1, 183, 0.100, 0.15).toColor();
+      const HSLColor.fromAHSL(1, 183, 1, 0.15).toColor();
   static final darkGrayishCyan =
       const HSLColor.fromAHSL(1, 186, 0.14, 0.43).toColor();
   static final grayishCyan =

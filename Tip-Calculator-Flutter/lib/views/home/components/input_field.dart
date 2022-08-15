@@ -22,7 +22,10 @@ class InputField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(title),
+        Text(
+          title,
+          style: Theme.of(context).textTheme.headline1,
+        ),
         TextField(
           textAlign: TextAlign.end,
           onSubmitted: handleSubmitted,
