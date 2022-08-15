@@ -26,7 +26,7 @@ class TipAmountCard extends StatelessWidget {
                 style: Theme.of(context).textTheme.headline2,
               ),
               subtitle: const Text("/ person"),
-              trailing: Text("\$$tipAmount"),
+              trailing: Text("\$${tipAmount.toStringAsFixed(2)}"),
             ),
             ListTile(
               title: Text(
@@ -34,7 +34,7 @@ class TipAmountCard extends StatelessWidget {
                 style: Theme.of(context).textTheme.headline2,
               ),
               subtitle: const Text("/ person"),
-              trailing: Text("\$$total"),
+              trailing: Text("\$${total.toStringAsFixed(2)}"),
             ),
             ElevatedButton(onPressed: resetHandler, child: const Text("RESET"))
           ],

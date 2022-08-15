@@ -19,11 +19,13 @@ class _HomeState extends State<Home> {
   final TextEditingController _billController = TextEditingController();
   final TextEditingController _numPeople = TextEditingController();
 
-  void _resetHandler() {
+  void _resetHandler(BuildContext context) {
     setState(() {
       _billController.text = "";
       _numPeople.text = "";
     });
+    context.read<BillBloc>().add(ResetBillValueEvent());
+    context.read<NumOfPeopleBloc>().add(ResetNumPeopleEvent());
   }
 
   Widget _buildBillCard(BuildContext context) {
@@ -80,7 +82,7 @@ class _HomeState extends State<Home> {
                     return TipAmountCard(
                       tipAmount: tipsCalculator.tipAmount,
                       total: tipsCalculator.total,
-                      resetHandler: _resetHandler,
+                      resetHandler: () => _resetHandler(context),
                     );
                   },
                 );
