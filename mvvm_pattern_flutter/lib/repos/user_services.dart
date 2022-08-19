@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:http/http.dart' as http;
 import 'package:mvvm_pattern_flutter/repos/api_status.dart';
 import 'package:mvvm_pattern_flutter/utils/constants/http_status_codes.dart';
@@ -13,6 +15,10 @@ class UserService {
       }
       return Failure(
           code: invalidResponseCODE, errorResponse: "Invalid Response");
+    } on HttpException {
+      return Failure(code: noInternetCODE, errorResponse: "No Internet");
+    } on FormatException {
+      return Failure(code: invalidFormatCODE, errorResponse: "Invalid Format");
     } catch (e) {
       return Failure(code: unknownErrorCODE, errorResponse: "Unknown Error");
     }
