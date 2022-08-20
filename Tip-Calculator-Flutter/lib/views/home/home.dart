@@ -83,7 +83,9 @@ class _HomeState extends State<Home> {
             /// Select Tip
             ///
             ///
-            TipsList(),
+            TipsList(handleSelectedTip: (changedVal) {
+              context.read<SelectTipBloc>().add(SelectTip(changedVal));
+            }),
             const SizedBox(height: 15),
 
             /// Result
