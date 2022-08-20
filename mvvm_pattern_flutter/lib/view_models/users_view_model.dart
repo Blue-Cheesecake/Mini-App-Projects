@@ -15,6 +15,10 @@ class UsersViewModel extends ChangeNotifier {
 
   List<User> get usersModelList => _usersModelList;
 
+  UsersViewModel() {
+    getUsers();
+  }
+
   setLoading(value) {
     _loading = value;
     notifyListeners();
@@ -28,7 +32,7 @@ class UsersViewModel extends ChangeNotifier {
     _usersModelList = value;
   }
 
-  void getUser() async {
+  getUsers() async {
     setLoading(true);
     var res = await UserService.getUsers();
     if (res is Success) {

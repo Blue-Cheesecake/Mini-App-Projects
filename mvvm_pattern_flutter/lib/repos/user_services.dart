@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
+import 'package:mvvm_pattern_flutter/models/user_model.dart';
 import 'package:mvvm_pattern_flutter/repos/api_status.dart';
 import 'package:mvvm_pattern_flutter/utils/constants/http_status_codes.dart';
 import 'package:mvvm_pattern_flutter/utils/constants/urls.dart';
@@ -11,7 +12,8 @@ class UserService {
       var url = Uri.parse(userJSON);
       var response = await http.get(url);
       if (response.statusCode == successCODE) {
-        return Success(code: successCODE, response: response);
+        return Success(
+            code: successCODE, response: userFromJson(response.body));
       }
       return Failure(
           code: invalidResponseCODE, errorResponse: "Invalid Response");

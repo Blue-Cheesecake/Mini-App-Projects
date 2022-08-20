@@ -8,7 +8,6 @@ class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
 
   _ui(BuildContext context, UsersViewModel usersViewModel) {
-    usersViewModel.getUser();
     if (usersViewModel.loading) {
       return const Text("Loading");
     }
@@ -37,10 +36,6 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     UsersViewModel usersViewModel = context.watch<UsersViewModel>();
 
-    Future.delayed(Duration.zero, () async {
-      usersViewModel.getUser();
-    });
-    
     return Scaffold(
       appBar: AppBar(
         title: const Text("MVVM Design Pattern"),
