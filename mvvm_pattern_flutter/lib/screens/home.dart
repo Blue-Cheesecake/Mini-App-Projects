@@ -22,12 +22,17 @@ class Home extends StatelessWidget {
         scrollDirection: Axis.vertical,
         shrinkWrap: true,
         itemCount: userModelList.length,
+        physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
-          return Card(
-            child: Text(
-              userModelList[index].name,
-              style: const TextStyle(color: Colors.black),
-            ),
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ListTile(
+                title: Text(userModelList[index].name),
+                subtitle: Text(userModelList[index].username),
+              ),
+              const Divider(),
+            ],
           );
         });
   }
@@ -40,10 +45,14 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         title: const Text("MVVM Design Pattern"),
       ),
-      body: Column(
-        children: [
-          _ui(context, usersViewModel),
-        ],
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              _ui(context, usersViewModel),
+            ],
+          ),
+        ),
       ),
     );
   }
