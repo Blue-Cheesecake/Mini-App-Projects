@@ -3,10 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tip_calculator/bloc/bill/bill_bloc.dart';
 import 'package:tip_calculator/bloc/num_of_people/num_of_people_bloc.dart';
+import 'package:tip_calculator/bloc/select_tip/select_tip_bloc.dart';
 import 'package:tip_calculator/models/tips_calculator.dart';
 import 'package:tip_calculator/utils/constants.dart';
 import 'package:tip_calculator/views/home/components/input_field.dart';
 import 'package:tip_calculator/views/home/components/tip_amount.dart';
+import 'package:tip_calculator/views/home/components/tips_list.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -42,6 +44,9 @@ class _HomeState extends State<Home> {
         width: double.infinity,
         child: Column(
           children: [
+            /// Bill Input
+            ///
+            ///
             InputField(
               title: "Bill",
               handleSubmitted: (changedVal) {
@@ -56,6 +61,10 @@ class _HomeState extends State<Home> {
               controller: _billController,
             ),
             const SizedBox(height: 15),
+
+            /// Number of People Input
+            ///
+            ///
             InputField(
               title: "Number of People",
               handleSubmitted: (changedVal) {
@@ -69,20 +78,35 @@ class _HomeState extends State<Home> {
               ),
               controller: _numPeople,
             ),
-            BlocBuilder<NumOfPeopleBloc, NumOfPeopleState>(
-              builder: (context, state1) {
-                return BlocBuilder<BillBloc, BillState>(
-                  builder: (context, state2) {
-                    final tipsCalculator = TipsCalculator(
-                      state2.billValue,
-                      15,
-                      state1.numOfPeople,
-                    );
+            const SizedBox(height: 15),
 
-                    return TipAmountCard(
-                      tipAmount: tipsCalculator.tipAmount,
-                      total: tipsCalculator.total,
-                      resetHandler: () => _resetHandler(context),
+            /// Select Tip
+            ///
+            ///
+            TipsList(),
+            const SizedBox(height: 15),
+
+            /// Result
+            ///
+            ///
+            BlocBuilder<SelectTipBloc, SelectTipState>(
+              builder: (context, selectTipState) {
+                return BlocBuilder<NumOfPeopleBloc, NumOfPeopleState>(
+                  builder: (context, numPeoState) {
+                    return BlocBuilder<BillBloc, BillState>(
+                      builder: (context, billState) {
+                        final tipsCalculator = TipsCalculator(
+                          billState.billValue,
+                          selectTipState.selectedTip,
+                          numPeoState.numOfPeople,
+                        );
+
+                        return TipAmountCard(
+                          tipAmount: tipsCalculator.tipAmount,
+                          total: tipsCalculator.total,
+                          resetHandler: () => _resetHandler(context),
+                        );
+                      },
                     );
                   },
                 );

@@ -4,6 +4,8 @@ class Constants {
   static const color = ThemeColor;
 }
 
+const defaultTip = 5;
+
 class ThemeColor {
   static final strongCyan =
       const HSLColor.fromAHSL(1, 172, 0.67, 0.45).toColor();

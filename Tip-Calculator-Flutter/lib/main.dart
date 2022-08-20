@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tip_calculator/bloc/app_bloc_observer.dart';
 import 'package:tip_calculator/bloc/bill/bill_bloc.dart';
 import 'package:tip_calculator/bloc/num_of_people/num_of_people_bloc.dart';
+import 'package:tip_calculator/bloc/select_tip/select_tip_bloc.dart';
 import 'package:tip_calculator/utils/constants.dart';
 import 'package:tip_calculator/views/home/home.dart';
 
@@ -23,9 +24,10 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     final billBloc = BlocProvider(create: (context) => BillBloc());
     final numPeopleBloc = BlocProvider(create: (context) => NumOfPeopleBloc());
+    final selectTipBloc = BlocProvider(create: (context) => SelectTipBloc());
 
     return MultiBlocProvider(
-      providers: [billBloc, numPeopleBloc],
+      providers: [billBloc, numPeopleBloc, selectTipBloc],
       child: GestureDetector(
         child: MaterialApp(
           theme: ThemeData(
