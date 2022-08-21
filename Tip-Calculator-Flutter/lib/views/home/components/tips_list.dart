@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tip_calculator/bloc/select_tip/select_tip_bloc.dart';
 import 'package:tip_calculator/views/home/components/tip.dart';
 
 class TipsList extends StatefulWidget {
@@ -33,25 +35,29 @@ class _TipsListState extends State<TipsList> {
           style: Theme.of(context).textTheme.headline1,
         ),
         const SizedBox(height: 15),
-        GridView(
-          scrollDirection: Axis.vertical,
-          shrinkWrap: true,
-          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 180,
-            childAspectRatio: 9 / 3,
-            mainAxisSpacing: 20,
-            crossAxisSpacing: 30,
-          ),
-          children: tipsList.asMap().entries.map((e) {
-            int idx = e.key;
-            int val = e.value;
-            return Tip(
-              tipValue: val,
-              selected: _currentSelectIndex == idx,
-              index: idx,
-              handleClicked: handleClicked,
+        BlocBuilder<SelectTipBloc, SelectTipState>(
+          builder: (context, state) {
+            return GridView(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 180,
+                childAspectRatio: 9 / 3,
+                mainAxisSpacing: 20,
+                crossAxisSpacing: 30,
+              ),
+              children: tipsList.asMap().entries.map((e) {
+                int idx = e.key;
+                int val = e.value;
+                return Tip(
+                  tipValue: val,
+                  selected: val == state.selectedTip,
+                  index: idx,
+                  handleClicked: handleClicked,
+                );
+              }).toList(),
             );
-          }).toList(),
+          },
         ),
       ],
     );
