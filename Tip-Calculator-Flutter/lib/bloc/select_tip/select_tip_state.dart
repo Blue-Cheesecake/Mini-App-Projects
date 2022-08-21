@@ -8,6 +8,5 @@ class SelectTipState extends Equatable {
   SelectTipState copyWith(int newVal) => SelectTipState(newVal);
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [selectedTip];
 }
-

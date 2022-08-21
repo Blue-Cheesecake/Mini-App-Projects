@@ -18,8 +18,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final TextEditingController _billController = TextEditingController();
-  final TextEditingController _numPeople = TextEditingController();
+  final _billController = TextEditingController();
+  final _numPeople = TextEditingController();
 
   void _resetHandler(BuildContext context) {
     setState(() {
@@ -28,6 +28,7 @@ class _HomeState extends State<Home> {
     });
     context.read<BillBloc>().add(ResetBillValueEvent());
     context.read<NumOfPeopleBloc>().add(ResetNumPeopleEvent());
+    context.read<SelectTipBloc>().add(const SelectTip(defaultTip));
   }
 
   Widget _buildBillCard(BuildContext context) {
@@ -83,9 +84,11 @@ class _HomeState extends State<Home> {
             /// Select Tip
             ///
             ///
-            TipsList(handleSelectedTip: (changedVal) {
-              context.read<SelectTipBloc>().add(SelectTip(changedVal));
-            }),
+            TipsList(
+              handleSelectedTip: (changedVal) {
+                context.read<SelectTipBloc>().add(SelectTip(changedVal));
+              },
+            ),
             const SizedBox(height: 15),
 
             /// Result
@@ -125,6 +128,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: ThemeColor.lightGrayishCyan,
       body: SafeArea(
+        bottom: false,
         child: SingleChildScrollView(
           child: Column(
             children: [

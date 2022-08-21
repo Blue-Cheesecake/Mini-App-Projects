@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tip_calculator/views/home/components/tip.dart';
 
 class TipsList extends StatefulWidget {
   final void Function(int) handleSelectedTip;
@@ -12,6 +13,15 @@ class TipsList extends StatefulWidget {
 class _TipsListState extends State<TipsList> {
   final tipsList = [5, 10, 15, 25, 50];
   var _currentSelectIndex = 0;
+  var _currentSelectValue = 5;
+
+  void handleClicked(int value, int index) {
+    setState(() {
+      _currentSelectValue = value;
+      _currentSelectIndex = index;
+    });
+    widget.handleSelectedTip(_currentSelectValue);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,16 +33,26 @@ class _TipsListState extends State<TipsList> {
           style: Theme.of(context).textTheme.headline1,
         ),
         const SizedBox(height: 15),
-        // SizedBox(
-        //   height: 100,
-        //   child: GridView.builder(
-        //     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        //         crossAxisCount: 2),
-        //     itemBuilder: (context, index) {
-        //       return Tip(tipValue: tipsList[index], selected: false);
-        //     },
-        //   ),
-        // )
+        GridView(
+          scrollDirection: Axis.vertical,
+          shrinkWrap: true,
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 180,
+            childAspectRatio: 9 / 3,
+            mainAxisSpacing: 20,
+            crossAxisSpacing: 30,
+          ),
+          children: tipsList.asMap().entries.map((e) {
+            int idx = e.key;
+            int val = e.value;
+            return Tip(
+              tipValue: val,
+              selected: _currentSelectIndex == idx,
+              index: idx,
+              handleClicked: handleClicked,
+            );
+          }).toList(),
+        ),
       ],
     );
   }
