@@ -53,7 +53,26 @@ class TipAmountCard extends StatelessWidget {
                 style: Theme.of(context).textTheme.headline4,
               ),
             ),
-            ElevatedButton(onPressed: resetHandler, child: const Text("RESET")),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 18),
+              width: double.infinity,
+              child: ElevatedButton(
+                  style: ButtonStyle(
+                    padding: MaterialStateProperty.all<EdgeInsets>(
+                        const EdgeInsets.symmetric(vertical: 9)),
+                    backgroundColor:
+                        MaterialStateProperty.all(ThemeColor.strongCyan),
+                  ),
+                  onPressed: resetHandler,
+                  child: Text(
+                    "RESET",
+                    style: TextStyle(
+                      color: ThemeColor.veryDarkCyan,
+                      fontSize: 19,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  )),
+            ),
           ],
         ),
       ),

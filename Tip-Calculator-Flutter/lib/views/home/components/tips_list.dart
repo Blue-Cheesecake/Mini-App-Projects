@@ -14,13 +14,11 @@ class TipsList extends StatefulWidget {
 
 class _TipsListState extends State<TipsList> {
   final tipsList = [5, 10, 15, 25, 50];
-  var _currentSelectIndex = 0;
   var _currentSelectValue = 5;
 
   void handleClicked(int value, int index) {
     setState(() {
       _currentSelectValue = value;
-      _currentSelectIndex = index;
     });
     widget.handleSelectedTip(_currentSelectValue);
   }
@@ -38,6 +36,7 @@ class _TipsListState extends State<TipsList> {
         BlocBuilder<SelectTipBloc, SelectTipState>(
           builder: (context, state) {
             return GridView(
+              physics: const NeverScrollableScrollPhysics(),
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
               gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
