@@ -63,6 +63,16 @@ class _HomeState extends State<Home> {
             ),
             const SizedBox(height: 15),
 
+            /// Select Tip
+            ///
+            ///
+            TipsList(
+              handleSelectedTip: (changedVal) {
+                context.read<SelectTipBloc>().add(SelectTip(changedVal));
+              },
+            ),
+            const SizedBox(height: 15),
+
             /// Number of People Input
             ///
             ///
@@ -78,16 +88,6 @@ class _HomeState extends State<Home> {
                 fit: BoxFit.scaleDown,
               ),
               controller: _numPeople,
-            ),
-            const SizedBox(height: 15),
-
-            /// Select Tip
-            ///
-            ///
-            TipsList(
-              handleSelectedTip: (changedVal) {
-                context.read<SelectTipBloc>().add(SelectTip(changedVal));
-              },
             ),
             const SizedBox(height: 15),
 

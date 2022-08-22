@@ -38,12 +38,23 @@ class App extends StatelessWidget {
                   fontWeight: FontWeight.w700,
                   color: ThemeColor.darkGrayishCyan,
                 ),
-                headline2: const TextStyle(
-                  fontSize: 18,
+                headline2: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700,
+                    color: ThemeColor.veryLightGrayish
+                    // color: Colors.white,
+                    ),
+                headline3:
+                    TextStyle(fontSize: 13, color: ThemeColor.grayishCyan),
+                headline4: TextStyle(
+                    fontSize: 27,
+                    fontWeight: FontWeight.w700,
+                    color: ThemeColor.strongCyan),
+                bodyText1: TextStyle(
+                  fontSize: 24,
                   fontWeight: FontWeight.w700,
-                  // color: Colors.white,
+                  color: ThemeColor.veryDarkCyan,
                 ),
-                bodyText1: TextStyle(),
                 bodyText2: TextStyle(),
               )),
           home: const Home(),
