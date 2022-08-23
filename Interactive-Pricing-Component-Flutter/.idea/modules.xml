@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../Interactive_pricing_component/interactive_pricing_component.iml" filepath="$PROJECT_DIR$/../Interactive_pricing_component/interactive_pricing_component.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../Interactive_pricing_component/android/interactive_pricing_component_android.iml" filepath="$PROJECT_DIR$/../Interactive_pricing_component/android/interactive_pricing_component_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/interactive_pricing_component.iml" filepath="$PROJECT_DIR$/interactive_pricing_component.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/interactive_pricing_component_android.iml" filepath="$PROJECT_DIR$/android/interactive_pricing_component_android.iml" />
     </modules>
   </component>
 </project>
