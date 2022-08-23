@@ -58,7 +58,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
+  assets:
+    - assets/images/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
@@ -73,8 +74,13 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
+  fonts:
+    - family: Manrope
+      fonts:
+        - asset: assets/fonts/Manrope-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Manrope-SemiBold.ttf
+          weight: 600
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
