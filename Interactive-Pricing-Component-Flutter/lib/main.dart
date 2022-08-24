@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:interactive_pricing_component/screens/home.dart';
 
 main() {
   runApp(const Main());
@@ -9,6 +10,8 @@ class Main extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp();
+    return const MaterialApp(
+      home: Home(),
+    );
   }
 }
