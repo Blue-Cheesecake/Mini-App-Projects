@@ -15,7 +15,7 @@ class Home extends StatelessWidget {
   Widget _buildTitle(BuildContext context) {
     return Stack(
       children: [
-        Image.asset("assets/images/pattern-circles.svg"),
+
         Column(
           children: [
 
