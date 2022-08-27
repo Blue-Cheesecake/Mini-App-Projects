@@ -1,8 +1,9 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:interactive_pricing_component/screens/components/advantages_list.dart';
+import 'package:interactive_pricing_component/screens/components/bill_switch.dart';
+import 'package:interactive_pricing_component/screens/components/start_button.dart';
 import 'package:interactive_pricing_component/utils/constants.dart';
 
 class Home extends StatefulWidget {
@@ -13,34 +14,13 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  var _isMonthlyBilling = false;
-
-  Widget _buildSwitch(BuildContext context) {
-    if (Platform.isAndroid) {
-      return Switch(
-        value: _isMonthlyBilling,
-        onChanged: (curr) => setState(() {
-          _isMonthlyBilling = !_isMonthlyBilling;
-        }),
-      );
-    }
-    return CupertinoSwitch(
-      value: _isMonthlyBilling,
-      onChanged: (curr) => setState(() {
-        _isMonthlyBilling = !_isMonthlyBilling;
-      }),
-      activeColor: ComponentColor.sliderBackground,
-      trackColor: ComponentColor.toggleBackground,
-    );
-  }
-
   Widget _buildPricingCard(BuildContext context) {
     return Card(
       elevation: 10,
       child: Column(
         children: [
           Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Column(
               children: [
                 Text(
@@ -59,7 +39,7 @@ class _HomeState extends State<Home> {
                       style: Theme.of(context).textTheme.bodyText1,
                     ),
                     const Spacer(),
-                    _buildSwitch(context),
+                    const BillSwitch(),
                     const Spacer(),
                     Text(
                       HomeCard.yearlyBillText,
@@ -79,6 +59,15 @@ class _HomeState extends State<Home> {
             thickness: 2,
             color: ComponentColor.emptySliderBar,
           ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: Column(
+              children: const [
+                AdvantagesList(advantages: HomeCard.advantagesList),
+                StartTrialButton(),
+              ],
+            ),
+          )
         ],
       ),
     );

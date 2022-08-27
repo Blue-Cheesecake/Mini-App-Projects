@@ -34,4 +34,9 @@ class HomeCard {
   static const monthlyBillText = "Monthly Billing";
   static const yearlyBillText = "Yearly Billing";
   static const yearlyBillValue = -25;
+  static const advantagesList = [
+    "Unlimited websites",
+    "100% data ownership",
+    "Email reports",
+  ];
 }
