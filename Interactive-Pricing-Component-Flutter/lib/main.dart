@@ -12,19 +12,32 @@ class Main extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: "Manrope",
         textTheme: TextTheme(
           headline1: TextStyle(
             fontSize: 22,
             fontWeight: FontWeight.w800,
-            color: ComponentColor.textCTABackground
+            color: ComponentColor.textCTABackground,
           ),
           headline2: TextStyle(
+            height: 1.8,
             fontSize: 16,
-              color: ComponentColor.text
-          )
-        )
+            color: ComponentColor.text,
+          ),
+          headline3: TextStyle(
+            letterSpacing: 2,
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+            color: ComponentColor.text,
+          ),
+          bodyText1: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+            color: ComponentColor.text,
+          ),
+        ),
       ),
       home: Home(),
     );
