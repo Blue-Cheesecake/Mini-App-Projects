@@ -16,7 +16,7 @@ class ComponentColor {
 
 class HomeTitle {
  static const title = "Simple, traffic-based pricing";
- static const subTitle = "Sign-up for our 30-day trial. No credit card required";
+ static const subTitle = "Sign-up for our 30-day trial.\n No credit card required.";
 }
 
 class HomeCard {

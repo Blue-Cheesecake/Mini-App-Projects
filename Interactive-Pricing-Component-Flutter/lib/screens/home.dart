@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:interactive_pricing_component/utils/constants.dart';
 
 class Home extends StatelessWidget {
@@ -13,15 +14,23 @@ class Home extends StatelessWidget {
   }
 
   Widget _buildTitle(BuildContext context) {
-    return Stack(
-      children: [
-
-        Column(
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 25),
+      child: Center(
+        child: Stack(
+          alignment: AlignmentDirectional.center,
           children: [
-
+            SvgPicture.asset("assets/images/pattern-circles.svg", width: 175,),
+            Column(
+              children: [
+                Text(HomeTitle.title, style: Theme.of(context).textTheme.headline1,),
+                const SizedBox(height: 15,),
+                Text(HomeTitle.subTitle, style: Theme.of(context).textTheme.headline2, textAlign: TextAlign.center,),
+              ],
+            ),
           ],
         ),
-      ],
+      ),
     );
   }
 
