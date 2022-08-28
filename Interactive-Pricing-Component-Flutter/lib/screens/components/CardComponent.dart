@@ -15,7 +15,7 @@ class CardComponent extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(40),
             child: Column(
               children: [
                 Text(
