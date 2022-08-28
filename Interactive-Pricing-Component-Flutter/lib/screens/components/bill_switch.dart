@@ -18,6 +18,7 @@ class _BillSwitchState extends State<BillSwitch> {
   Widget build(BuildContext context) {
     if (Platform.isAndroid) {
       return Switch(
+        activeColor: ComponentColor.sliderBackground,
         value: _isMonthlyBilling,
         onChanged: (curr) => setState(() {
           _isMonthlyBilling = !_isMonthlyBilling;
