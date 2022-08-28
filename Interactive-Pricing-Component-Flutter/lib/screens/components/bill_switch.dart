@@ -12,7 +12,6 @@ class BillSwitch extends StatefulWidget {
 }
 
 class _BillSwitchState extends State<BillSwitch> {
-
   var _isMonthlyBilling = false;
 
   @override
@@ -20,20 +19,24 @@ class _BillSwitchState extends State<BillSwitch> {
     if (Platform.isAndroid) {
       return Switch(
         value: _isMonthlyBilling,
-        onChanged: (curr) =>
-            setState(() {
-              _isMonthlyBilling = !_isMonthlyBilling;
-            }),
+        onChanged: (curr) => setState(() {
+          _isMonthlyBilling = !_isMonthlyBilling;
+        }),
       );
     }
-    return CupertinoSwitch(
-      value: _isMonthlyBilling,
-      onChanged: (curr) =>
-          setState(() {
+    return SizedBox(
+      width: 40,
+      child: FittedBox(
+        fit: BoxFit.cover,
+        child: CupertinoSwitch(
+          value: _isMonthlyBilling,
+          onChanged: (curr) => setState(() {
             _isMonthlyBilling = !_isMonthlyBilling;
           }),
-      activeColor: ComponentColor.sliderBackground,
-      trackColor: ComponentColor.toggleBackground,
+          activeColor: ComponentColor.sliderBackground,
+          trackColor: ComponentColor.toggleBackground,
+        ),
+      ),
     );
   }
 }

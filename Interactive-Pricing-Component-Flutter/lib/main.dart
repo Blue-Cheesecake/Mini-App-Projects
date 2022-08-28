@@ -29,11 +29,12 @@ class Main extends StatelessWidget {
           headline3: TextStyle(
             letterSpacing: 2,
             fontSize: 16,
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w800,
             color: ComponentColor.text,
           ),
           bodyText1: TextStyle(
-            fontSize: 16,
+            fontSize: 14.5,
+            letterSpacing: 0.8,
             fontWeight: FontWeight.w600,
             color: ComponentColor.text,
           ),
