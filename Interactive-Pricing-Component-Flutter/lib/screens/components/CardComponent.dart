@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:interactive_pricing_component/screens/components/advantages_list.dart';
+import 'package:interactive_pricing_component/screens/components/bill_slider.dart';
 import 'package:interactive_pricing_component/screens/components/bill_switch.dart';
 import 'package:interactive_pricing_component/screens/components/start_button.dart';
 import 'package:interactive_pricing_component/utils/constants.dart';
@@ -21,6 +22,8 @@ class CardComponent extends StatelessWidget {
                   HomeCard.title,
                   style: Theme.of(context).textTheme.headline3,
                 ),
+
+                const BillSlider(),
 
                 /// Billing Section
                 ///
