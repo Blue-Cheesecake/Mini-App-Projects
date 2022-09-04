@@ -14,12 +14,30 @@ class MovieInfo extends StatelessWidget {
           backgroundColor: const Color(0xfff5f5f5),
           title: const Text(
             'Information',
-            style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w200),
+            style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w400),
           ),
           elevation: 3.0,
         ),
-        body: Column(
-          children: [],
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  movie.movieTitle!,
+                  style: const TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Text("Released Date: ${movie.movie_released_year}"),
+                const SizedBox(height: 20),
+                Text("Rating: ${movie.rating}"),
+              ],
+            ),
+          ),
         ));
   }
 }
