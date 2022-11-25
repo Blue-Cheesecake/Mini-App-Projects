@@ -6,7 +6,10 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="text_blue">#14213d</color>
-    <color name="bg_grey">#e5e5e5</color>
+    <color name="white">#FFF5E7</color>
+    <color name="text_red">#ae2012</color>
+    <color name="bg_orange">#FFE7D3</color>
+    <color name="bg_green">#2a9d8f</color>
+    <color name="text_grey">#6c757d</color>
+    <color name="appbar_blue">#4690FF</color>
 </resources>
