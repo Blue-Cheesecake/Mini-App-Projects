@@ -53,7 +53,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // The number should not start or end with dot (.) AND no contiguous dot
+        // The number should not start or end with dot (.) AND
+        // no contiguous dot AND
+        // dot appear only once
         for (i in arr.indices) {
             if (arr[i].length == 1) {
                 continue
@@ -62,6 +64,9 @@ class MainActivity : AppCompatActivity() {
                 return false
             }
             if (arr[i].contains("..")) {
+                return false
+            }
+            if (arr[i].count { it == '.' } > 1) {
                 return false
             }
         }
