@@ -224,12 +224,24 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/dDot"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="75dp"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/btn_grey"
+                android:text="@string/dot"
+                android:textColor="@color/black"
+                android:textSize="17sp" />
+
+            <Button
                 android:id="@+id/d0"
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="75dp"
                 android:layout_margin="3dp"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:backgroundTint="@color/btn_grey"
                 android:text="@string/_zero"
                 android:textColor="@color/black"

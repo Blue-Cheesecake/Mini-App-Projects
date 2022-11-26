@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         startNewString = true
     }
 
-    private fun removeOneText(): Unit {
+    private fun removeOneText() {
         disText?.let {
             if (disText!!.text.isEmpty()) {
                 return
@@ -43,12 +43,25 @@ class MainActivity : AppCompatActivity() {
 
     private fun isValidArray(arr: ArrayList<String>): Boolean {
         // Not starting with operator
-        if (!arr[0].isDigitsOnly()) {
+        if (!arr[0].isDigitsOnly() && arr[0].length == 1) {
             return false
         }
         // Operators should not be contiguous.
         for (i in 0 until arr.size - 1) {
-            if (!arr[i].isDigitsOnly() && !arr[i + 1].isDigitsOnly()) {
+            if (!arr[i].isDigitsOnly() && arr[i].length == 1 && !arr[i + 1].isDigitsOnly() && arr[i + 1].length == 1) {
+                return false
+            }
+        }
+
+        // The number should not start or end with dot (.) AND no contiguous dot
+        for (i in arr.indices) {
+            if (arr[i].length == 1) {
+                continue
+            }
+            if (arr[i].startsWith('.') || arr[i].endsWith('.')) {
+                return false
+            }
+            if (arr[i].contains("..")) {
                 return false
             }
         }
@@ -56,7 +69,8 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    private fun computeResult(): Unit {
+    @SuppressLint("SetTextI18n")
+    private fun computeResult() {
         if (disText == null) {
             return
         }
@@ -66,13 +80,13 @@ class MainActivity : AppCompatActivity() {
         val text = disText!!.text
         var curr = ""
         for (i in text.indices) {
-            if (text[i].isDigit()) {
+            if (text[i].isDigit() || text[i] == '.') {
                 curr += text[i]
             }
-            if (i == text.lastIndex && text[i].isDigit()) {
+            if (i == text.lastIndex && (text[i].isDigit() || text[i] == '.')) {
                 arrayList.add(curr)
             }
-            if (!text[i].isDigit()) {
+            if (!text[i].isDigit() && text[i] != '.') {
                 if (curr != "") {
                     arrayList.add(curr)
                 }
@@ -83,6 +97,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Valid the input
+        println(arrayList)
         if (!isValidArray(arrayList)) {
             disText!!.text = "Invalid Input"
             startNewString = false
@@ -132,6 +147,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.d8).setOnClickListener { displayText("8") }
         findViewById<Button>(R.id.d9).setOnClickListener { displayText("9") }
         findViewById<Button>(R.id.d0).setOnClickListener { displayText("0") }
+        findViewById<Button>(R.id.dDot).setOnClickListener { displayText(".") }
         findViewById<Button>(R.id.od).setOnClickListener { displayText("/") }
         findViewById<Button>(R.id.omul).setOnClickListener { displayText("*") }
         findViewById<Button>(R.id.omin).setOnClickListener { displayText("-") }

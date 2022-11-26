@@ -17,4 +17,5 @@
     <string name="_plus">+</string>
     <string name="_compute">=</string>
     <string name="del">DEL</string>
+    <string name="dot">.</string>
 </resources>
