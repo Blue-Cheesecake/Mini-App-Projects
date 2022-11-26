@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Boring Calculator</string>
+    <string name="_seven">7</string>
+    <string name="_eight">8</string>
+    <string name="_nine">9</string>
+    <string name="_divider">/</string>
+    <string name="_four">4</string>
+    <string name="_five">5</string>
+    <string name="_six">6</string>
+    <string name="_multi">*</string>
+    <string name="_one">1</string>
+    <string name="_two">2</string>
+    <string name="_three">3</string>
+    <string name="_minus">-</string>
+    <string name="_zero">0</string>
+    <string name="_clear">CLR</string>
+    <string name="_plus">+</string>
+    <string name="_compute">=</string>
 </resources>
