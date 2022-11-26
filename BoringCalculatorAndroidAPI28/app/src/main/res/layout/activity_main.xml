@@ -6,26 +6,52 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:background="@color/bg_lightGrey" />
 
     <TextView
         android:id="@+id/displayedText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="250dp"
         android:background="@color/bg_lightGrey"
+        android:gravity="end|bottom"
         android:text=""
-        android:textAlignment="textEnd"
         android:textColor="@color/statusbar_greyVariant"
         android:textSize="35sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="5dp">
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/delete"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/btn_grey"
+                android:text="@string/del"
+                android:textColor="@color/black"
+                android:textSize="17sp" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,6 +63,7 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="75dp"
+                android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btn_grey"
                 android:text="@string/_seven"
@@ -48,7 +75,7 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="75dp"
-                android:layout_marginHorizontal="10dp"
+                android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btn_grey"
                 android:text="@string/_eight"
@@ -60,7 +87,7 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="75dp"
-                android:layout_marginEnd="10dp"
+                android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btn_grey"
                 android:text="@string/_nine"
@@ -72,6 +99,7 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="75dp"
+                android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btn_grey"
                 android:text="@string/_divider"
@@ -90,6 +118,7 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="75dp"
+                android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btn_grey"
                 android:text="@string/_four"
@@ -101,7 +130,7 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="75dp"
-                android:layout_marginHorizontal="10dp"
+                android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btn_grey"
                 android:text="@string/_five"
@@ -113,7 +142,7 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="75dp"
-                android:layout_marginEnd="10dp"
+                android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btn_grey"
                 android:text="@string/_six"
@@ -125,6 +154,7 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="75dp"
+                android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btn_grey"
                 android:text="@string/_multi"
@@ -143,6 +173,7 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="75dp"
+                android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btn_grey"
                 android:text="@string/_one"
@@ -154,7 +185,7 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="75dp"
-                android:layout_marginHorizontal="10dp"
+                android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btn_grey"
                 android:text="@string/_two"
@@ -166,7 +197,7 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="75dp"
-                android:layout_marginEnd="10dp"
+                android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btn_grey"
                 android:text="@string/_three"
@@ -178,6 +209,7 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="75dp"
+                android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btn_grey"
                 android:text="@string/_minus"
@@ -196,6 +228,7 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="75dp"
+                android:layout_margin="3dp"
                 android:layout_weight="2"
                 android:backgroundTint="@color/btn_grey"
                 android:text="@string/_zero"
@@ -208,7 +241,7 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="75dp"
-                android:layout_marginHorizontal="8dp"
+                android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btn_grey"
                 android:text="@string/_clear"
@@ -220,6 +253,7 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="75dp"
+                android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btn_grey"
                 android:text="@string/_plus"
