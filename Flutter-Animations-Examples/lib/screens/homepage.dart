@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animations/screens/implicit_animations/align_animation.dart';
 import 'package:flutter_animations/screens/implicit_animations/container_animation.dart';
+import 'package:flutter_animations/screens/implicit_animations/list_animation.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -15,6 +16,7 @@ class _HomepageState extends State<Homepage> {
   var implicitAnimations = [
     {"name": "Animated Align", "route": AlignAnimation.routeName},
     {"name": "Animated Container", "route": ContainerAnimation.routeName},
+    {"name": "Animated List", "route": ListAnimation.routeName},
   ];
 
   Widget _goPageButton(String name, String targetRoute) {

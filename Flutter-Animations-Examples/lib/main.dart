@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animations/screens/homepage.dart';
 import 'package:flutter_animations/screens/implicit_animations/align_animation.dart';
 import 'package:flutter_animations/screens/implicit_animations/container_animation.dart';
+import 'package:flutter_animations/screens/implicit_animations/list_animation.dart';
 
 void main() => runApp(App());
 
@@ -30,6 +31,7 @@ class App extends StatelessWidget {
         Homepage.routeName: (_) => const Homepage(),
         AlignAnimation.routeName: (_) => const AlignAnimation(),
         ContainerAnimation.routeName: (_) => const ContainerAnimation(),
+        ListAnimation.routeName: (_) => const ListAnimation(),
       },
       initialRoute: Homepage.routeName,
       home: const Homepage(),
