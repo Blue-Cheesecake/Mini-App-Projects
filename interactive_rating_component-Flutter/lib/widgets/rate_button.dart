@@ -17,18 +17,35 @@ class RateButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ButtonStyle(
-        backgroundColor: MaterialStatePropertyAll(
-            !isSelected ? ConstColor.darkBlue : ConstColor.orange),
-        shape: const MaterialStatePropertyAll(CircleBorder()),
-        padding: const MaterialStatePropertyAll(EdgeInsets.all(13)),
-      ),
-      onPressed: () => handleOnClicked,
+          backgroundColor: MaterialStatePropertyAll(
+              !isSelected ? ConstColor.darkBlue : ConstColor.orange),
+          shape: const MaterialStatePropertyAll(CircleBorder()),
+          padding: const MaterialStatePropertyAll(EdgeInsets.all(20)),
+          overlayColor: MaterialStateProperty.resolveWith<Color?>(
+            (Set<MaterialState> states) {
+              if (isSelected) {
+                return ConstColor.orange;
+              }
+              if (states.contains(MaterialState.hovered)) {
+                return ConstColor.lightGrey;
+              }
+              return null;
+            },
+          ),
+          foregroundColor: MaterialStateProperty.resolveWith<Color>(
+              (Set<MaterialState> states) {
+            if (states.contains(MaterialState.hovered)) {
+              return Colors.white;
+            }
+            return ConstColor.mediumGrey;
+          })),
+      onPressed: () => handleOnClicked(score - 1),
       child: Text(
         "$score",
         style: TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.w700,
-          color: !isSelected ? ConstColor.mediumGrey : Colors.white,
+          color: !isSelected ? null : Colors.white,
         ),
       ),
     );

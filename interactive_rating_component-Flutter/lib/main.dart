@@ -11,7 +11,7 @@ class Main extends StatelessWidget {
       theme: ThemeData(
         fontFamily: "Overpass",
       ),
-      home: Homepage(),
+      home: const Homepage(),
     );
   }
 }

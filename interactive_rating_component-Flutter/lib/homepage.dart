@@ -49,7 +49,6 @@ class _HomepageState extends State<Homepage> {
 
   Widget _defaultContainer() {
     var rateList = <Widget>[];
-    print(("Rebuilding with $_selectedIndex index"));
     for (int i = 0; i < 5; i++) {
       rateList.add(RateButton(
           score: i + 1,
@@ -57,29 +56,79 @@ class _HomepageState extends State<Homepage> {
           handleOnClicked: _handleOnClicked));
     }
 
-    return Wrap(
-      direction: Axis.vertical,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _starIcon(),
         const SizedBox(height: 30),
         _header(),
         const SizedBox(height: 15),
         _contents(),
+        const SizedBox(height: 15),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: rateList,
+        ),
+        const SizedBox(height: 15),
+        SizedBox(
+          width: double.infinity,
+          child: ElevatedButton(
+            onPressed: () {
+              if (_selectedIndex != -1) {
+                setState(() {
+                  _isSummited = true;
+                });
+              }
+            },
+            style: ButtonStyle(
+                shape: const MaterialStatePropertyAll(
+                  RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                    Radius.circular(999),
+                  )),
+                ),
+                backgroundColor: MaterialStatePropertyAll(ConstColor.orange),
+                overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                    (Set<MaterialState> states) {
+                  if (states.contains(MaterialState.hovered)) {
+                    return Colors.white;
+                  }
+                  return ConstColor.orange;
+                }),
+                foregroundColor: MaterialStateProperty.resolveWith<Color>(
+                    (Set<MaterialState> states) {
+                  if (states.contains(MaterialState.hovered)) {
+                    return ConstColor.orange;
+                  }
+                  return Colors.white;
+                })),
+            child: const Padding(
+              padding: EdgeInsets.symmetric(vertical: 11),
+              child: Text(
+                "SUBMIT",
+                style: TextStyle(
+                  fontSize: 15,
+                  letterSpacing: 2,
+                ),
+              ),
+            ),
+          ),
         ),
       ],
     );
   }
 
-  Widget _summitedContainer() {
+  Widget _summitedContainer(int score) {
     return Container();
   }
 
   void _handleOnClicked(int index) {
     setState(() {
-      _selectedIndex = index;
+      if (index == _selectedIndex) {
+        _selectedIndex = -1;
+      } else {
+        _selectedIndex = index;
+      }
     });
   }
 
@@ -95,7 +144,9 @@ class _HomepageState extends State<Homepage> {
             borderRadius: const BorderRadius.all(Radius.circular(20)),
           ),
           width: 370,
-          child: _isSummited ? _summitedContainer() : _defaultContainer(),
+          child: _isSummited
+              ? _summitedContainer(_selectedIndex + 1)
+              : _defaultContainer(),
         ),
       ),
     );
