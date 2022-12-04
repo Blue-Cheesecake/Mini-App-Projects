@@ -10,6 +10,7 @@ class Main extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Product Preview Card',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: "Montserrat"),
       home: const Homepage(),
     );

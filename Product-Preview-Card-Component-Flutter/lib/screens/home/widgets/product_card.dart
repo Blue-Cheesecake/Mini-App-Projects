@@ -7,8 +7,8 @@ class ProductCard extends StatelessWidget {
   const ProductCard({Key? key, required this.product}) : super(key: key);
 
   final Product product;
-  final containerWidth = kIsWeb ? 500.0 : 370.0;
-  final imageHeight = kIsWeb ? 300.0 : null;
+  final containerWidth = kIsWeb ? null : 370.0;
+  final imageHeight = kIsWeb ? 500.0 : null;
 
   Widget _addToCardButton() {
     return SizedBox(
@@ -107,8 +107,9 @@ class ProductCard extends StatelessWidget {
         width: containerWidth,
         height: imageHeight,
       ),
-      Padding(
+      Container(
         padding: const EdgeInsets.all(25),
+        width: kIsWeb ? 300 : null,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
@@ -138,14 +139,16 @@ class ProductCard extends StatelessWidget {
             children: elements,
           );
 
-    return Container(
-      width: containerWidth,
-      clipBehavior: Clip.hardEdge,
-      decoration: BoxDecoration(
-        color: Constants.colorWhite,
-        borderRadius: const BorderRadius.all(Radius.circular(13)),
+    return SingleChildScrollView(
+      child: Container(
+        width: containerWidth,
+        clipBehavior: Clip.hardEdge,
+        decoration: BoxDecoration(
+          color: Constants.colorWhite,
+          borderRadius: const BorderRadius.all(Radius.circular(13)),
+        ),
+        child: children,
       ),
-      child: children,
     );
   }
 }
