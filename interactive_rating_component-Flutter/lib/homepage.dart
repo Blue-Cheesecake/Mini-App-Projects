@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:interactive_rating_component/const_color.dart';
+import 'package:interactive_rating_component/widgets/rate_button.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -10,7 +11,8 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  var _isClicked = false;
+  var _isSummited = false;
+  var _selectedIndex = -1;
 
   Widget _header() {
     return const Text(
@@ -46,6 +48,15 @@ class _HomepageState extends State<Homepage> {
   }
 
   Widget _defaultContainer() {
+    var rateList = <Widget>[];
+    print(("Rebuilding with $_selectedIndex index"));
+    for (int i = 0; i < 5; i++) {
+      rateList.add(RateButton(
+          score: i + 1,
+          isSelected: _selectedIndex == i,
+          handleOnClicked: _handleOnClicked));
+    }
+
     return Wrap(
       direction: Axis.vertical,
       children: [
@@ -54,12 +65,22 @@ class _HomepageState extends State<Homepage> {
         _header(),
         const SizedBox(height: 15),
         _contents(),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: rateList,
+        ),
       ],
     );
   }
 
   Widget _summitedContainer() {
     return Container();
+  }
+
+  void _handleOnClicked(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 
   @override
@@ -74,7 +95,7 @@ class _HomepageState extends State<Homepage> {
             borderRadius: const BorderRadius.all(Radius.circular(20)),
           ),
           width: 370,
-          child: _isClicked ? _summitedContainer() : _defaultContainer(),
+          child: _isSummited ? _summitedContainer() : _defaultContainer(),
         ),
       ),
     );
