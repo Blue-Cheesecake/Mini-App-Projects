@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:interactive_rating_component/const_color.dart';
 
@@ -15,12 +16,14 @@ class RateButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const double padding = kIsWeb ? 20 : 15;
+
     return ElevatedButton(
       style: ButtonStyle(
           backgroundColor: MaterialStatePropertyAll(
               !isSelected ? ConstColor.darkBlue : ConstColor.orange),
           shape: const MaterialStatePropertyAll(CircleBorder()),
-          padding: const MaterialStatePropertyAll(EdgeInsets.all(20)),
+          padding: const MaterialStatePropertyAll(EdgeInsets.all(padding)),
           overlayColor: MaterialStateProperty.resolveWith<Color?>(
             (Set<MaterialState> states) {
               if (isSelected) {

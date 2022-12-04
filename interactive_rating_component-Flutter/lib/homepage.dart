@@ -119,7 +119,41 @@ class _HomepageState extends State<Homepage> {
   }
 
   Widget _summitedContainer(int score) {
-    return Container();
+    return Column(
+      children: [
+        SvgPicture.asset("assets/images/illustration-thank-you.svg"),
+        const SizedBox(height: 20),
+        Container(
+          decoration: BoxDecoration(
+              color: ConstColor.darkBlue,
+              borderRadius: const BorderRadius.all(Radius.circular(999))),
+          padding: const EdgeInsets.all(8),
+          child: Text(
+            "You selected $score out of 5",
+            style: TextStyle(
+              color: ConstColor.orange,
+              fontSize: 15,
+            ),
+          ),
+        ),
+        const SizedBox(height: 25),
+        const Text(
+          "Thank you!",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 25,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        const SizedBox(height: 15),
+        Text(
+          "We appreciate you taking the time to give a rating. if you ever need more support, don't hesitate to get in touch!",
+          style:
+              TextStyle(fontSize: 15, color: ConstColor.lightGrey, height: 1.5),
+          textAlign: TextAlign.center,
+        ),
+      ],
+    );
   }
 
   void _handleOnClicked(int index) {
@@ -144,6 +178,7 @@ class _HomepageState extends State<Homepage> {
             borderRadius: const BorderRadius.all(Radius.circular(20)),
           ),
           width: 370,
+          height: 380,
           child: _isSummited
               ? _summitedContainer(_selectedIndex + 1)
               : _defaultContainer(),
