@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.sinut.tip_calculator">
+    package="com.example.tip_calculator">
    <application
         android:label="tip_calculator"
         android:name="${applicationName}"
