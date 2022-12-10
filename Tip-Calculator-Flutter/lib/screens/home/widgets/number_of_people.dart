@@ -4,8 +4,10 @@ import 'package:tip_calculator/constants.dart';
 import 'package:tip_calculator/screens/home/widgets/common/section_title.dart';
 
 class NumberOfPeople extends StatefulWidget {
-  const NumberOfPeople({Key? key, required this.callback}) : super(key: key);
+  const NumberOfPeople({Key? key, required this.txtCrt, required this.callback})
+      : super(key: key);
 
+  final TextEditingController txtCrt;
   final Function(int) callback;
 
   @override
@@ -13,13 +15,6 @@ class NumberOfPeople extends StatefulWidget {
 }
 
 class _NumberOfPeopleState extends State<NumberOfPeople> {
-  final _txtController = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-    _txtController.text = DefaultValue.numOfPeople.toString();
-  }
 
   Widget _numInput() {
     return TextField(
@@ -29,7 +24,7 @@ class _NumberOfPeopleState extends State<NumberOfPeople> {
         // to center cursor -> cursor height / font size
         height: 25 / 24,
       ),
-      controller: _txtController,
+      controller: widget.txtCrt,
       keyboardType: TextInputType.number,
       textAlign: TextAlign.end,
       cursorColor: KColor.strongCyan,

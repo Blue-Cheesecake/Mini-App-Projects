@@ -4,8 +4,10 @@ import 'package:tip_calculator/constants.dart';
 import 'package:tip_calculator/screens/home/widgets/common/section_title.dart';
 
 class Bill extends StatefulWidget {
-  const Bill({Key? key, required this.callback}) : super(key: key);
+  const Bill({Key? key, required this.txtCtr, required this.callback})
+      : super(key: key);
 
+  final TextEditingController txtCtr;
   final Function(double) callback;
 
   @override
@@ -13,7 +15,6 @@ class Bill extends StatefulWidget {
 }
 
 class _BillState extends State<Bill> {
-  final _txtController = TextEditingController();
 
   TextField _billInput() {
     return TextField(
@@ -23,7 +24,7 @@ class _BillState extends State<Bill> {
         // to center cursor -> cursor height / font size
         height: 25 / 24,
       ),
-      controller: _txtController,
+      controller: widget.txtCtr,
       keyboardType: TextInputType.number,
       textAlign: TextAlign.end,
       cursorColor: KColor.strongCyan,

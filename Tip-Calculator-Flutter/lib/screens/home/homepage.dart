@@ -14,9 +14,18 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  var _bill = DefaultValue.bill;
+  // TODO: Pass controller to bill & num of people instead
+  // in order to use reset function
   var _currentTip = DefaultValue.tip;
-  var _numOfPeo = DefaultValue.numOfPeople;
+  final _billController = TextEditingController();
+  final _numPeopleController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _billController.text = DefaultValue.bill.toString();
+    _numPeopleController.text = DefaultValue.numOfPeople.toString();
+  }
 
   void _updateTip(int newValue) {
     setState(() {
@@ -26,13 +35,13 @@ class _HomepageState extends State<Homepage> {
 
   void _updateBill(double newValue) {
     setState(() {
-      _bill = newValue;
+      _billController.text = newValue.toString();
     });
   }
 
   void _updateNumberOfPeople(int newValue) {
     setState(() {
-      _numOfPeo = newValue;
+      _numPeopleController.text = newValue.toString();
     });
   }
 
@@ -68,19 +77,25 @@ class _HomepageState extends State<Homepage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Bill(callback: _updateBill),
+                  Bill(
+                    txtCtr: _billController,
+                    callback: _updateBill,
+                  ),
                   const SizedBox(height: 30),
                   SelectTip(
                     selectedTip: _currentTip,
                     callback: _updateTip,
                   ),
                   const SizedBox(height: 30),
-                  NumberOfPeople(callback: _updateNumberOfPeople),
+                  NumberOfPeople(
+                    txtCrt: _numPeopleController,
+                    callback: _updateNumberOfPeople,
+                  ),
                   const SizedBox(height: 30),
                   Result(
-                    bill: _bill,
+                    bill: double.parse(_billController.text),
                     tipPercentage: _currentTip,
-                    numPeople: _numOfPeo,
+                    numPeople: int.parse(_numPeopleController.text),
                     callback: _reset,
                   )
                 ],
