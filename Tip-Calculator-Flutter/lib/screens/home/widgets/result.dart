@@ -72,20 +72,31 @@ class Result extends StatelessWidget {
     final double finalCharge = bill + tipAmount;
     final double eachCost = finalCharge / numPeople;
 
-    return Container(
-      decoration: BoxDecoration(
-        color: KColor.veryDarkCyan,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      padding: const EdgeInsets.all(25),
-      child: Column(
-        children: [
-          _display("Tip Amount", "/ person",
-              (tipAmount / numPeople).toStringAsFixed(2)),
-          _display("Total", "/ person", eachCost.toStringAsFixed(2)),
-          const SizedBox(height: 20),
-          _resetButton(),
-        ],
+    final screenWidth = MediaQuery.of(context).size.width;
+    return Expanded(
+      child: Container(
+        width: screenWidth < 1080 ? null : 500,
+        decoration: BoxDecoration(
+          color: KColor.veryDarkCyan,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        padding: const EdgeInsets.all(25),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              children: [
+                _display("Tip Amount", "/ person",
+                    (tipAmount / numPeople).toStringAsFixed(2)),
+                screenWidth < 1080
+                    ? const SizedBox(height: 0)
+                    : const SizedBox(height: 30),
+                _display("Total", "/ person", eachCost.toStringAsFixed(2)),
+              ],
+            ),
+            _resetButton(),
+          ],
+        ),
       ),
     );
   }

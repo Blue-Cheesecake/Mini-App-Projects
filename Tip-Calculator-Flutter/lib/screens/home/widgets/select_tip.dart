@@ -98,25 +98,32 @@ class _SelectTipState extends State<SelectTip> {
       _customTipButton(),
     ];
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SectionTitle(title: "Select Tip %"),
-        GridView.builder(
-          physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisSpacing: 20,
-            mainAxisSpacing: 20,
-            mainAxisExtent: 50,
-            crossAxisCount: 2,
+    final screenWidth = MediaQuery.of(context).size.width;
+    final numberOfGrid = screenWidth < 1080 ? 2 : 3;
+
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SectionTitle(title: "Select Tip %"),
+          Expanded(
+            child: GridView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisSpacing: 20,
+                mainAxisSpacing: 20,
+                mainAxisExtent: 50,
+                crossAxisCount: numberOfGrid,
+              ),
+              shrinkWrap: true,
+              itemCount: tipsButton.length,
+              itemBuilder: (context, index) {
+                return tipsButton[index];
+              },
+            ),
           ),
-          shrinkWrap: true,
-          itemCount: tipsButton.length,
-          itemBuilder: (context, index) {
-            return tipsButton[index];
-          },
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

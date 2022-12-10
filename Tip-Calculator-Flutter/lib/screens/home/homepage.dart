@@ -51,12 +51,86 @@ class _HomepageState extends State<Homepage> {
     _updateNumberOfPeople(DefaultValue.numOfPeople);
   }
 
+  Widget _mobileLayout() {
+    return SizedBox(
+      height: 780,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Bill(
+            txtCtr: _billController,
+            callback: _updateBill,
+          ),
+          const SizedBox(height: 30),
+          SelectTip(
+            selectedTip: _currentTip,
+            callback: _updateTip,
+          ),
+          const SizedBox(height: 30),
+          NumberOfPeople(
+            txtCrt: _numPeopleController,
+            callback: _updateNumberOfPeople,
+          ),
+          const SizedBox(height: 30),
+          Result(
+            bill: double.parse(_billController.text),
+            tipPercentage: _currentTip,
+            numPeople: int.parse(_numPeopleController.text),
+            callback: _reset,
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _tabletWebLayout() {
+    return Row(
+      children: [
+        Expanded(
+          child: SizedBox(
+            height: 450,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Bill(
+                  txtCtr: _billController,
+                  callback: _updateBill,
+                ),
+                const SizedBox(height: 30),
+                SelectTip(
+                  selectedTip: _currentTip,
+                  callback: _updateTip,
+                ),
+                const SizedBox(height: 30),
+                NumberOfPeople(
+                  txtCrt: _numPeopleController,
+                  callback: _updateNumberOfPeople,
+                ),
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(width: 30),
+        Result(
+          bill: double.parse(_billController.text),
+          tipPercentage: _currentTip,
+          numPeople: int.parse(_numPeopleController.text),
+          callback: _reset,
+        )
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    const containerBorderRadius = BorderRadius.only(
+    const mobileRadius = BorderRadius.only(
       topLeft: Radius.circular(15),
       topRight: Radius.circular(15),
     );
+    const tabletWebRadius = BorderRadius.all(Radius.circular(15));
+
+    final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       backgroundColor: KColor.lightGrayishCyan,
@@ -67,38 +141,18 @@ class _HomepageState extends State<Homepage> {
               padding: const EdgeInsets.symmetric(vertical: 60),
               child: SvgPicture.asset("assets/images/logo.svg"),
             ),
-            Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: KColor.white,
-                borderRadius: containerBorderRadius,
-              ),
-              padding: const EdgeInsets.all(25),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Bill(
-                    txtCtr: _billController,
-                    callback: _updateBill,
-                  ),
-                  const SizedBox(height: 30),
-                  SelectTip(
-                    selectedTip: _currentTip,
-                    callback: _updateTip,
-                  ),
-                  const SizedBox(height: 30),
-                  NumberOfPeople(
-                    txtCrt: _numPeopleController,
-                    callback: _updateNumberOfPeople,
-                  ),
-                  const SizedBox(height: 30),
-                  Result(
-                    bill: double.parse(_billController.text),
-                    tipPercentage: _currentTip,
-                    numPeople: int.parse(_numPeopleController.text),
-                    callback: _reset,
-                  )
-                ],
+            Center(
+              child: Container(
+                width: screenWidth < 1080 ? double.infinity : 1000,
+                height: screenWidth < 1080 ? null : 460,
+                decoration: BoxDecoration(
+                  color: KColor.white,
+                  borderRadius:
+                      screenWidth < 1080 ? mobileRadius : tabletWebRadius,
+                ),
+                padding: const EdgeInsets.all(25),
+                child:
+                    screenWidth < 1080 ? _mobileLayout() : _tabletWebLayout(),
               ),
             )
           ],

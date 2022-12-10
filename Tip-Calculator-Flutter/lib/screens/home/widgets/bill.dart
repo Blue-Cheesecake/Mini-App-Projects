@@ -15,7 +15,6 @@ class Bill extends StatefulWidget {
 }
 
 class _BillState extends State<Bill> {
-
   TextField _billInput() {
     return TextField(
       style: TextStyle(
@@ -56,12 +55,19 @@ class _BillState extends State<Bill> {
 
   @override
   Widget build(BuildContext context) {
+    Widget responsiveBillInput =
+        SizedBox(width: double.infinity, child: _billInput());
+    final screenWidth = MediaQuery.of(context).size.width;
+    if (screenWidth < 1080) {
+      responsiveBillInput = _billInput();
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SectionTitle(title: "Bill"),
         const SizedBox(height: 10),
-        _billInput(),
+        responsiveBillInput,
       ],
     );
   }
