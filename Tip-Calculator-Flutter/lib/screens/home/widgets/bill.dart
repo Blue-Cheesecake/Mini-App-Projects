@@ -3,12 +3,17 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tip_calculator/constants.dart';
 import 'package:tip_calculator/screens/home/widgets/common/section_title.dart';
 
-class Bill extends StatelessWidget {
-  const Bill({Key? key, required this.controller, this.callback})
-      : super(key: key);
+class Bill extends StatefulWidget {
+  Bill({Key? key, required this.callback}) : super(key: key);
 
-  final TextEditingController controller;
-  final Function? callback;
+  final Function(double) callback;
+
+  @override
+  State<Bill> createState() => _BillState();
+}
+
+class _BillState extends State<Bill> {
+  final _txtController = TextEditingController();
 
   TextField _billInput() {
     return TextField(
@@ -18,7 +23,7 @@ class Bill extends StatelessWidget {
         // to center cursor -> cursor height / font size
         height: 25 / 24,
       ),
-      controller: controller,
+      controller: _txtController,
       keyboardType: TextInputType.number,
       textAlign: TextAlign.end,
       cursorColor: KColor.strongCyan,
@@ -42,10 +47,8 @@ class Bill extends StatelessWidget {
           borderRadius: const BorderRadius.all(Radius.circular(8)),
         ),
       ),
-      onSubmitted: (_) {
-        if (callback != null) {
-          callback!();
-        }
+      onSubmitted: (value) {
+        widget.callback(double.parse(value));
       },
     );
   }

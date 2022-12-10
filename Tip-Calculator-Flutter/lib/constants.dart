@@ -19,4 +19,5 @@ class KColor {
 class DefaultValue {
   static const tip = 15;
   static const numOfPeople = 1;
+  static const bill = 0.0;
 }

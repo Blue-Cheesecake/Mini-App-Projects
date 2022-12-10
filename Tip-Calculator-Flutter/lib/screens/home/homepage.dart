@@ -14,6 +14,7 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   final _billController = TextEditingController();
+  var _bill = DefaultValue.bill;
   var _currentTip = DefaultValue.tip;
   var _numOfPeo = DefaultValue.numOfPeople;
 
@@ -23,8 +24,10 @@ class _HomepageState extends State<Homepage> {
     });
   }
 
-  void _updateBillText() {
-    setState(() {});
+  void _updateBill(double newValue) {
+    setState(() {
+      _bill = newValue;
+    });
   }
 
   void _updateNumberOfPeople(int newValue) {
@@ -59,10 +62,7 @@ class _HomepageState extends State<Homepage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Bill(
-                    controller: _billController,
-                    callback: _updateBillText,
-                  ),
+                  Bill(callback: _updateBill),
                   const SizedBox(height: 30),
                   SelectTip(
                     selectedTip: _currentTip,
