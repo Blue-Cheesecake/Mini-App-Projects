@@ -102,7 +102,6 @@ class _SelectTipState extends State<SelectTip> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SectionTitle(title: "Select Tip %"),
-        const SizedBox(height: 10),
         GridView.builder(
           physics: const NeverScrollableScrollPhysics(),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tip_calculator/constants.dart';
 import 'package:tip_calculator/screens/home/widgets/bill.dart';
+import 'package:tip_calculator/screens/home/widgets/number_of_people.dart';
 import 'package:tip_calculator/screens/home/widgets/select_tip.dart';
 
 class Homepage extends StatefulWidget {
@@ -67,6 +68,8 @@ class _HomepageState extends State<Homepage> {
                     selectedTip: _currentTip,
                     callback: _changeTip,
                   ),
+                  const SizedBox(height: 30),
+                  NumberOfPeople(callback: _updateNumberOfPeople),
                 ],
               ),
             )
