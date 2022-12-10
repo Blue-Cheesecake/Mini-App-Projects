@@ -14,8 +14,6 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  // TODO: Pass controller to bill & num of people instead
-  // in order to use reset function
   var _currentTip = DefaultValue.tip;
   final _billController = TextEditingController();
   final _numPeopleController = TextEditingController();
