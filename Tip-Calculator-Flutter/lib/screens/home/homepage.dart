@@ -2,11 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tip_calculator/constants.dart';
 import 'package:tip_calculator/screens/home/widgets/bill.dart';
+import 'package:tip_calculator/screens/home/widgets/select_tip.dart';
 
-class Homepage extends StatelessWidget {
-  Homepage({Key? key}) : super(key: key);
+class Homepage extends StatefulWidget {
+  const Homepage({Key? key}) : super(key: key);
 
+  @override
+  State<Homepage> createState() => _HomepageState();
+}
+
+class _HomepageState extends State<Homepage> {
   final _billController = TextEditingController();
+  var _currentTip = DefaultValue.tip;
+
+  void _changeTip(int newValue) {
+    setState(() {
+      _currentTip = newValue;
+    });
+    print(_currentTip);
+  }
+
+  void _updateBillText() {
+    setState(() {});
+    print(_billController.text);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +55,10 @@ class Homepage extends StatelessWidget {
                 children: [
                   Bill(
                     controller: _billController,
+                    callback: _updateBillText,
                   ),
+                  const SizedBox(height: 30),
+                  SelectTip(selectedTip: _currentTip, callback: _changeTip),
                 ],
               ),
             )

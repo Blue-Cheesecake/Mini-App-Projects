@@ -15,11 +15,16 @@ class Bill extends StatelessWidget {
       style: TextStyle(
         fontSize: 24,
         color: KColor.veryDarkCyan,
+        // to center cursor -> cursor height / font size
+        height: 25 / 24,
       ),
       controller: controller,
       keyboardType: TextInputType.number,
       textAlign: TextAlign.end,
-      cursorColor: KColor.veryDarkCyan,
+      cursorColor: KColor.strongCyan,
+      cursorHeight: 25,
+      cursorWidth: 5,
+      cursorRadius: const Radius.circular(20),
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.all(10),
         filled: true,
@@ -37,6 +42,11 @@ class Bill extends StatelessWidget {
           borderRadius: const BorderRadius.all(Radius.circular(8)),
         ),
       ),
+      onSubmitted: (_) {
+        if (callback != null) {
+          callback!();
+        }
+      },
     );
   }
 
