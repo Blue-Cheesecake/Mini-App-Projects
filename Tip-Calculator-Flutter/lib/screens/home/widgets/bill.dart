@@ -4,7 +4,7 @@ import 'package:tip_calculator/constants.dart';
 import 'package:tip_calculator/screens/home/widgets/common/section_title.dart';
 
 class Bill extends StatefulWidget {
-  Bill({Key? key, required this.callback}) : super(key: key);
+  const Bill({Key? key, required this.callback}) : super(key: key);
 
   final Function(double) callback;
 

@@ -22,7 +22,7 @@ class TipButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(backgroundColor: bg, foregroundColor: fg),
       onPressed: () => handleSelected(value),
       child: Text(
-        "$value\$",
+        "$value%",
         style: const TextStyle(fontSize: 24),
       ),
     );

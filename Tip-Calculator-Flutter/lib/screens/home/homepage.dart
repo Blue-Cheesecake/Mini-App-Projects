@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tip_calculator/constants.dart';
 import 'package:tip_calculator/screens/home/widgets/bill.dart';
 import 'package:tip_calculator/screens/home/widgets/number_of_people.dart';
+import 'package:tip_calculator/screens/home/widgets/result.dart';
 import 'package:tip_calculator/screens/home/widgets/select_tip.dart';
 
 class Homepage extends StatefulWidget {
@@ -13,12 +14,11 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  final _billController = TextEditingController();
   var _bill = DefaultValue.bill;
   var _currentTip = DefaultValue.tip;
   var _numOfPeo = DefaultValue.numOfPeople;
 
-  void _changeTip(int newValue) {
+  void _updateTip(int newValue) {
     setState(() {
       _currentTip = newValue;
     });
@@ -34,6 +34,12 @@ class _HomepageState extends State<Homepage> {
     setState(() {
       _numOfPeo = newValue;
     });
+  }
+
+  void _reset() {
+    _updateBill(DefaultValue.bill);
+    _updateTip(DefaultValue.tip);
+    _updateNumberOfPeople(DefaultValue.numOfPeople);
   }
 
   @override
@@ -66,10 +72,17 @@ class _HomepageState extends State<Homepage> {
                   const SizedBox(height: 30),
                   SelectTip(
                     selectedTip: _currentTip,
-                    callback: _changeTip,
+                    callback: _updateTip,
                   ),
                   const SizedBox(height: 30),
                   NumberOfPeople(callback: _updateNumberOfPeople),
+                  const SizedBox(height: 30),
+                  Result(
+                    bill: _bill,
+                    tipPercentage: _currentTip,
+                    numPeople: _numOfPeo,
+                    callback: _reset,
+                  )
                 ],
               ),
             )
