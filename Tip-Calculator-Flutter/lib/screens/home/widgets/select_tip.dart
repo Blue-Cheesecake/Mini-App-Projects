@@ -19,10 +19,37 @@ class _SelectTipState extends State<SelectTip> {
     widget.callback(newValue);
   }
 
+  final _customTipCon = TextEditingController();
+
   Widget _customTipButton() {
     return TextField(
+      controller: _customTipCon,
       textAlign: TextAlign.end,
+      onSubmitted: (value) {
+        try {
+          widget.callback(int.parse(value));
+        } on FormatException {
+          // do nothing
+        }
+      },
+      keyboardType: TextInputType.number,
+      style: TextStyle(
+        fontSize: 24,
+        color: KColor.veryDarkCyan,
+      ),
       decoration: InputDecoration(
+        prefixIcon: _customTipCon.text.trim() == ""
+            ? null
+            : IconButton(
+                onPressed: () {
+                  _customTipCon.text = "";
+                  widget.callback(DefaultValue.tip);
+                },
+                icon: Icon(
+                  Icons.delete_outline_rounded,
+                  color: KColor.veryDarkCyan,
+                ),
+              ),
         contentPadding: const EdgeInsets.all(10),
         filled: true,
         fillColor: KColor.veryLightGrayishCyan,
@@ -77,6 +104,7 @@ class _SelectTipState extends State<SelectTip> {
         const SectionTitle(title: "Select Tip %"),
         const SizedBox(height: 10),
         GridView.builder(
+          physics: const NeverScrollableScrollPhysics(),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisSpacing: 20,
             mainAxisSpacing: 20,

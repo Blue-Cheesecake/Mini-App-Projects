@@ -14,17 +14,22 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   final _billController = TextEditingController();
   var _currentTip = DefaultValue.tip;
+  var _numOfPeo = DefaultValue.numOfPeople;
 
   void _changeTip(int newValue) {
     setState(() {
       _currentTip = newValue;
     });
-    print(_currentTip);
   }
 
   void _updateBillText() {
     setState(() {});
-    print(_billController.text);
+  }
+
+  void _updateNumberOfPeople(int newValue) {
+    setState(() {
+      _numOfPeo = newValue;
+    });
   }
 
   @override
@@ -36,7 +41,7 @@ class _HomepageState extends State<Homepage> {
 
     return Scaffold(
       backgroundColor: KColor.lightGrayishCyan,
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           children: [
             Padding(
@@ -58,7 +63,10 @@ class _HomepageState extends State<Homepage> {
                     callback: _updateBillText,
                   ),
                   const SizedBox(height: 30),
-                  SelectTip(selectedTip: _currentTip, callback: _changeTip),
+                  SelectTip(
+                    selectedTip: _currentTip,
+                    callback: _changeTip,
+                  ),
                 ],
               ),
             )
