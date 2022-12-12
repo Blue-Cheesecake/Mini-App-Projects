@@ -52,6 +52,7 @@ class _HomepageState extends State<Homepage> {
                     monthlyBillingStatus: _isMonthlyBilling,
                     updateCost: _updateCurrentCost,
                     updateBill: _updateIsMonthlyBilling,
+                    benefits: DefaultValue.benefits,
                   ),
                 ],
               ),

@@ -4,6 +4,11 @@ class DefaultValue {
   static const valSlider = 16.00;
   static const minSliderValue = 0.0;
   static const maxSliderValue = 32.0;
+  static const benefits = <String>[
+    "Unlimited websites",
+    "100% data ownership",
+    "Email reports",
+  ];
 }
 
 class Style {
@@ -14,7 +19,7 @@ class Style {
 class Dimension {
   const Dimension();
 
-  double get mainBoxPaddingSize => 10.0;
+  double get mainBoxPaddingSize => 30.0;
 
   double get mobileMaximumMainBoxWidth => 375.0;
 
