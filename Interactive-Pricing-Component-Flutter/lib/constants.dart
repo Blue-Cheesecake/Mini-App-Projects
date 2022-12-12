@@ -2,10 +2,23 @@ import 'package:flutter/material.dart';
 
 class DefaultValue {
   static const valSlider = 16.00;
+  static const minSliderValue = 0.0;
+  static const maxSliderValue = 32.0;
 }
 
 class Style {
   static const KColor Color = KColor();
+  static const Dimension dimension = Dimension();
+}
+
+class Dimension {
+  const Dimension();
+
+  double get mainBoxPaddingSize => 10.0;
+
+  double get mobileMaximumMainBoxWidth => 375.0;
+
+  double get webMaximumMainBoxHeight => 600.0;
 }
 
 class KColor {

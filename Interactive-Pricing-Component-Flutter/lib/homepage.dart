@@ -32,6 +32,7 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Style.Color.mainBackground,
       body: SafeArea(
         child: Stack(
           children: [
@@ -45,6 +46,7 @@ class _HomepageState extends State<Homepage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SectionTitle(),
+                  const SizedBox(height: 30),
                   MainBox(
                     currentValue: _currentCost,
                     monthlyBillingStatus: _isMonthlyBilling,
