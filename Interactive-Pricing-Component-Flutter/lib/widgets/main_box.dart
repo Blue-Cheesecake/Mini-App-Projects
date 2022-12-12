@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 import 'package:interactive_pricing_component/constants.dart';
 
 class MainBox extends StatefulWidget {
@@ -36,11 +37,22 @@ class _MainBoxState extends State<MainBox> {
           ),
         ),
         SizedBox(height: Style.dimension.mainBoxPaddingSize),
-        Slider(
-          value: widget.currentValue,
-          onChanged: widget.updateCost,
-          min: DefaultValue.minSliderValue,
-          max: DefaultValue.maxSliderValue,
+        SliderTheme(
+          data: SliderTheme.of(context).copyWith(
+            trackHeight: 8,
+            activeTrackColor: Style.Color.fullSliderBar,
+            inactiveTrackColor: Style.Color.emptySliderBar,
+            thumbColor: Style.Color.sliderBackground,
+            thumbShape: const RoundSliderThumbShape(
+              enabledThumbRadius: 20,
+            ),
+          ),
+          child: Slider(
+            value: widget.currentValue,
+            onChanged: widget.updateCost,
+            min: DefaultValue.minSliderValue,
+            max: DefaultValue.maxSliderValue,
+          ),
         ),
         SizedBox(height: Style.dimension.mainBoxPaddingSize),
         Row(
@@ -82,10 +94,17 @@ class _MainBoxState extends State<MainBox> {
             color: Style.Color.text,
           ),
         ),
-        Switch(
+        const SizedBox(width: 8),
+        FlutterSwitch(
+          width: 50,
+          height: 25,
+          padding: 2,
+          activeColor: Style.Color.fullSliderBar,
+          inactiveColor: Style.Color.toggleBackground,
           value: widget.monthlyBillingStatus,
-          onChanged: widget.updateBill,
+          onToggle: widget.updateBill,
         ),
+        const SizedBox(width: 8),
         Text(
           "Yearly Billing",
           style: TextStyle(
