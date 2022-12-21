@@ -23,14 +23,46 @@ class MainContent extends StatelessWidget {
   }
 
   Widget _buildWebLayout(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [],
-        ),
-      ],
+    return Expanded(
+      flex: 2,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          _buildImage(context),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Expanded(
+                flex: 1,
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    top: StyleDimension.marginBetweenSection / 3,
+                  ),
+                  child: _buildHeader(),
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    top: StyleDimension.marginBetweenSection / 3,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      _buildSubTitle(),
+                      const SizedBox(
+                          height: StyleDimension.marginBetweenSection / 2),
+                      _buildReadMoreButton(),
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
+        ],
+      ),
     );
   }
 

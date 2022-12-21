@@ -16,14 +16,15 @@ class StyleColor {
 class StyleDimension {
   static const double paddingAround = 15.0;
   static const double newsBoxWidth = 370.0;
-  static const double imageWidth = 370.0;
+  static const double imageWidth = 600.0;
+  static const double maximumPageWidth = 1080;
   static const double marginBetweenSection = 60.0;
   static const double mobileImageHeight = 370.0;
 }
 
 class StyleFontSize {
   static const double paragraph = 15;
-  static const double headerMainContent = 31;
+  static const double headerMainContent = 50;
   static const double header = 26;
   static const double subHeader = 18;
 }

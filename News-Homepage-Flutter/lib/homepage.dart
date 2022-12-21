@@ -11,29 +11,39 @@ class Homepage extends StatelessWidget {
   static const routeName = "Homepage";
 
   Widget _buildWebLayout() {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            News(),
-          ],
-        ),
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [],
-        )
-      ],
+    return SizedBox(
+      width: StyleDimension.maximumPageWidth,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: const [
+              MainContent(),
+              SizedBox(
+                width: StyleDimension.marginBetweenSection / 2,
+              ),
+              News(),
+            ],
+          ),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: const [],
+          )
+        ],
+      ),
     );
   }
 
   Widget _buildMobileLayout() {
     return Column(
       mainAxisSize: MainAxisSize.min,
-      children: [
+      children: const [
         MainContent(),
-        const SizedBox(height: StyleDimension.marginBetweenSection),
+        SizedBox(height: StyleDimension.marginBetweenSection),
         News(),
       ],
     );
@@ -50,7 +60,7 @@ class Homepage extends StatelessWidget {
           padding: const EdgeInsets.only(left: StyleDimension.paddingAround),
           child: SvgPicture.asset("assets/images/logo.svg"),
         ),
-        actions: [],
+        actions: const [],
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -59,7 +69,7 @@ class Homepage extends StatelessWidget {
             child: ScreenConfiguration.getScreenWidth(context) <
                     ScreenConfiguration.minimumWebWidth
                 ? _buildMobileLayout()
-                : _buildWebLayout(),
+                : Center(child: _buildWebLayout()),
           ),
         ),
       ),
