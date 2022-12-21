@@ -16,6 +16,9 @@ class StyleColor {
 class StyleDimension {
   static const double paddingAround = 15.0;
   static const double newsBoxWidth = 370.0;
+  static const double imageWidth = 370.0;
+  static const double marginBetweenSection = 60.0;
+  static const double mobileImageHeight = 370.0;
 }
 
 class StyleFontSize {

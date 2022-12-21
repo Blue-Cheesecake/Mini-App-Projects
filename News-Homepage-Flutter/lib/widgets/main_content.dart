@@ -12,8 +12,11 @@ class MainContent extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _buildImage(context),
+        const SizedBox(height: StyleDimension.paddingAround * 1.5),
         _buildHeader(),
+        const SizedBox(height: StyleDimension.paddingAround * 1.5),
         _buildSubTitle(),
+        const SizedBox(height: StyleDimension.paddingAround * 1.5),
         _buildReadMoreButton(),
       ],
     );
@@ -56,15 +59,34 @@ class MainContent extends StatelessWidget {
 
   // Component
   Widget _buildImage(BuildContext context) {
-    return Image.asset(ScreenConfiguration.getScreenWidth(context) <
-            ScreenConfiguration.minimumWebWidth
-        ? FakeData.homepage.mainContent.mobileImagePath!
-        : FakeData.homepage.mainContent.imagePath!);
+    return Image.asset(
+      ScreenConfiguration.isMobileLayout(context)
+          ? FakeData.homepage.mainContent.mobileImagePath!
+          : FakeData.homepage.mainContent.imagePath!,
+    );
   }
 
   // Component
   Widget _buildReadMoreButton() {
-    return ElevatedButton(onPressed: () {}, child: Text("READ MORE"));
+    return ElevatedButton(
+      onPressed: () {},
+      style: ElevatedButton.styleFrom(
+        backgroundColor: StyleColor.softRed,
+        padding: const EdgeInsets.symmetric(
+          vertical: StyleDimension.paddingAround * 1.5,
+          horizontal: StyleDimension.paddingAround * 2,
+        ),
+      ),
+      child: Text(
+        "READ MORE",
+        style: TextStyle(
+          letterSpacing: 5,
+          fontSize: StyleFontSize.paragraph,
+          fontWeight: FontWeight.w700,
+          color: StyleColor.offWhite,
+        ),
+      ),
+    );
   }
 
   @override

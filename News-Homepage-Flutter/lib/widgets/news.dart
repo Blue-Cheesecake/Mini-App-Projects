@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_homepage/Data/fake_data.dart';
+import 'package:news_homepage/screen_configuration.dart';
 import 'package:news_homepage/style.dart';
 
 class News extends StatelessWidget {
@@ -20,6 +21,9 @@ class News extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<New> newsList = FakeData.homepage.newList;
     return Container(
+      width: ScreenConfiguration.isMobileLayout(context)
+          ? null
+          : StyleDimension.newsBoxWidth,
       padding: const EdgeInsets.all(StyleDimension.paddingAround),
       decoration: BoxDecoration(
         color: StyleColor.veryDarkBlue,

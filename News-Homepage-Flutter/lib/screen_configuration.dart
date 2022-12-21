@@ -9,5 +9,9 @@ class ScreenConfiguration {
     return MediaQuery.of(context).size.height;
   }
 
+  static bool isMobileLayout(BuildContext context) {
+    return getScreenWidth(context) < minimumWebWidth;
+  }
+
   static double minimumWebWidth = 1080.0;
 }

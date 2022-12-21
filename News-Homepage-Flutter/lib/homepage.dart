@@ -33,6 +33,7 @@ class Homepage extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         MainContent(),
+        const SizedBox(height: StyleDimension.marginBetweenSection),
         News(),
       ],
     );
