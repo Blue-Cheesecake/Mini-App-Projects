@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:news_homepage/Data/fake_data.dart';
 import 'package:news_homepage/screen_configuration.dart';
 import 'package:news_homepage/style.dart';
 import 'package:news_homepage/widgets/main_content.dart';
@@ -49,8 +50,45 @@ class Homepage extends StatelessWidget {
     );
   }
 
+  // Component
+  Widget _buildMobileDrawer() {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: FakeData.shared.menus.map((menu) {
+          return TextButton(
+            onPressed: () {},
+            child: Text(menu.name),
+          );
+        }).toList(),
+      ),
+    );
+  }
+
+  // Component
+  List<Widget> _buildWebMenuBar() {
+    return FakeData.shared.menus.map((e) {
+      return TextButton(
+        onPressed: () {},
+        child: Text(e.name),
+      );
+    }).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
+    List<Widget> webMenuBar = _buildWebMenuBar();
+    var customIconMobileDrawer = [
+      Builder(builder: (context) {
+        return ScreenConfiguration.isMobileLayout(context)
+            ? IconButton(
+                onPressed: () => Scaffold.of(context).openEndDrawer(),
+                icon: SvgPicture.asset("assets/images/icon-menu.svg"),
+              )
+            : const SizedBox.shrink();
+      }),
+    ];
+
     return Scaffold(
       backgroundColor: StyleColor.offWhite,
       appBar: AppBar(
@@ -60,8 +98,13 @@ class Homepage extends StatelessWidget {
           padding: const EdgeInsets.only(left: StyleDimension.paddingAround),
           child: SvgPicture.asset("assets/images/logo.svg"),
         ),
-        actions: const [],
+        actions: ScreenConfiguration.isMobileLayout(context)
+            ? customIconMobileDrawer
+            : webMenuBar,
       ),
+      endDrawer: ScreenConfiguration.isMobileLayout(context)
+          ? _buildMobileDrawer()
+          : null,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(

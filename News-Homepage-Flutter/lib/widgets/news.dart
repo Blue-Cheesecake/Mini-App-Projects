@@ -40,12 +40,15 @@ class News extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
-                  val.title,
-                  style: TextStyle(
-                    fontSize: StyleFontSize.subHeader,
-                    fontWeight: FontWeight.bold,
-                    color: StyleColor.offWhite,
+                TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    val.title,
+                    style: TextStyle(
+                      fontSize: StyleFontSize.subHeader,
+                      fontWeight: FontWeight.bold,
+                      color: StyleColor.offWhite,
+                    ),
                   ),
                 ),
                 const SizedBox(height: StyleDimension.paddingAround / 2),

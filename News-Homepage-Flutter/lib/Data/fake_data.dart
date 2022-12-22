@@ -1,5 +1,6 @@
 class FakeData {
   static HomepageData homepage = HomepageData();
+  static SharedData shared = SharedData();
 }
 
 class MapRouteName {
@@ -16,6 +17,23 @@ class New {
   final String? mobileImagePath;
 
   New(this.title, this.subTitle, {this.imagePath, this.mobileImagePath});
+}
+
+class Menu {
+  final String name;
+  final String destinationRoute;
+
+  Menu(this.name, this.destinationRoute);
+}
+
+class SharedData {
+  final List<Menu> menus = [
+    Menu("Home", "#"),
+    Menu("New", "#"),
+    Menu("Popular", "#"),
+    Menu("Trending", "#"),
+    Menu("Categories", "#"),
+  ];
 }
 
 class HomepageData {
