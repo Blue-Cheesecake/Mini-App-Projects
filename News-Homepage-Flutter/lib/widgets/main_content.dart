@@ -84,6 +84,7 @@ class MainContent extends StatelessWidget {
       FakeData.homepage.mainContent.subTitle,
       style: TextStyle(
         fontSize: StyleFontSize.paragraph,
+        height: StyleDimension.paragraphHeight,
         color: StyleColor.darkGrayishBlue,
       ),
     );
@@ -91,19 +92,23 @@ class MainContent extends StatelessWidget {
 
   // Component
   Widget _buildImage(BuildContext context) {
-    return Image.asset(
-      ScreenConfiguration.isMobileLayout(context)
-          ? FakeData.homepage.mainContent.mobileImagePath!
-          : FakeData.homepage.mainContent.imagePath!,
-    );
+    if (ScreenConfiguration.getScreenWidth(context) <
+        ScreenConfiguration.minimumWebWidth / 2) {
+      return Image.asset(FakeData.homepage.mainContent.mobileImagePath!);
+    }
+    return Image.asset(FakeData.homepage.mainContent.imagePath!);
   }
 
   // Component
   Widget _buildReadMoreButton() {
+    // TODO: Make OnHover Color
     return ElevatedButton(
       onPressed: () {},
       style: ElevatedButton.styleFrom(
         backgroundColor: StyleColor.softRed,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.zero),
+        ),
         padding: const EdgeInsets.symmetric(
           vertical: StyleDimension.paddingAround * 1.5,
           horizontal: StyleDimension.paddingAround * 2,

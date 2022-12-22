@@ -69,25 +69,33 @@ class Homepage extends StatelessWidget {
 
   // Component
   List<Widget> _buildWebMenuBar() {
-    return FakeData.shared.menus.map((e) {
+    List<Widget> mapped = FakeData.shared.menus.map((e) {
       return TextButton(
+        style: TextButton.styleFrom(
+          padding: const EdgeInsets.all(StyleDimension.paddingAround),
+        ),
         onPressed: () {},
-        child: Text(e.name),
+        child: Text(
+          e.name,
+          style: TextStyle(
+            color: StyleColor.darkGrayishBlue,
+          ),
+        ),
       );
     }).toList();
+
+    // Add Margin to the Right of AppBar Actions
+    return mapped;
   }
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> webMenuBar = _buildWebMenuBar();
     var customIconMobileDrawer = [
       Builder(builder: (context) {
-        return ScreenConfiguration.isMobileLayout(context)
-            ? IconButton(
+        return IconButton(
           onPressed: () => Scaffold.of(context).openEndDrawer(),
           icon: SvgPicture.asset("assets/images/icon-menu.svg"),
-        )
-            : const SizedBox.shrink();
+        );
       }),
     ];
 
@@ -102,7 +110,7 @@ class Homepage extends StatelessWidget {
         ),
         actions: ScreenConfiguration.isMobileLayout(context)
             ? customIconMobileDrawer
-            : webMenuBar,
+            : _buildWebMenuBar(),
       ),
       endDrawer: ScreenConfiguration.isMobileLayout(context)
           ? _buildMobileDrawer()
@@ -112,7 +120,7 @@ class Homepage extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(StyleDimension.paddingAround),
             child: ScreenConfiguration.getScreenWidth(context) <
-                ScreenConfiguration.minimumWebWidth
+                    ScreenConfiguration.minimumWebWidth
                 ? _buildMobileLayout()
                 : Center(child: _buildWebLayout()),
           ),

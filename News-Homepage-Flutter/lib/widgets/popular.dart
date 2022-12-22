@@ -31,6 +31,7 @@ class Popular extends StatelessWidget {
             ),
 
             // Header
+            // TODO: Make OnHover Color
             TextButton(
               onPressed: () {},
               style: TextButton.styleFrom(
@@ -51,7 +52,8 @@ class Popular extends StatelessWidget {
           e.subTitle,
           style: TextStyle(
             fontSize: StyleFontSize.paragraph,
-            color: StyleColor.grayishBlue,
+            height: StyleDimension.paragraphHeight,
+            color: StyleColor.darkGrayishBlue,
           ),
         ),
       );

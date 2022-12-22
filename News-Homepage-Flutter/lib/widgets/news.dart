@@ -41,6 +41,7 @@ class News extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 // Anchor Link
+                // TODO: Make OnHover Color
                 TextButton(
                   onPressed: () {},
                   style: TextButton.styleFrom(
@@ -60,6 +61,7 @@ class News extends StatelessWidget {
                   val.subTitle,
                   style: TextStyle(
                     fontSize: StyleFontSize.paragraph,
+                    height: StyleDimension.paragraphHeight,
                     color: StyleColor.grayishBlue,
                   ),
                 ),

@@ -17,9 +17,10 @@ class StyleDimension {
   static const double paddingAround = 15.0;
   static const double newsBoxWidth = 370.0;
   static const double imageWidth = 600.0;
-  static const double maximumPageWidth = 1080;
+  static const double maximumPageWidth = 1000;
   static const double marginBetweenSection = 60.0;
   static const double mobileImageHeight = 370.0;
+  static const double paragraphHeight = 1.5;
 }
 
 class StyleFontSize {
