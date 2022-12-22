@@ -5,11 +5,14 @@ import 'package:news_homepage/screen_configuration.dart';
 import 'package:news_homepage/style.dart';
 import 'package:news_homepage/widgets/main_content.dart';
 import 'package:news_homepage/widgets/news.dart';
+import 'package:news_homepage/widgets/popular.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({Key? key}) : super(key: key);
 
   static const routeName = "Homepage";
+
+  // TODO: Decorate Drawer both Web and Mobile
 
   Widget _buildWebLayout() {
     return SizedBox(
@@ -30,10 +33,8 @@ class Homepage extends StatelessWidget {
               News(),
             ],
           ),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: const [],
-          )
+          const SizedBox(height: StyleDimension.marginBetweenSection / 2),
+          const Popular(),
         ],
       ),
     );
@@ -46,6 +47,7 @@ class Homepage extends StatelessWidget {
         MainContent(),
         SizedBox(height: StyleDimension.marginBetweenSection),
         News(),
+        Popular(),
       ],
     );
   }
@@ -82,9 +84,9 @@ class Homepage extends StatelessWidget {
       Builder(builder: (context) {
         return ScreenConfiguration.isMobileLayout(context)
             ? IconButton(
-                onPressed: () => Scaffold.of(context).openEndDrawer(),
-                icon: SvgPicture.asset("assets/images/icon-menu.svg"),
-              )
+          onPressed: () => Scaffold.of(context).openEndDrawer(),
+          icon: SvgPicture.asset("assets/images/icon-menu.svg"),
+        )
             : const SizedBox.shrink();
       }),
     ];
@@ -110,7 +112,7 @@ class Homepage extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(StyleDimension.paddingAround),
             child: ScreenConfiguration.getScreenWidth(context) <
-                    ScreenConfiguration.minimumWebWidth
+                ScreenConfiguration.minimumWebWidth
                 ? _buildMobileLayout()
                 : Center(child: _buildWebLayout()),
           ),

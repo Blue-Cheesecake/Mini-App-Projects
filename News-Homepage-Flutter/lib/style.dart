@@ -26,5 +26,5 @@ class StyleFontSize {
   static const double paragraph = 15;
   static const double headerMainContent = 50;
   static const double header = 26;
-  static const double subHeader = 18;
+  static const double subHeader = 17;
 }
