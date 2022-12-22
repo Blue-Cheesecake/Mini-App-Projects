@@ -101,18 +101,17 @@ class MainContent extends StatelessWidget {
 
   // Component
   Widget _buildReadMoreButton() {
-    // TODO: Make OnHover Color
     return ElevatedButton(
       onPressed: () {},
-      style: ElevatedButton.styleFrom(
-        backgroundColor: StyleColor.softRed,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.zero),
-        ),
-        padding: const EdgeInsets.symmetric(
+      style: ButtonStyle(
+        overlayColor: MaterialStateProperty.all(StyleColor.veryDarkBlue),
+        backgroundColor: MaterialStateProperty.all(StyleColor.softRed),
+        padding: MaterialStateProperty.all(const EdgeInsets.symmetric(
           vertical: StyleDimension.paddingAround * 1.5,
           horizontal: StyleDimension.paddingAround * 2,
-        ),
+        )),
+        shape: MaterialStateProperty.all(const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.zero))),
       ),
       child: Text(
         "READ MORE",

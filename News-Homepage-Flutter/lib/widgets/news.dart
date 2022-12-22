@@ -44,15 +44,22 @@ class News extends StatelessWidget {
                 // TODO: Make OnHover Color
                 TextButton(
                   onPressed: () {},
-                  style: TextButton.styleFrom(
-                    padding: EdgeInsets.zero,
+                  style: ButtonStyle(
+                    padding: MaterialStateProperty.all(EdgeInsets.zero),
+                    overlayColor: MaterialStateProperty.all(Colors.transparent),
+                    foregroundColor:
+                        MaterialStateProperty.resolveWith((states) {
+                      if (states.contains(MaterialState.hovered)) {
+                        return StyleColor.softOrange;
+                      }
+                      return StyleColor.offWhite;
+                    }),
                   ),
                   child: Text(
                     val.title,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: StyleFontSize.subHeader,
                       fontWeight: FontWeight.bold,
-                      color: StyleColor.offWhite,
                     ),
                   ),
                 ),

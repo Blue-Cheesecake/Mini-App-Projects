@@ -13,10 +13,7 @@ class Popular extends StatelessWidget {
 
       var listitle = ListTile(
         //TODO: Increase Image Size
-        leading: Image.asset(
-          e.imagePath!,
-          scale: 0.1,
-        ),
+        leading: Image.asset(e.imagePath!),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -31,18 +28,23 @@ class Popular extends StatelessWidget {
             ),
 
             // Header
-            // TODO: Make OnHover Color
             TextButton(
               onPressed: () {},
-              style: TextButton.styleFrom(
-                padding: EdgeInsets.zero,
+              style: ButtonStyle(
+                overlayColor: MaterialStateProperty.all(Colors.transparent),
+                foregroundColor: MaterialStateProperty.resolveWith((states) {
+                  if (states.contains(MaterialState.hovered)) {
+                    return StyleColor.softRed;
+                  }
+                  return StyleColor.veryDarkBlue;
+                }),
+                padding: MaterialStateProperty.all(EdgeInsets.zero),
               ),
               child: Text(
                 e.title,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: StyleFontSize.subHeader,
                   fontWeight: FontWeight.bold,
-                  color: StyleColor.veryDarkBlue,
                 ),
               ),
             ),

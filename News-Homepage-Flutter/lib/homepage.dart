@@ -55,12 +55,25 @@ class Homepage extends StatelessWidget {
   // Component
   Widget _buildMobileDrawer() {
     return Drawer(
+      elevation: 5.0,
       child: ListView(
+        shrinkWrap: true,
         padding: EdgeInsets.zero,
         children: FakeData.shared.menus.map((menu) {
           return TextButton(
+            style: TextButton.styleFrom(
+              padding: const EdgeInsets.all(StyleDimension.paddingAround * 1.5),
+              alignment: Alignment.centerLeft,
+            ),
             onPressed: () {},
-            child: Text(menu.name),
+            child: Text(
+              menu.name,
+              style: TextStyle(
+                fontSize: StyleFontSize.subHeader,
+                fontWeight: FontWeight.bold,
+                color: StyleColor.veryDarkBlue,
+              ),
+            ),
           );
         }).toList(),
       ),
@@ -71,16 +84,20 @@ class Homepage extends StatelessWidget {
   List<Widget> _buildWebMenuBar() {
     List<Widget> mapped = FakeData.shared.menus.map((e) {
       return TextButton(
-        style: TextButton.styleFrom(
-          padding: const EdgeInsets.all(StyleDimension.paddingAround),
+        style: ButtonStyle(
+          overlayColor: MaterialStateProperty.all(StyleColor.offWhite),
+          padding: MaterialStateProperty.all(
+            const EdgeInsets.all(StyleDimension.paddingAround),
+          ),
+          foregroundColor: MaterialStateProperty.resolveWith((states) {
+            if (states.contains(MaterialState.hovered)) {
+              return StyleColor.softRed;
+            }
+            return StyleColor.darkGrayishBlue;
+          }),
         ),
         onPressed: () {},
-        child: Text(
-          e.name,
-          style: TextStyle(
-            color: StyleColor.darkGrayishBlue,
-          ),
-        ),
+        child: Text(e.name),
       );
     }).toList();
 

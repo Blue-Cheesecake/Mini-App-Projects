@@ -13,5 +13,5 @@ class ScreenConfiguration {
     return getScreenWidth(context) < minimumWebWidth;
   }
 
-  static double minimumWebWidth = 1080.0;
+  static double minimumWebWidth = 1001.0;
 }
