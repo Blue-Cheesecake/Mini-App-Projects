@@ -22,5 +22,6 @@ class Color {
 }
 
 class FontSize {
-  final body = 12.0;
+  final body = 14.0;
+  final title = 32.0;
 }

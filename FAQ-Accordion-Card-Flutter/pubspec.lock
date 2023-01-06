@@ -130,6 +130,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "5.1.0"
+  scaffold_gradient_background:
+    dependency: "direct main"
+    description:
+      name: scaffold_gradient_background
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.3+1"
   sky_engine:
     dependency: transitive
     description: flutter
