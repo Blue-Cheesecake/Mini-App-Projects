@@ -1,6 +1,7 @@
 import 'package:faq_accordion_card/constants.dart';
 import 'package:faq_accordion_card/style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:scaffold_gradient_background/scaffold_gradient_background.dart';
 
 class Homepage extends StatefulWidget {
@@ -75,18 +76,31 @@ class _HomepageState extends State<Homepage> {
     return SizedBox(
       width: 900,
       child: Card(
+        clipBehavior: Clip.hardEdge,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(20)),
         ),
         elevation: 30,
-        child: Padding(
-          padding: const EdgeInsets.all(60),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const SizedBox(width: 1),
-              Column(
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            /// Images
+            ///
+            Column(
+              children: [
+                SvgPicture.asset(
+                  "assets/images/illustration-woman-online-desktop.svg",
+                  width: 300,
+                ),
+              ],
+            ),
+
+            /// FAQ
+            ///
+            Padding(
+              padding: const EdgeInsets.all(60),
+              child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -98,8 +112,8 @@ class _HomepageState extends State<Homepage> {
                   ),
                 ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -108,32 +122,32 @@ class _HomepageState extends State<Homepage> {
   Widget _mobileLayout() {
     return SizedBox(
       width: 400,
-      child: Stack(
-        alignment: Alignment.topCenter,
-        children: [
-          Card(
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-            ),
-            elevation: 30,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 70,
-                horizontal: 20,
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 100),
-                  _buildTextHeader(),
-                  const SizedBox(height: 20),
-                  _buildExpansionPaneList(),
-                ],
-              ),
-            ),
+      child: Card(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(20)),
+        ),
+        elevation: 30,
+        child: Padding(
+          padding: const EdgeInsets.only(
+            bottom: 70,
+            left: 20,
+            right: 20,
           ),
-        ],
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SvgPicture.asset(
+                "assets/images/illustration-woman-online-mobile.svg",
+                height: 180,
+              ),
+              const SizedBox(height: 20),
+              _buildTextHeader(),
+              const SizedBox(height: 20),
+              _buildExpansionPaneList(),
+            ],
+          ),
+        ),
       ),
     );
   }
