@@ -55,6 +55,7 @@ class _HomepageState extends State<Homepage> {
           child: Center(
             child: Column(
               children: [
+
                 /// Title
                 ///
                 Text("Flutter Song"),
@@ -63,7 +64,14 @@ class _HomepageState extends State<Homepage> {
                   min: 0,
                   max: _duration.inSeconds.toDouble(),
                   value: _position.inSeconds.toDouble(),
-                  onChanged: (value) async {},
+                  onChanged: (value) async {
+                    // Go to that value of Song
+                    final position = Duration(seconds: value.toInt());
+                    await _audioPlayer.seek(position);
+
+                    // Resume the audio if it's pause
+                    await _audioPlayer.resume();
+                  },
                 ),
 
                 /// Current Duration and Total Duration
