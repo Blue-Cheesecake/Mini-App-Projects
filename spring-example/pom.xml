@@ -16,7 +16,8 @@
 	<description>Demo project for Spring Boot</description>
     <modules>
         <module>submodule</module>
-    </modules>
+		<module>anothermodule</module>
+	</modules>
     <properties>
 		<java.version>17</java.version>
 	</properties>
