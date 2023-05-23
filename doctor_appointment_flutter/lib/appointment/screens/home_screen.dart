@@ -22,58 +22,60 @@ class HomeScreen extends StatelessWidget {
               borderRadius: BorderRadius.vertical(bottom: Radius.circular(18)),
             ),
           ),
-          SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-                vertical: 10,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const CircleAvatar(
-                        backgroundImage:
-                            AssetImage("assets/images/doctor1.jpg"),
-                        maxRadius: 25,
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.notifications_none_rounded,
-                          color: AppColor.white,
-                          size: 28,
+          SingleChildScrollView(
+            child: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 15,
+                  vertical: 10,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const CircleAvatar(
+                          backgroundImage:
+                              AssetImage("assets/images/doctor1.jpg"),
+                          maxRadius: 25,
                         ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 10),
-                  const Text(
-                    "Hi, Programmer",
-                    style: TextStyle(
-                      color: AppColor.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
+                        IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.notifications_none_rounded,
+                            color: AppColor.white,
+                            size: 28,
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                  const SizedBox(height: 10),
-                  const Text(
-                    "Your Health is Our\nFirst Priority",
-                    style: TextStyle(
+                    const SizedBox(height: 10),
+                    const Text(
+                      "Hi, Programmer",
+                      style: TextStyle(
                         color: AppColor.white,
-                        fontSize: 22,
+                        fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        height: 1.3),
-                  ),
-                  const SizedBox(height: 10),
-                  const SearchBarWidget(),
-                  const SizedBox(height: 20),
-                  CategoriesWidget(),
-                  const SizedBox(height: 20),
-                  DoctorListWidget()
-                ],
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    const Text(
+                      "Your Health is Our\nFirst Priority",
+                      style: TextStyle(
+                          color: AppColor.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          height: 1.3),
+                    ),
+                    const SizedBox(height: 10),
+                    const SearchBarWidget(),
+                    const SizedBox(height: 20),
+                    CategoriesWidget(),
+                    const SizedBox(height: 20),
+                    DoctorListWidget()
+                  ],
+                ),
               ),
             ),
           )
