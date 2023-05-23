@@ -1,4 +1,5 @@
 import 'package:doctor_appointment_flutter/appointment/widgets/categories_widget.dart';
+import 'package:doctor_appointment_flutter/appointment/widgets/doctor_list_widget.dart';
 import 'package:doctor_appointment_flutter/appointment/widgets/search_bar_widget.dart';
 import 'package:doctor_appointment_flutter/core/app_color.dart';
 import 'package:flutter/material.dart';
@@ -70,6 +71,8 @@ class HomeScreen extends StatelessWidget {
                   const SearchBarWidget(),
                   const SizedBox(height: 20),
                   CategoriesWidget(),
+                  const SizedBox(height: 20),
+                  DoctorListWidget()
                 ],
               ),
             ),
