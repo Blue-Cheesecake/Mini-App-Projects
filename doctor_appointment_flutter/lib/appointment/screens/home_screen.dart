@@ -1,3 +1,4 @@
+import 'package:doctor_appointment_flutter/appointment/widgets/categories_widget.dart';
 import 'package:doctor_appointment_flutter/appointment/widgets/search_bar_widget.dart';
 import 'package:doctor_appointment_flutter/core/app_color.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.lightBlue,
       body: Stack(
         children: [
           Container(
@@ -66,6 +68,8 @@ class HomeScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   const SearchBarWidget(),
+                  const SizedBox(height: 20),
+                  CategoriesWidget(),
                 ],
               ),
             ),
