@@ -12,6 +12,10 @@ class DoctorListWidget extends StatelessWidget {
       imagePath: "assets/images/doctor1.jpg",
       rating: 4.9,
       isFavorite: false,
+      patient: "1.8k",
+      experience: 10,
+      description:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard",
     ),
     DoctorModel(
       name: "Dr Watson",
@@ -19,6 +23,10 @@ class DoctorListWidget extends StatelessWidget {
       imagePath: "assets/images/doctor2.jpg",
       rating: 4.7,
       isFavorite: false,
+      patient: "2.1k",
+      experience: 8,
+      description:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard",
     ),
     DoctorModel(
       name: "Dr McCoy",
@@ -26,6 +34,10 @@ class DoctorListWidget extends StatelessWidget {
       imagePath: "assets/images/doctor3.jpg",
       rating: 4.8,
       isFavorite: false,
+      patient: "1.3k",
+      experience: 9,
+      description:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard",
     ),
     DoctorModel(
       name: "Dr House",
@@ -33,6 +45,10 @@ class DoctorListWidget extends StatelessWidget {
       imagePath: "assets/images/doctor4.jpg",
       rating: 4.6,
       isFavorite: false,
+      patient: "1.1k",
+      experience: 4,
+      description:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard",
     ),
   ];
 

@@ -4,6 +4,9 @@ class DoctorModel {
   final String imagePath;
   double rating;
   bool isFavorite;
+  String patient;
+  int experience;
+  final String description;
 
   DoctorModel({
     required this.name,
@@ -11,5 +14,8 @@ class DoctorModel {
     required this.imagePath,
     required this.rating,
     required this.isFavorite,
+    required this.patient,
+    required this.experience,
+    required this.description,
   });
 }
