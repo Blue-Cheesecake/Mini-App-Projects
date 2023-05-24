@@ -65,7 +65,7 @@ class DoctorDetailsScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 15),
-                      BookDateWidget(),
+                      const BookDateWidget(),
                       const SizedBox(height: 10),
                       const BookTimeWidget(),
                       const SizedBox(height: 15),
