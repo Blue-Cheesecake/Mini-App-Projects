@@ -25,11 +25,13 @@ class _FavoriteButtonWidgetState extends State<FavoriteButtonWidget> {
       },
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColor.white,
-        elevation: 0.5,
+        elevation: 3,
         padding: const EdgeInsets.all(12),
         shape: widget.isCircle
             ? const CircleBorder()
-            : const RoundedRectangleBorder(),
+            : const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(12)),
+              ),
       ),
       child: Icon(
         widget.doctor.isFavorite

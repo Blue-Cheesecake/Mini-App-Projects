@@ -17,16 +17,16 @@ class _DoctorCardWidgetState extends State<DoctorCardWidget> {
   @override
   Widget build(BuildContext context) {
     const double rad = 15;
-    return InkWell(
-      mouseCursor: SystemMouseCursors.click,
-      onTap: () {
-        Navigator.of(context).pushNamed(
-          DoctorDetailsScreen.routeName,
-          arguments: widget.doctor,
-        );
-      },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+      child: InkWell(
+        mouseCursor: SystemMouseCursors.click,
+        onTap: () {
+          Navigator.of(context).pushNamed(
+            DoctorDetailsScreen.routeName,
+            arguments: widget.doctor,
+          );
+        },
         child: Container(
           width: 200,
           decoration: const BoxDecoration(

@@ -1,4 +1,6 @@
 import 'package:doctor_appointment_flutter/appointment/models/doctor_model.dart';
+import 'package:doctor_appointment_flutter/appointment/widgets/back_button_widget.dart';
+import 'package:doctor_appointment_flutter/appointment/widgets/favorite_button_widget.dart';
 import 'package:doctor_appointment_flutter/core/app_color.dart';
 import 'package:flutter/material.dart';
 
@@ -17,13 +19,32 @@ class DoctorDetailsScreen extends StatelessWidget {
       body: Stack(
         children: [
           Column(
-            children: const [],
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Container(
+                height: MediaQuery.of(context).size.height * 0.4,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(doctor.imagePath),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              )
+            ],
           ),
           SafeArea(
-            child: Row(
-              children: const [
-                BackButton(),
-              ],
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const BackButtonWidget(),
+                  FavoriteButtonWidget(
+                    doctor: doctor,
+                    isCircle: false,
+                  )
+                ],
+              ),
             ),
           )
         ],

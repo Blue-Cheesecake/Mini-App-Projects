@@ -10,6 +10,13 @@ class BackButtonWidget extends StatelessWidget {
       onPressed: () {
         Navigator.of(context).pop();
       },
+      style: ElevatedButton.styleFrom(
+        elevation: 3,
+        padding: const EdgeInsets.all(12),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(12)),
+        ),
+      ),
       child: const Icon(
         Icons.arrow_back,
         color: AppColor.blue,
