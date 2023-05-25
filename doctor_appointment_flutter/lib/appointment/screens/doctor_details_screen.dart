@@ -6,9 +6,11 @@ import 'package:doctor_appointment_flutter/appointment/widgets/favorite_button_w
 import 'package:doctor_appointment_flutter/appointment/widgets/top_doctor_section_widget.dart';
 import 'package:doctor_appointment_flutter/core/app_color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/src/scheduler/ticker.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class DoctorDetailsScreen extends StatelessWidget {
+class DoctorDetailsScreen extends StatelessWidget implements TickerProvider {
   const DoctorDetailsScreen({Key? key}) : super(key: key);
 
   static const String routeName = "/doctor-details";
@@ -70,7 +72,75 @@ class DoctorDetailsScreen extends StatelessWidget {
                       const BookTimeWidget(),
                       const SizedBox(height: 15),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () async {
+                          showDialog(
+                            context: context,
+                            barrierDismissible: false,
+                            builder: (context) {
+                              return Dialog(
+                                child: SizedBox(
+                                  width: 200,
+                                  height: 200,
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: const [
+                                      SpinKitDualRing(
+                                        color: AppColor.blue,
+                                      ),
+                                      SizedBox(height: 20),
+                                      Text("Booking..."),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+
+                          await Future.delayed(const Duration(seconds: 2));
+                          // ignore: use_build_context_synchronously
+                          Navigator.of(context).pop();
+
+                          // ignore: use_build_context_synchronously
+                          showDialog(
+                            context: context,
+                            barrierDismissible: false,
+                            builder: (context) {
+                              return Dialog(
+                                child: SizedBox(
+                                  width: 200,
+                                  height: 200,
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: const [
+                                      Icon(
+                                        MdiIcons.checkBold,
+                                        color: Colors.green,
+                                        size: 80,
+                                      ),
+                                      SizedBox(height: 20),
+                                      Text(
+                                        "Successfully Booked!",
+                                        style: TextStyle(
+                                          color: Colors.green,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+
+                          await Future.delayed(const Duration(seconds: 2));
+
+                          // ignore: use_build_context_synchronously
+                          Navigator.of(context).pop();
+                          // ignore: use_build_context_synchronously
+                          Navigator.of(context).pop();
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColor.blue,
                           padding: const EdgeInsets.symmetric(vertical: 15),
@@ -111,5 +181,11 @@ class DoctorDetailsScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  @override
+  Ticker createTicker(TickerCallback onTick) {
+    // TODO: implement createTicker
+    throw UnimplementedError();
   }
 }
