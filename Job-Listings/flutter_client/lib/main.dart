@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_client/core/app_theme.dart';
 import 'package:flutter_client/features/jobs/presentation/views/job_view.dart';
 
-void main(List<String> args) {}
+void main(List<String> args) {
+  runApp(const Main());
+}
 
 class Main extends StatelessWidget {
   const Main({Key? key}) : super(key: key);

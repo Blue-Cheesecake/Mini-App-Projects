@@ -1,3 +1,5 @@
 import 'package:flutter/material.dart';
 
-final appTheme = ThemeData();
+final appTheme = ThemeData(
+  fontFamily: "LeagueSpartan",
+);

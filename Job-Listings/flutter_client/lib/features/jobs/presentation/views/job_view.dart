@@ -5,6 +5,9 @@ class JobView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      appBar: AppBar(),
+      body: const Text("Hello World"),
+    );
   }
 }
