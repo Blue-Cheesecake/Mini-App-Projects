@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_client/core/app_colors.dart';
 import 'package:flutter_client/features/jobs/application/job_service.dart';
 import 'package:flutter_client/features/jobs/domain/job_model.dart';
 import 'package:flutter_client/features/jobs/presentation/widgets/job_filter_widget.dart';
@@ -35,6 +36,7 @@ class _JobViewState extends State<JobView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
+      backgroundColor: AppColors.component.background,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
         child: Column(

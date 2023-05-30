@@ -8,9 +8,24 @@ class JobItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
-      height: 200,
-      child: Placeholder(),
+    const double rad = 29;
+    return Stack(
+      children: [
+        Container(
+          margin: const EdgeInsets.only(top: rad),
+          height: 200,
+          decoration: const BoxDecoration(
+            color: Colors.white,
+          ),
+          child: const Placeholder(),
+        ),
+        Container(
+          margin: const EdgeInsets.only(left: 25),
+          child: const CircleAvatar(
+            radius: rad,
+          ),
+        ),
+      ],
     );
   }
 }
