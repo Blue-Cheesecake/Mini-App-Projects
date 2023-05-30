@@ -8,8 +8,9 @@ class JobItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: const Placeholder(),
+    return const SizedBox(
+      height: 200,
+      child: Placeholder(),
     );
   }
 }

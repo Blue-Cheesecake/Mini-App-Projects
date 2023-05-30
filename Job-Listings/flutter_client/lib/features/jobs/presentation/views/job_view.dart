@@ -1,7 +1,8 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_client/features/jobs/application/job_service.dart';
+import 'package:flutter_client/features/jobs/domain/job_model.dart';
+import 'package:flutter_client/features/jobs/presentation/widgets/job_filter_widget.dart';
+import 'package:flutter_client/features/jobs/presentation/widgets/job_item_widget.dart';
 import 'package:provider/provider.dart';
 
 class JobView extends StatelessWidget {
@@ -17,10 +18,11 @@ class JobView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
         child: Column(
           children: [
-            const Text("Hello World"),
+            const JobFilterWidget(),
+            const SizedBox(height: 35),
             FutureBuilder(
               future: jobService.getJobs(),
               builder: (context, snapshot) {
@@ -28,9 +30,23 @@ class JobView extends StatelessWidget {
                   return const CircularProgressIndicator();
                 }
 
-                log(snapshot.data.toString());
+                List<JobModel>? data = snapshot.data;
 
-                return const Text("data");
+                if (data == null) {
+                  return const Center(
+                    child: Text("Null data"),
+                  );
+                }
+
+                return Expanded(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: data.length,
+                    itemBuilder: (context, index) {
+                      return JobItemWidget(jobModel: data[index]);
+                    },
+                  ),
+                );
               },
             )
           ],
