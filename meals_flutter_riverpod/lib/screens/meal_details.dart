@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meals/models/meal.dart';
 import 'package:meals/providers/favorites_provider.dart';
 
-class MealDetailsScreen extends ConsumerWidget {
+class MealDetailsScreen extends ConsumerStatefulWidget {
   const MealDetailsScreen({
     super.key,
     required this.meal,
@@ -12,19 +12,28 @@ class MealDetailsScreen extends ConsumerWidget {
   final Meal meal;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<MealDetailsScreen> createState() => _MealDetailsScreenState();
+}
+
+class _MealDetailsScreenState extends ConsumerState<MealDetailsScreen> {
+  @override
+  Widget build(BuildContext context) {
     final FavoriteNotifier favoriteNotifier =
         ref.watch(favoritesProvider.notifier);
 
     return Scaffold(
-        appBar: AppBar(title: Text(meal.title), actions: [
+        appBar: AppBar(title: Text(widget.meal.title), actions: [
           IconButton(
             onPressed: () {
-              favoriteNotifier.toggleMealFavoriteStatus(context, meal);
+              setState(() {
+                favoriteNotifier.toggleMealFavoriteStatus(context, widget.meal);
+              });
             },
             icon: Icon(
               Icons.star,
-              color: favoriteNotifier.isFavorite(meal) ? Colors.yellow : null,
+              color: favoriteNotifier.isFavorite(widget.meal)
+                  ? Colors.yellow
+                  : null,
             ),
           )
         ]),
@@ -32,7 +41,7 @@ class MealDetailsScreen extends ConsumerWidget {
           child: Column(
             children: [
               Image.network(
-                meal.imageUrl,
+                widget.meal.imageUrl,
                 height: 300,
                 width: double.infinity,
                 fit: BoxFit.cover,
@@ -46,7 +55,7 @@ class MealDetailsScreen extends ConsumerWidget {
                     ),
               ),
               const SizedBox(height: 14),
-              for (final ingredient in meal.ingredients)
+              for (final ingredient in widget.meal.ingredients)
                 Text(
                   ingredient,
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
@@ -62,7 +71,7 @@ class MealDetailsScreen extends ConsumerWidget {
                     ),
               ),
               const SizedBox(height: 14),
-              for (final step in meal.steps)
+              for (final step in widget.meal.steps)
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 12,
