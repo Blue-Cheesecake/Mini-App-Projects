@@ -1,11 +1,14 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final counterProvider = StateNotifierProvider<CounterNotifier, int>((ref) {
-  return CounterNotifier();
+final counterProvider =
+    StateNotifierProviderFamily<CounterNotifier, int, int>((ref, start) {
+  return CounterNotifier(start);
 });
 
 class CounterNotifier extends StateNotifier<int> {
-  CounterNotifier() : super(0);
+  final int startVal;
+
+  CounterNotifier([this.startVal = 0]) : super(startVal);
 
   int get currentVal => state;
 

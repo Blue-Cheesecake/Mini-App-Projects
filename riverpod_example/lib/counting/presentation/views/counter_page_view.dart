@@ -48,22 +48,10 @@ class CounterPageView extends ConsumerWidget {
         ],
       ),
       body: Center(
-        child: StreamBuilder<int>(
-            stream: controller.streamValue,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const CircularProgressIndicator();
-              }
-
-              if (!snapshot.hasData) {
-                return const Text("No data");
-              }
-
-              return Text(
-                snapshot.data!.toString(),
-                style: Theme.of(context).textTheme.displayMedium,
-              );
-            }),
+        child: Text(
+          controller.currentValue.toString(),
+          style: Theme.of(context).textTheme.displayMedium,
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: controller.onPressedFloatingButton,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_example/counting/presentation/logic/providers/counter_provider.dart';
-import 'package:riverpod_example/counting/presentation/logic/providers/websocket_provider.dart';
+import 'package:riverpod_example/counting/presentation/logic/providers/websocket_client_provider.dart';
 
 class CounterPageController {
   final BuildContext context;
@@ -9,7 +9,7 @@ class CounterPageController {
 
   CounterPageController(this.context, this.ref);
 
-  int get currentValue => ref.watch(counterProvider);
+  int get currentValue => ref.watch(counterProvider(5));
 
   Stream<int> get streamValue => ref.watch(websocketProvider).build();
 
@@ -22,6 +22,6 @@ class CounterPageController {
   }
 
   void onPressedFloatingButton() {
-    ref.read(counterProvider.notifier).increment();
+    ref.read(counterProvider(5).notifier).increment();
   }
 }
