@@ -9,6 +9,34 @@ class CounterPageView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final controller = CounterPageController(context, ref);
 
+    // Where should I put this into a separate file??
+    // Use listen to apply the logic in build function
+    // ref.listen<int>(
+    //   counterProvider,
+    //   (previous, next) {
+    //     if (next >= 5) {
+    //       showDialog(
+    //         context: context,
+    //         builder: (context) {
+    //           return AlertDialog(
+    //             title: const Text("Warning"),
+    //             content: const Text(
+    //                 "Counter is dangerously high. Consider resetting it"),
+    //             actions: [
+    //               TextButton(
+    //                 onPressed: () {
+    //                   Navigator.of(context).pop();
+    //                 },
+    //                 child: const Text("OK"),
+    //               )
+    //             ],
+    //           );
+    //         },
+    //       );
+    //     }
+    //   },
+    // );
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Counter"),
@@ -20,10 +48,22 @@ class CounterPageView extends ConsumerWidget {
         ],
       ),
       body: Center(
-        child: Text(
-          controller.currentValue.toString(),
-          style: Theme.of(context).textTheme.displayMedium,
-        ),
+        child: StreamBuilder<int>(
+            stream: controller.streamValue,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const CircularProgressIndicator();
+              }
+
+              if (!snapshot.hasData) {
+                return const Text("No data");
+              }
+
+              return Text(
+                snapshot.data!.toString(),
+                style: Theme.of(context).textTheme.displayMedium,
+              );
+            }),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: controller.onPressedFloatingButton,
