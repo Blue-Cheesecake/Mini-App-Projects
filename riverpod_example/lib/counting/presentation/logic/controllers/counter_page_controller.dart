@@ -11,7 +11,11 @@ class CounterPageController {
   int get currentValue => ref.watch(counterProvider);
 
   void onPressedReset() {
-    ref.read(counterProvider.notifier).reset();
+    // Reset to original state
+    ref.invalidate(counterProvider);
+
+    // But this also work too, if you write the logic in Notifier
+    // ref.read(counterProvider.notifier).reset();
   }
 
   void onPressedFloatingButton() {

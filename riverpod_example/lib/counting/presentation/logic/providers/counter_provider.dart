@@ -10,5 +10,8 @@ class CounterNotifier extends StateNotifier<int> {
   int get currentVal => state;
 
   void increment() => state++;
+
+  // It can be used, but we can instead use ref.invalidate to reset to
+  // original state
   void reset() => state = 0;
 }
