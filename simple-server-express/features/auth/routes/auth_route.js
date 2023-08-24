@@ -6,7 +6,7 @@ router.post("/auth", (req, res) => {
   console.log(req.body);
   console.log(`Request: ${req.body}`);
   console.log(`Request: ${req.body.email}`);
-  res.send({
+  res.status(200).send({
     token: "jngoin4q3gq4ngiq4un22",
   });
 });
