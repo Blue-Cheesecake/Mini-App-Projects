@@ -1,0 +1,19 @@
+{
+  "name": "simple-server-express",
+  "version": "1.0.0",
+  "description": "\"Just for learning\"",
+  "scripts": {
+    "start-nodemon": "nodemon app.js"
+  },
+  "main": "app.js",
+  "repository": "https://github.com/Blue-Cheesecake/Mini-App-Projects",
+  "author": "Sinut Wattanarporn",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
