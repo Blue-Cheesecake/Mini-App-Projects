@@ -1,0 +1,1 @@
+{"version":"1.0.0","name":"proposed-clean-arch-express","dependencies":{"@types/express":{"version":"4.17.17"},"@types/node":{"version":"20.5.6"},"body-parser":{"version":"1.20.2"},"concurrently":{"version":"8.2.1"},"express":{"version":"4.18.2"},"rimraf":{"version":"5.0.1"},"typescript":{"version":"5.2.2"}}}
