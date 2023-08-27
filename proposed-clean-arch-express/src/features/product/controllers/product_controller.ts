@@ -1,6 +1,12 @@
 import { Response, Request } from "express";
+import ProductService from "../services/product_service.js";
 
-export function getAll(req: Request, res: Response) {
-  // TODO: fetch db database
-  res.send({ msg: "Product data" });
+function getAll(req: Request, res: Response) {
+  res.send(ProductService.getAllProducts());
 }
+
+const ProductController = {
+  getAll: getAll,
+};
+
+export default ProductController;
