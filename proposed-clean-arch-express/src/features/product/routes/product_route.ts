@@ -1,3 +1,7 @@
+/**
+ * Functional Approach
+ */
+
 import express, { Router } from "express";
 import ProductController from "../controllers/product_controller.js";
 

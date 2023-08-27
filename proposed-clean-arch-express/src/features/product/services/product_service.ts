@@ -1,4 +1,8 @@
-import ProductModel from "../models/product_model";
+/**
+ * Functional Approach
+ */
+
+import ProductModel from "../models/product_model.js";
 import ProductRepository from "../repositories/product_repository.js";
 
 function getAllProducts(): Array<ProductModel> {

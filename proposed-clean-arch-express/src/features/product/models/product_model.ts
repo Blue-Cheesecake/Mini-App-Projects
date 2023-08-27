@@ -1,3 +1,7 @@
+/**
+ * Functional Approach
+ */
+
 import BaseAPI from "../../../utils/entities/base_api.abs.js";
 
 export default class ProductModel extends BaseAPI {

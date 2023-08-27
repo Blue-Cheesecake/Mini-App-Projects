@@ -1,3 +1,7 @@
+/**
+ * Functional Approach
+ */
+
 import ProductModel from "../models/product_model.js";
 
 function getAllProducts(): Array<ProductModel> {
