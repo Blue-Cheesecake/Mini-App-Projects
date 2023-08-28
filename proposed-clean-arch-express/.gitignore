@@ -6,3 +6,6 @@ node_modules/
 
 # build
 dist/
+
+# Dotenv files
+src/utils/env/**.env

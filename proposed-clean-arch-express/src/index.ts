@@ -1,5 +1,6 @@
 import "reflect-metadata";
 import express, { Request, Response } from "express";
+// import { run } from "./utils/datasources/mondodb_datasource.js";
 import bodyParser from "body-parser";
 import productRouter from "./features/product/routes/product_route.js";
 import userRouter from "./features/user/routes/user_route.js";
@@ -19,5 +20,6 @@ app.use((req: Request, res: Response) => {
 });
 
 app.listen(port, "localhost", () => {
+  // run();
   console.log(`Server running on port: ${port}`);
 });
