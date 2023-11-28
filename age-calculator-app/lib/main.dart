@@ -1,3 +1,4 @@
+import 'package:age_calculator/config/config.dart';
 import 'package:flutter/material.dart';
 
 import 'package:age_calculator/features/home/homepage.dart';
@@ -11,8 +12,9 @@ class AppWD extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Homepage(),
+    return MaterialApp(
+      theme: ACATheme.getThemeData(),
+      home: const Homepage(),
     );
   }
 }
