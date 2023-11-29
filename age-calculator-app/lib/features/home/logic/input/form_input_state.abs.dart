@@ -8,5 +8,6 @@ class FormInputState with _$FormInputState {
     int? day,
     int? month,
     int? year,
+    @Default(false) bool isButtonEnabled,
   }) = _FormInputState;
 }

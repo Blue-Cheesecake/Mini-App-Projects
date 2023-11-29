@@ -19,6 +19,7 @@ mixin _$FormInputState {
   int? get day => throw _privateConstructorUsedError;
   int? get month => throw _privateConstructorUsedError;
   int? get year => throw _privateConstructorUsedError;
+  bool get isButtonEnabled => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $FormInputStateCopyWith<FormInputState> get copyWith =>
@@ -31,7 +32,7 @@ abstract class $FormInputStateCopyWith<$Res> {
           FormInputState value, $Res Function(FormInputState) then) =
       _$FormInputStateCopyWithImpl<$Res, FormInputState>;
   @useResult
-  $Res call({int? day, int? month, int? year});
+  $Res call({int? day, int? month, int? year, bool isButtonEnabled});
 }
 
 /// @nodoc
@@ -50,6 +51,7 @@ class _$FormInputStateCopyWithImpl<$Res, $Val extends FormInputState>
     Object? day = freezed,
     Object? month = freezed,
     Object? year = freezed,
+    Object? isButtonEnabled = null,
   }) {
     return _then(_value.copyWith(
       day: freezed == day
@@ -64,6 +66,10 @@ class _$FormInputStateCopyWithImpl<$Res, $Val extends FormInputState>
           ? _value.year
           : year // ignore: cast_nullable_to_non_nullable
               as int?,
+      isButtonEnabled: null == isButtonEnabled
+          ? _value.isButtonEnabled
+          : isButtonEnabled // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -76,7 +82,7 @@ abstract class _$$FormInputStateImplCopyWith<$Res>
       __$$FormInputStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? day, int? month, int? year});
+  $Res call({int? day, int? month, int? year, bool isButtonEnabled});
 }
 
 /// @nodoc
@@ -93,6 +99,7 @@ class __$$FormInputStateImplCopyWithImpl<$Res>
     Object? day = freezed,
     Object? month = freezed,
     Object? year = freezed,
+    Object? isButtonEnabled = null,
   }) {
     return _then(_$FormInputStateImpl(
       day: freezed == day
@@ -107,6 +114,10 @@ class __$$FormInputStateImplCopyWithImpl<$Res>
           ? _value.year
           : year // ignore: cast_nullable_to_non_nullable
               as int?,
+      isButtonEnabled: null == isButtonEnabled
+          ? _value.isButtonEnabled
+          : isButtonEnabled // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -114,7 +125,8 @@ class __$$FormInputStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FormInputStateImpl implements _FormInputState {
-  _$FormInputStateImpl({this.day, this.month, this.year});
+  _$FormInputStateImpl(
+      {this.day, this.month, this.year, this.isButtonEnabled = false});
 
   @override
   final int? day;
@@ -122,10 +134,13 @@ class _$FormInputStateImpl implements _FormInputState {
   final int? month;
   @override
   final int? year;
+  @override
+  @JsonKey()
+  final bool isButtonEnabled;
 
   @override
   String toString() {
-    return 'FormInputState(day: $day, month: $month, year: $year)';
+    return 'FormInputState(day: $day, month: $month, year: $year, isButtonEnabled: $isButtonEnabled)';
   }
 
   @override
@@ -135,11 +150,14 @@ class _$FormInputStateImpl implements _FormInputState {
             other is _$FormInputStateImpl &&
             (identical(other.day, day) || other.day == day) &&
             (identical(other.month, month) || other.month == month) &&
-            (identical(other.year, year) || other.year == year));
+            (identical(other.year, year) || other.year == year) &&
+            (identical(other.isButtonEnabled, isButtonEnabled) ||
+                other.isButtonEnabled == isButtonEnabled));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, day, month, year);
+  int get hashCode =>
+      Object.hash(runtimeType, day, month, year, isButtonEnabled);
 
   @JsonKey(ignore: true)
   @override
@@ -150,8 +168,11 @@ class _$FormInputStateImpl implements _FormInputState {
 }
 
 abstract class _FormInputState implements FormInputState {
-  factory _FormInputState({final int? day, final int? month, final int? year}) =
-      _$FormInputStateImpl;
+  factory _FormInputState(
+      {final int? day,
+      final int? month,
+      final int? year,
+      final bool isButtonEnabled}) = _$FormInputStateImpl;
 
   @override
   int? get day;
@@ -159,6 +180,8 @@ abstract class _FormInputState implements FormInputState {
   int? get month;
   @override
   int? get year;
+  @override
+  bool get isButtonEnabled;
   @override
   @JsonKey(ignore: true)
   _$$FormInputStateImplCopyWith<_$FormInputStateImpl> get copyWith =>
