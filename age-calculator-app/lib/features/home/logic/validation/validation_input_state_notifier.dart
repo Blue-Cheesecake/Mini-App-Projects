@@ -26,15 +26,15 @@ class ValidationInputStateNotifier extends StateNotifier<ValidationInputState> {
       temp = temp.copyWith(yearErrorText: HomepageMessages.requiredErrorText);
     }
 
-    if (!ValidationFunctions.isDayValid(day: day!, month: month!)) {
+    if (day != null && month != null && !ValidationFunctions.isDayValid(day: day, month: month)) {
       isValid = false;
       temp = temp.copyWith(dayErrorText: HomepageMessages.invalidDayErrorText);
     }
-    if (!ValidationFunctions.isMonthValid(month)) {
+    if (month != null && !ValidationFunctions.isMonthValid(month)) {
       isValid = false;
       temp = temp.copyWith(monthErrorText: HomepageMessages.invalidMonthErrorText);
     }
-    if (ValidationFunctions.isFutureYear(year!)) {
+    if (year != null && ValidationFunctions.isFutureYear(year)) {
       isValid = false;
       temp = temp.copyWith(yearErrorText: HomepageMessages.invalidYearErrorText);
     }

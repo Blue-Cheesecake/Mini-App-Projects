@@ -1,6 +1,7 @@
-import 'package:age_calculator/config/config.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:age_calculator/config/config.dart';
 import 'package:age_calculator/features/home/homepage.dart';
 
 void main() {
@@ -12,9 +13,11 @@ class AppWD extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ACATheme.getThemeData(),
-      home: const Homepage(),
+    return ProviderScope(
+      child: MaterialApp(
+        theme: ACATheme.getThemeData(),
+        home: const Homepage(),
+      ),
     );
   }
 }

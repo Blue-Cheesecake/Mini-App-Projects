@@ -9,28 +9,31 @@ class FormInputStateNotifier extends StateNotifier<FormInputState> {
 
   final Ref _ref;
 
-  void checkFormValidity() {
+  void _checkFormValidity() {
     final isValid = _ref.read(validationInputStateProvider.notifier).isFormValid(
           day: state.day,
           month: state.month,
           year: state.year,
         );
-    state = state.copyWith(isButtonEnabled: isValid);
+    _updateIsButtonEnabled(isValid);
   }
 
   void updateDay(int? value) {
     state = state.copyWith(day: value);
+    _checkFormValidity();
   }
 
   void updateMonth(int? value) {
     state = state.copyWith(month: value);
+    _checkFormValidity();
   }
 
   void updateYear(int? value) {
     state = state.copyWith(year: value);
+    _checkFormValidity();
   }
 
-  void updateIsButtonEnabled(bool value) {
+  void _updateIsButtonEnabled(bool value) {
     state = state.copyWith(isButtonEnabled: value);
   }
 }
