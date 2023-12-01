@@ -46,6 +46,8 @@ class _MainBox extends StatelessWidget {
           FieldsSectionWD(),
           SizedBox(height: 25),
           ButtonSectionWD(),
+          SizedBox(height: 10),
+          ResultSectionWD(),
         ],
       ),
     );

@@ -15,7 +15,15 @@ class CalculateButtonWD extends ConsumerWidget {
         final isValid = ref.watch(formInputStateProvider.select((value) => value.isButtonEnabled));
 
         if (isValid) {
-          // TODO: calculate
+          final int day = ref.read(formInputStateProvider.select((value) => value.day))!;
+          final int month = ref.read(formInputStateProvider.select((value) => value.month))!;
+          final int year = ref.read(formInputStateProvider.select((value) => value.year))!;
+
+          ref.read(formOutputStateProvider.notifier).calculateDate(
+                day: day,
+                month: month,
+                year: year,
+              );
           return;
         }
         return;
