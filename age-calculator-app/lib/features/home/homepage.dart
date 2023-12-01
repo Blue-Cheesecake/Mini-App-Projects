@@ -44,7 +44,7 @@ class _MainBox extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           FieldsSectionWD(),
-          SizedBox(height: 15),
+          SizedBox(height: 25),
           ButtonSectionWD(),
         ],
       ),

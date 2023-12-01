@@ -6,8 +6,10 @@ class ACATheme {
   const ACATheme._();
 
   static ThemeData getThemeData() => ThemeData(
-        fontFamily: DesignSystem.fontFamily,
-        useMaterial3: false,
-        primaryColor: DesignSystem.acaPrimary,
-      );
+      fontFamily: DesignSystem.fontFamily,
+      useMaterial3: false,
+      primaryColor: DesignSystem.acaPrimary,
+      buttonTheme: const ButtonThemeData(
+        splashColor: DesignSystem.acaPrimary,
+      ));
 }
