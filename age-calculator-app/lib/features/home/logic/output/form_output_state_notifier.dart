@@ -7,12 +7,12 @@ class FormOutputStateNotifier extends StateNotifier<FormOutputState> {
   FormOutputStateNotifier() : super(FormOutputState());
 
   void calculateDate({required int day, required int month, required int year}) {
-    final DateTime result = ComputingFunctions.findDifferenceCurrentDate(day: day, month: month, year: year);
+    final result = ComputingFunctions.findDifferenceCurrentDate(day: day, month: month, year: year);
 
     state = state.copyWith(
-      days: result.day,
-      months: result.month,
-      year: result.year,
+      days: result.days,
+      months: result.months,
+      year: result.years,
     );
   }
 }
