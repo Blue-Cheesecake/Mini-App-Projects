@@ -35,7 +35,7 @@ class AppWD extends StatelessWidget {
       title: 'Custom Paint',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
-        useMaterial3: false,
+        useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
       home: const _Homepage(),
@@ -69,10 +69,10 @@ class _HomepageState extends State<_Homepage> with SingleTickerProviderStateMixi
               child: Text('Line'),
             ),
             Tab(
-              child: Text('Circle'),
+              child: Text('Rectacgle'),
             ),
             Tab(
-              child: Text('Rectacgle'),
+              child: Text('Circle'),
             ),
           ]),
         ),

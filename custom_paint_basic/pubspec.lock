@@ -57,6 +57,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.1"
+  fluent_ui:
+    dependency: "direct main"
+    description:
+      name: fluent_ui
+      sha256: "460af0e4fe46e81818e7244e011d3e64febcc4ca00ff8ff994e5ae8ad9f14fa4"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.8.1"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -70,11 +78,24 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.3"
+  flutter_localizations:
+    dependency: transitive
+    description: flutter
+    source: sdk
+    version: "0.0.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
     source: sdk
     version: "0.0.0"
+  intl:
+    dependency: transitive
+    description:
+      name: intl
+      sha256: "3bc132a9dbce73a7e4a21a17d06e1878839ffbf975568bc875c60537824b0c4d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.18.1"
   lints:
     dependency: transitive
     description:
@@ -99,6 +120,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.5.0"
+  math_expressions:
+    dependency: transitive
+    description:
+      name: math_expressions
+      sha256: "3576593617c3870d75728a751f6ec6e606706d44e363f088ac394b5a28a98064"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.0"
   meta:
     dependency: transitive
     description:
@@ -115,6 +144,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.8.3"
+  recase:
+    dependency: transitive
+    description:
+      name: recase
+      sha256: e4eb4ec2dcdee52dcf99cb4ceabaffc631d7424ee55e56f280bc039737f89213
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.1.0"
   screen_retriever:
     dependency: transitive
     description:
@@ -123,6 +160,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.1.9"
+  scroll_pos:
+    dependency: transitive
+    description:
+      name: scroll_pos
+      sha256: cebf602b2dd939de6832bb902ffefb574608d1b84f420b82b381a4007d3c1e1b
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.0"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -202,4 +247,4 @@ packages:
     version: "0.3.7"
 sdks:
   dart: ">=3.1.5 <4.0.0"
-  flutter: ">=3.3.0"
+  flutter: ">=3.10.0"

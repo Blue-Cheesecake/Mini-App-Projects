@@ -1,3 +1,4 @@
+import 'package:custom_paint_basic/pages/painter/circle_painter.dart';
 import 'package:flutter/material.dart';
 
 class Circle extends StatelessWidget {
@@ -5,6 +6,8 @@ class Circle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return CustomPaint(
+      painter: CirclePainter(),
+    );
   }
 }

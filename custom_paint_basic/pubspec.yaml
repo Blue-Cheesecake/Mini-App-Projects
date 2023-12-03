@@ -13,6 +13,7 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   window_manager: ^0.3.7
+  fluent_ui: ^4.8.1
 
 dev_dependencies:
   flutter_test:
