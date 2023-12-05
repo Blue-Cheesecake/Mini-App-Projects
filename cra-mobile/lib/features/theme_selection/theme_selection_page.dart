@@ -35,6 +35,8 @@ class ThemeSelectionPage extends StatelessWidget {
             ThemeTextWD(),
             SizedBox(height: 20),
             DarkModeStatusWD(),
+            SizedBox(height: 30),
+            AppThemeSelectionSectionWD(),
           ],
         ),
       ),
