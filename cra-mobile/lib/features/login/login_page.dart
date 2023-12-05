@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:course_recommendation_app/config/config.dart';
+import 'package:course_recommendation_app/features/login/utils/utils.dart';
 import 'package:course_recommendation_app/features/login/widgets/widgets.dart';
 
 class LoginPage extends StatelessWidget {
@@ -8,14 +9,19 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: DesignSystem.g2,
       body: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
-          Placeholder(fallbackHeight: 270),
-          SizedBox(height: 20),
-          Padding(
+          ClipRRect(
+            borderRadius: const BorderRadius.vertical(
+              bottom: Radius.circular(175),
+            ),
+            child: LoginAssets.loginTitleImage,
+          ),
+          const SizedBox(height: 20),
+          const Padding(
             padding: EdgeInsets.symmetric(horizontal: 25),
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -31,7 +37,9 @@ class LoginPage extends StatelessWidget {
                 ForgetPasswordSectionWD(),
               ],
             ),
-          )
+          ),
+          const Spacer(),
+          const RegisterSectionWD(),
         ],
       ),
     );
