@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 final class DesignSystem {
   const DesignSystem._();
 
-  static const fontFamily = '';
+  static const fontFamily = 'NotoSans';
 
   /// Body
   ///
@@ -20,9 +20,11 @@ final class DesignSystem {
   ///
   static const g0 = Color(0xff000000);
   static const g1 = Color(0xffFFFFFF);
+  static const g2 = Color(0xff01042a);
+  static const g3 = Color(0xff47496d);
 
   static const disable = Color(0xffAAAAAA);
   static const error = Colors.red;
   static const success = Colors.green;
-  static const primary = Colors.blue;
+  static const primary = Color(0xff171a92);
 }

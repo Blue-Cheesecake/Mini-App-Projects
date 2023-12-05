@@ -11,6 +11,7 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: 1.0.2
+  adaptive_theme: 3.4.1
 
 dev_dependencies:
   flutter_test:
@@ -21,8 +22,8 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  assets:
-    - assets/images
+  # assets:
+  #   - assets/images
 
   fonts:
     - family: NotoSans
