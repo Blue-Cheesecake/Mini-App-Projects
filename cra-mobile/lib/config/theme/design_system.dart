@@ -22,6 +22,10 @@ final class DesignSystem {
   static const g1 = Color(0xffFFFFFF);
   static const g2 = Color(0xff01042a);
   static const g3 = Color(0xff47496d);
+  static const g4 = Color(0xff1b1a1e);
+  static const g5 = Color(0xffabc5ff);
+  static const g6 = Color(0xffe3e2e7);
+  static const g7 = Color(0xffbbbabe);
 
   static const disable = Color(0xffAAAAAA);
   static const error = Colors.red;

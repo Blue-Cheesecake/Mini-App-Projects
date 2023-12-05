@@ -10,6 +10,10 @@ final class CRATheme {
       useMaterial3: false,
       brightness: Brightness.light,
       fontFamily: DesignSystem.fontFamily,
+      appBarTheme: const AppBarTheme(
+        backgroundColor: DesignSystem.primary,
+        centerTitle: false,
+      ),
     );
   }
 
@@ -18,6 +22,11 @@ final class CRATheme {
       useMaterial3: false,
       brightness: Brightness.dark,
       fontFamily: DesignSystem.fontFamily,
+      appBarTheme: const AppBarTheme(
+        backgroundColor: DesignSystem.g4,
+        centerTitle: false,
+      ),
+      scaffoldBackgroundColor: DesignSystem.g4,
     );
   }
 }
