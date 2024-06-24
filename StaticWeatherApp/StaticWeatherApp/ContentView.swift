@@ -7,7 +7,7 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            BackgroundView(isNight: $isNight)
+            BackgroundView(isNight: isNight)
             VStack() {
                 CityNameView(cityName: "Bangkok, Ladprao")
                 
@@ -31,10 +31,6 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView(dataSource: WeatherDataSource())
-}
-
 struct WeatherTemp: View {
     
     let model: WeatherModel
@@ -43,26 +39,29 @@ struct WeatherTemp: View {
         VStack {
             Text(model.title)
                 .font(.system(size: 22))
-                .foregroundStyle(.white)
+                .foregroundColor(.white)
             Image(systemName: model.imagePath)
                 .renderingMode(.original)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 50, height: 50)
-            Text(model.temp.formatted())
+            Text("\(model.temp)")
                 .font(.system(size: 28, weight: .medium))
-                .foregroundStyle(.white)
+                .foregroundColor(.white)
         }
     }
 }
 
 struct BackgroundView: View {
     
-    @Binding var isNight: Bool
+    var isNight: Bool
     
     var body: some View {
         LinearGradient(colors: [isNight ? .black : .g1, isNight ? .gray : .white], startPoint: .top, endPoint: .bottom)
             .ignoresSafeArea()
+//        ContainerRelativeShape()
+//            .fill(isNight ? Color.black.gradient : Color.blue.gradient)
+//            .ignoresSafeArea()
     }
 }
 
@@ -73,7 +72,7 @@ struct CityNameView: View {
     var body: some View {
         Text(cityName)
             .font(.system(size: 29, weight: .medium))
-            .foregroundStyle(.white)
+            .foregroundColor(.white)
             .padding(.top)
     }
 }
@@ -93,7 +92,7 @@ struct MainWeatherStatusView: View {
             
             Text("\(temperature)")
                 .font(.system(size: 90, weight: .bold))
-                .foregroundStyle(.white)
+                .foregroundStyle(.white, .ultraThickMaterial)
         }
         .padding(.bottom, 50)
     }
@@ -112,4 +111,8 @@ struct ChangeDayTimeButtonView: View {
             WeatherButton(title: "Change Day Time")
         }
     }
+}
+
+#Preview {
+    ContentView(dataSource: WeatherDataSource())
 }
