@@ -22,3 +22,13 @@ struct WeatherButton: View {
             .cornerRadius(10)
     }
 }
+
+#Preview {
+    ZStack {
+        ContainerRelativeShape()
+            .fill(.gray)
+            .ignoresSafeArea()
+        WeatherButton(title: "Test Title", frameWidth: 200, frameHeight: 40)
+        
+    }
+}
