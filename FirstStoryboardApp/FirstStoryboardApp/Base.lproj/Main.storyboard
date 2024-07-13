@@ -21,6 +21,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Change Image"/>
+                                <connections>
+                                    <action selector="onChangeImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gUD-Xc-Rdi"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="open_graph_logo" translatesAutoresizingMaskIntoConstraints="NO" id="zdh-ax-rcV">
                                 <rect key="frame" x="67" y="129" width="240" height="164"/>
@@ -30,6 +33,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="zdh-ax-rcV" id="fVg-5E-Q3g"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
