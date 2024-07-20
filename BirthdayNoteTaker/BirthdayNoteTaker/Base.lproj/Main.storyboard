@@ -21,18 +21,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMg-sP-kBp">
-                                <rect key="frame" x="154" y="204" width="83" height="41"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Save"/>
-                                <connections>
-                                    <action selector="onSave:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CyS-gd-1zf"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2w-fi-eQB">
                                 <rect key="frame" x="82" y="267" width="227" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="ahq-zH-JJN"/>
+                                    <constraint firstAttribute="height" constant="34" id="XjS-Ug-TcQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -41,7 +33,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Birthday:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRy-RZ-wXe">
                                 <rect key="frame" x="82" y="323" width="227" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="NaL-K0-g3x"/>
+                                    <constraint firstAttribute="height" constant="34" id="27C-jI-Urg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -50,26 +42,46 @@
                             <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Dns-FJ-Xcr">
                                 <rect key="frame" x="86" y="129" width="219" height="59"/>
                             </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0B9-Zd-NWk">
+                                <rect key="frame" x="229" y="204" width="117" height="41"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Clear Cache"/>
+                                <connections>
+                                    <action selector="onClearCache:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d2L-xy-jLr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMg-sP-kBp">
+                                <rect key="frame" x="45" y="204" width="83" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="83" id="cR9-9Y-kKo"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Save"/>
+                                <connections>
+                                    <action selector="onSave:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CyS-gd-1zf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="H2w-fi-eQB" firstAttribute="trailing" secondItem="dRy-RZ-wXe" secondAttribute="trailing" id="0Q5-gd-P00"/>
-                            <constraint firstItem="eMg-sP-kBp" firstAttribute="top" secondItem="Dns-FJ-Xcr" secondAttribute="bottom" constant="16" id="3bf-Kp-UB2"/>
-                            <constraint firstItem="vUA-o4-enc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="45" id="94L-Ac-96l"/>
-                            <constraint firstItem="Dns-FJ-Xcr" firstAttribute="centerX" secondItem="eMg-sP-kBp" secondAttribute="centerX" id="C3D-SI-gWO"/>
-                            <constraint firstItem="vUA-o4-enc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EVq-ar-Xg2"/>
-                            <constraint firstItem="Dns-FJ-Xcr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="86" id="H1b-Q2-GBX"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dRy-RZ-wXe" secondAttribute="bottom" constant="453" id="OnG-zo-YjL"/>
-                            <constraint firstItem="dRy-RZ-wXe" firstAttribute="top" secondItem="H2w-fi-eQB" secondAttribute="bottom" constant="22" id="PPg-0e-h2U"/>
-                            <constraint firstItem="Dns-FJ-Xcr" firstAttribute="top" secondItem="vUA-o4-enc" secondAttribute="bottom" constant="18" id="Vnz-iy-ReW"/>
-                            <constraint firstItem="H2w-fi-eQB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="82" id="ePS-vl-0dK"/>
-                            <constraint firstItem="vUA-o4-enc" firstAttribute="centerX" secondItem="Dns-FJ-Xcr" secondAttribute="centerX" id="eXU-Qi-7zi"/>
-                            <constraint firstItem="H2w-fi-eQB" firstAttribute="leading" secondItem="dRy-RZ-wXe" secondAttribute="leading" id="ly3-vz-FeT"/>
-                            <constraint firstItem="eMg-sP-kBp" firstAttribute="centerX" secondItem="H2w-fi-eQB" secondAttribute="centerX" id="q5X-eF-ztu"/>
-                            <constraint firstItem="H2w-fi-eQB" firstAttribute="top" secondItem="eMg-sP-kBp" secondAttribute="bottom" constant="22" id="qg8-i9-XfZ"/>
-                            <constraint firstItem="vUA-o4-enc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="wIQ-Kw-gWY"/>
-                            <constraint firstItem="eMg-sP-kBp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="154" id="yHe-OU-Y6E"/>
+                            <constraint firstItem="vUA-o4-enc" firstAttribute="leading" secondItem="eMg-sP-kBp" secondAttribute="leading" id="39Q-jW-FRw"/>
+                            <constraint firstItem="vUA-o4-enc" firstAttribute="centerX" secondItem="Dns-FJ-Xcr" secondAttribute="centerX" id="BaY-0b-LUe"/>
+                            <constraint firstItem="H2w-fi-eQB" firstAttribute="top" secondItem="eMg-sP-kBp" secondAttribute="bottom" constant="22" id="Cfs-75-64V"/>
+                            <constraint firstItem="eMg-sP-kBp" firstAttribute="top" secondItem="Dns-FJ-Xcr" secondAttribute="bottom" constant="16" id="FwC-Je-8y1"/>
+                            <constraint firstItem="H2w-fi-eQB" firstAttribute="leading" secondItem="dRy-RZ-wXe" secondAttribute="leading" id="H8l-VT-thy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dRy-RZ-wXe" secondAttribute="bottom" constant="453" id="VNh-9M-cBn"/>
+                            <constraint firstItem="vUA-o4-enc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="X11-t3-ibZ"/>
+                            <constraint firstItem="H2w-fi-eQB" firstAttribute="trailing" secondItem="dRy-RZ-wXe" secondAttribute="trailing" id="bhq-SL-4x4"/>
+                            <constraint firstItem="Dns-FJ-Xcr" firstAttribute="centerX" secondItem="H2w-fi-eQB" secondAttribute="centerX" id="c2T-uH-rsB"/>
+                            <constraint firstItem="vUA-o4-enc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="45" id="dHE-jr-Th5"/>
+                            <constraint firstItem="Dns-FJ-Xcr" firstAttribute="top" secondItem="vUA-o4-enc" secondAttribute="bottom" constant="18" id="iHK-O9-5nC"/>
+                            <constraint firstItem="vUA-o4-enc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="p3R-4X-QWa"/>
+                            <constraint firstItem="Dns-FJ-Xcr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="86" id="r54-Aj-Nbc"/>
+                            <constraint firstItem="dRy-RZ-wXe" firstAttribute="top" secondItem="H2w-fi-eQB" secondAttribute="bottom" constant="22" id="uVb-d1-cnE"/>
+                            <constraint firstItem="vUA-o4-enc" firstAttribute="trailing" secondItem="0B9-Zd-NWk" secondAttribute="trailing" id="x4E-pJ-L9e"/>
+                            <constraint firstItem="H2w-fi-eQB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="82" id="y2b-wE-48C"/>
+                            <constraint firstItem="eMg-sP-kBp" firstAttribute="baseline" secondItem="0B9-Zd-NWk" secondAttribute="baseline" id="ynb-Es-354"/>
                         </constraints>
                     </view>
                     <connections>

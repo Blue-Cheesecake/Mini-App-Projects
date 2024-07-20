@@ -37,5 +37,10 @@ class ViewController: UIViewController {
         print(datePickerField.date)
         birthdayLabel.text = datePickerField.date.description
     }
+    
+    @IBAction func onClearCache(_ sender: Any) {
+        UserDefaults.standard.removeObject(forKey: "name")
+        UserDefaults.standard.removeObject(forKey: "date")
+    }
 }
 
